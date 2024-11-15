@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>canvasLab - Developmental Testing</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-57x57.png"   sizes="57x57"   />
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-114x114.png" sizes="114x114" />
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-72x72.png"   sizes="72x72"   />
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-144x144.png" sizes="144x144" />
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-60x60.png"   sizes="60x60"   />
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-120x120.png" sizes="120x120" />
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-76x76.png"   sizes="76x76"   />
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png" sizes="152x152" />
+
+    <link rel="icon" type="image/png" href="images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png"   sizes="96x96"   />
+    <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png"   sizes="32x32"   />
+    <link rel="icon" type="image/png" href="images/favicon/favicon-16x16.png"   sizes="16x16"   />
+    <link rel="icon" type="image/png" href="images/favicon/favicon-128.png"     sizes="128x128" />
+
+    <meta name="application-name"                content="canvasLab - Developmental Testing" />
+    <meta name="msapplication-TileColor"         content="#FFFFFF"                           />
+    <meta name="msapplication-TileImage"         content="images/favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo"   content="images/favicon/mstile-70x70.png"   />
+    <meta name="msapplication-square150x150logo" content="images/favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo"   content="images/favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="images/favicon/mstile-310x310.png" />
+
+    <!-- //////////////////    STYLES    /////////////////// -->
+
+    <!-- Bootstrap @5.1.3 -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/bootstrap/sidebars.css">
+
+    <!-- highlight.js CSS @11.7.0 -->
+    <link rel="stylesheet" href="styles/highlightJs/an-old-hope.min.css">
+
+    <!-- Developer Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+
+    <!-- //////////////////    SCRIPTS    ////////////////// -->
+
+    <!-- Bootstrap       @5.1.3 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
+    <script src="scripts/libs/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- highlight.js    @11.7.0 -->
+    <script src="scripts/libs/highlightJs/highlight.min.js"></script>
+
+    <!-- shadowdown.js   @2.1.0 -->
+    <script src="scripts/libs/showdownJs/showdown.min.js"></script>
+
+    <!-- Ace.js          @11.12.23 -->
+    <script src="scripts/libs/ace/ace.js"></script>
+
+    <!-- vanilla-picker  @2.12.2 -->
+    <script src="scripts/libs/vanilla-picker/vanilla-picker.min.js"></script>
+
+    <!-- mousetrap       @1.6.5 -->
+    <script src="scripts/libs/mousetrap/mousetrap.min.js"></script>
+
+    <!-- JSDoc Markdown2Json -->
+    <script src="scripts/libs/md2json/md2json.js"></script>
+
+    <!-- canvasLab -->
+    <script src="../script/distro/canvasLab.min.js"></script>
+
+    <!-- Development Suite -->
+    <script src="scripts/devSuite.js" defer></script>
+
+    <script>hljs.highlightAll ( );</script>
+
+</head>
+<body>
+
+    <nav>
+
+        <div class="flex-shrink-0 nav-wrapper">
+
+            <div id="nav-icon">
+
+                <img id="eye"               src="images/svg/General/eye.svg">
+
+                <img id="eye-lid"           src="images/svg/General/eye-lid.svg">
+
+                <img id="triangle"          src="images/svg/General/triangle.svg">
+
+                <img id="triangle-inverted" src="images/svg/General/triangle-inverted.svg">
+
+                <img id="eye-closed"        src="images/svg/General/eye-close.svg" style="display: none;">
+
+            </div>
+
+
+            <div class="seperator"></div>                   <!-- Horizontal Line -->
+
+
+            <ul id="nav-links" class="nav-menu"></ul>
+
+
+            <div class="seperator"></div>                   <!-- Horizontal Line -->
+
+
+            <div id="nav-lab">
+
+                <img class="card-stack" src="images/svg/General/cards.svg">
+
+                <img class="lab-bottle" src="images/svg/General/lab-bottle.svg">
+
+            </div>
+
+
+            <div class="seperator"></div>                   <!-- Horizontal Line -->
+
+
+            <ul id="doc-links" class="nav-menu">
+
+                <li>
+
+                    <button data-bs-target="documents-collapse" data-button-open="false" class="btn btn-toggle align-items-center rounded collapsed">
+
+                        Documents
+
+                    </button>
+
+                </li>
+
+                <ul id="documents-collapse" class="collapse">
+
+                    <li class="nav-link">
+
+                        <img src="images/svg/General/book.svg">
+
+                        <a href="../docs/JSDoc/index.html" target="_blank">JSDocs</a>
+
+                    </li>
+
+                    <li class="nav-link">
+
+                        <img src="images/svg/General/file.svg">
+
+                        <a href="https://github.com/Justin-Byrne/canvasLab/blob/main/docs/JSDoc.md" target="_blank">JSDoc</a>
+
+                    </li>
+
+                    <li class="nav-link">
+
+                        <img src="images/svg/General/journal-check.svg">
+
+                        <a href="https://github.com/Justin-Byrne/canvasLab/blob/main/docs/CHANGELOG.md" target="_blank">Changelog</a>
+
+                    </li>
+
+                    <li class="nav-link">
+
+                        <img src="images/svg/General/file-earmark.svg">
+
+                        <a href="https://github.com/Justin-Byrne/canvasLab/blob/main/README.md" target="_blank">ReadMe</a>
+
+                    </li>
+
+                    <li class="nav-link">
+
+                        <img src="images/svg/General/asterisk.svg">
+
+                        <a href="https://github.com/Justin-Byrne/canvasLab/blob/main/LICENSE" target="_blank">License</a>
+
+                    </li>
+
+                </ul>
+
+            </ul>
+
+
+            <span class="external-links">
+
+                <a href="index.html">
+
+                    <img src="images/svg/General/globe.svg">
+
+                </a>
+
+                <a href="https://github.com/Justin-Byrne/canvasLab" target="_blank">
+
+                    <img src="images/svg/General/github.svg">
+
+                </a>
+
+                <a href="http://byrne-systems.com/" target="_blank">
+
+                    <img src="../images/cube_sm.png">
+
+                </a>
+
+            </span>  <!-- .external-links -->
+
+
+            <div id="version">
+
+                <span>Version</span>
+
+                <span>0.7.201</span>
+
+            </div>  <!-- #version -->
+
+        </div>  <!-- .nav-wrapper -->
+
+    </nav>
+
+
+    <a id="nav-open" style="display: none;"></a>
+
+
+    <main>
+
+        <div class="album py-5 bg-body-tertiary">
+
+            <div class="container">
+
+                <div id="test-cards" class="row row-cols-7 g-3">
+
+
+                </div>  <!-- .row -->
+
+            </div>  <!-- .container -->
+
+        </div>  <!-- .album -->
+
+        <div id="modal-code" class="modal fade" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content shimmer">
+
+                    <div class="modal-body">
+
+                        <pre><code class="language-js"></code></pre>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <span class="wrapper-left">
+
+                            <h5 class="modal-title" id="modal-code-label"></h5>
+
+                        </span>
+
+                        <span class="wrapper-right">
+
+                            <button class="vector-module lab-station-link" data-bs-dismiss="modal" aria-label="close">
+
+                                <svg class="lab-bottle" width="100%" height="100%" viewBox="0 0 100 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;top: -10px !important;">
+
+                                    <g>
+
+                                        <g id="Layer1">
+
+                                            <g>
+
+                                                <path d="M31.5,69L38.1,52.5" style="fill:none;stroke:white;stroke-width:3px;"/>
+
+                                                <path d="M41,45.25L42.5,41.5" style="fill:none;stroke:white;stroke-width:3px;"/>
+
+                                            </g>
+
+                                            <path d="M9,124.5C5.592,124.213 1.066,120.29 2,117C1.997,116.925 35,41 35,41L35,18C35,18 28.037,17.985 28,10.5C27.966,3.623 35,3.5 35,3.5L65,3.5C65,3.5 71.907,3.483 72,10.5C72.099,17.98 65,18 65,18L65,40C65,40 98.096,116.931 98,117C98.934,120.29 94.408,124.213 91,124.5C90.709,124.48 9.103,124.649 9,124.5Z" style="fill:none;stroke:white;stroke-width:3px;"/>
+
+                                            <path d="M26,77C26,77 13.533,106.333 10.7,113C8.938,116.942 12,117 12,117L87.5,117C87.5,117 90.994,116.987 89.3,113C86.467,106.333 74,77 74,77L26,77ZM51.5,94C56.191,94 60,97.809 60,102.5C60,107.191 56.191,111 51.5,111C46.809,111 43,107.191 43,102.5C43,97.809 46.809,94 51.5,94ZM66,85C68.484,85 70.5,87.016 70.5,89.5C70.5,91.984 68.484,94 66,94C63.516,94 61.5,91.984 61.5,89.5C61.5,87.016 63.516,85 66,85Z" style="fill:white;stroke:white;stroke-width:1.5px;"/>
+
+                                            <path d="M35,18L40,18" style="fill:none;stroke:white;stroke-width:3px;"/>
+
+                                            <path d="M47,18L65,18" style="fill:none;stroke:white;stroke-width:3px;"/>
+
+                                        </g>
+
+                                    </g>
+
+                                </svg>
+
+                            </button>
+
+                            <button class="vector-module copy-code-link" data-bs-dismiss="modal" aria-label="close">
+
+                                <svg class="extra-icon copy-code" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+
+                                  <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+
+                                </svg>
+
+                            </button>
+
+                        </span>
+
+                    </div>  <!-- modal-footer -->
+
+                    <div id="copiedAlert"></div>
+
+                </div>  <!-- modal-content -->
+
+            </div>  <!-- modal-dialog -->
+
+        </div>  <!-- #modal-code -->
+
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+
+            <div class="offcanvas-body">
+
+            </div>
+
+            <div id="offcanvas-reset">
+
+                <img src="images/svg/General/arrow-bar-up.svg">
+
+            </div>
+
+        </div>
+
+        <div class="lab-station">
+
+            <div class="container">
+
+                <div id="lab" class="row row-cols-2 g-3">
+
+                    <div class="col lab-view">
+
+                        <!-- <div id="frame-per-second">
+
+                            <div>FPS</div>
+
+                            <span class="display">0</span>
+
+                        </div> -->
+
+                        <div id="mouse-coordinates">
+
+                            <div class="display">
+
+                                <span class="x">0</span>
+
+                                <span>x</span>
+
+                                <span class="y">0</span>
+
+                            </div>
+
+                            <div class="cartesian">
+
+                                <span class="x">0</span>
+
+                                <span>x</span>
+
+                                <span class="y">0</span>
+
+                            </div>
+
+                            <div class="center">
+
+                                <span class="x">0</span>
+
+                                <span>x</span>
+
+                                <span class="y">0</span>
+
+                            </div>
+
+                        </div>
+
+                        <div id="mouse-angle">
+
+                            <div class="cartesian">
+
+                                <span class="angle">0</span>
+
+                            </div>
+
+                            <div class="cartesian">
+
+                                <span class="distance">0</span>
+
+                            </div>
+
+                        </div>
+
+                        <canvas id="canvas"></canvas>
+
+                    </div>
+
+                    <div class="col">
+
+                        <div id="ace-editor"></div>
+
+                        <div id="control-panel">
+
+                            <div class="container data">
+
+                                <div class="row">
+
+                                    <ul class="menu_popup" style="display: none;"></ul>
+
+                                    <span class="button" id="input-menu" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-active="false" title="Toglle Menu">
+
+                                        <span class="icon menu"></span>
+
+                                    </span>
+
+                                    <span class="button" id="input-execute" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-active="false" title="Toglle Menu" onclick="devSuite.runLabStationCode ( )">
+
+                                        <span class="icon execute"></span>
+
+                                    </span>
+
+                                    <span class="control" id="output-row">
+
+                                        <span class="name">r</span>
+
+                                        <span class="value">0</span>
+
+                                    </span>
+
+                                    <span class="control" id="output-column">
+
+                                        <span class="name">c</span>
+
+                                        <span class="value">0</span>
+
+                                    </span>
+
+                                    <span class="control" id="output-lines">
+
+                                        <span class="name">l</span>
+
+                                        <span class="value">0</span>
+
+                                    </span>
+
+                                </div> <!-- .row -->
+
+                            </div> <!-- .data -->
+
+                            <div class="container buttons">
+
+                                <div class="row">
+
+                                    <div class="col">
+
+                                        <span class="button" id="input-grid" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-active="false" title="Toggle Grid">
+
+                                            <span class="icon grid"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-coordinates" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-active="false" title="Toggle Mouse Coordinates">
+
+                                            <span class="icon coordinates"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-angle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-active="false" title="Toggle Mouse Angle">
+
+                                            <span class="icon angle"></span>
+
+                                        </span>
+
+                                        <!-- <span class="button" id="input-ruler" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-active="false" title="Toggle Ruler">
+
+                                            <span class="icon ruler"></span>
+
+                                        </span> -->
+
+                                        <span class="button" id="input-sidebar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-active="false" title="Toggle Sidebar">
+
+                                            <span class="icon sidebar"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Toggle Full-Screen">
+
+                                            <span class="icon full-screen"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-clear" data-bs-toggle="tooltip" data-bs-placement="top" title="Clear console before run">
+
+                                            <span class="icon clear"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-boolean" data-bs-toggle="tooltip" data-bs-placement="top" title="Toggle Boolean">
+
+                                            <span class="icon boolean"></span>
+
+                                        </span>
+
+                                        <ul class="timing_popup" style="display: none;"></ul>
+
+                                        <span class="button" id="input-timing" data-bs-toggle="tooltip" data-bs-placement="top" title="Timing Options">
+
+                                            <span class="icon timing"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-fps" data-bs-toggle="tooltip" data-bs-placement="top" title="Frame-per-second">
+
+                                            <span class="icon fps"></span>
+
+                                        </span>
+
+                                    </div> <!-- .col -->
+
+                                    <div class="col">
+
+                                        <span class="button" id="input-value-minus" data-bs-toggle="tooltip" data-bs-placement="top" title="Increment -">
+
+                                            <span class="icon value-minus"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-value-plus" data-bs-toggle="tooltip" data-bs-placement="top" title="Increment +">
+
+                                            <span class="icon value-plus"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-color-picker" data-bs-toggle="tooltip" data-bs-placement="top" title="Color-Picker">
+
+                                            <span class="icon color-picker"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-font-minus" data-bs-toggle="tooltip" data-bs-placement="top" title="Font Decrease">
+
+                                            <span class="icon font-minus"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-font-plus" data-bs-toggle="tooltip" data-bs-placement="top" title="Font Increase">
+
+                                            <span class="icon font-plus"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-word-wrap" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-active="false" title="Word-Wrap">
+
+                                            <span class="icon word-wrap"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-lock" data-bs-toggle="tooltip" data-bs-placement="top" title="Lock Script">
+
+                                            <span class="icon lock"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-download" data-bs-toggle="tooltip" data-bs-placement="top" title="Download Script">
+
+                                            <span class="icon download"></span>
+
+                                        </span>
+
+                                        <span class="button" id="input-blank" data-bs-toggle="tooltip" data-bs-placement="top" title="Blank">
+
+                                            <span class="icon blank"></span>
+
+                                        </span>
+
+                                    </div> <!-- .col -->
+
+                                </div> <!-- .row -->
+
+                            </div> <!-- .buttons -->
+
+                        </div> <!-- #control-panel -->
+
+                    </div> <!-- .col -->
+
+                </div>  <!-- #lab -->
+
+            </div>  <!-- .container -->
+
+        </div> <!-- #lab-station -->
+
+        <a id="lab-open" style="display: none;"></a>
+
+    </main>
+
+    <script type="text/javascript">
+
+        ////    UTILITIES    ///////////////////////////////////////
+
+        /* Object that contains our utility functions.
+         * Attached to the window object which acts as the global namespace.
+         */
+        window.utils = { };
+
+        /**
+         * Keeps track of the current mouse position, relative to an element.
+         * @param {HTMLElement} element
+         * @return {object} Contains properties: x, y, event
+         */
+        window.utils.captureMouse = function ( element )
+        {
+            let _mouse = { x: 0, y: 0, event: null };
+
+
+            let _offsetLeft = element.offsetLeft;
+
+            let _offsetTop  = element.offsetTop;
+
+
+            let _bodyScrollLeft    = document.body.scrollLeft;
+
+            let _bodyScrollTop     = document.body.scrollTop;
+
+
+            let _elementScrollLeft = document.documentElement.scrollLeft;
+
+            let _elementScrollTop  = document.documentElement.scrollTop;
+
+
+            element.addEventListener ( 'mousemove', function ( event )
+            {
+                let _x, _y;
+
+
+                if ( event.pageX || event.pageY )
+                {
+                    _x = event.pageX;
+
+                    _y = event.pageY;
+                }
+                else
+                {
+                    _x = event.clientX + _bodyScrollLeft + _elementScrollLeft;
+
+                    _y = event.clientY + _bodyScrollTop  + _elementScrollTop;
+                }
+
+                    _x -= _offsetLeft;
+
+                    _y -= _offsetTop;
+
+
+                _mouse.x = _x;
+
+                _mouse.y = _y;
+
+
+                _mouse.event = event;
+            } );
+
+
+            return _mouse;
+        };
+
+        /**
+         * Keeps track of the current (first) touch position, relative to an element.
+         * @param {HTMLElement} element
+         * @return {object} Contains properties: x, y, isPressed, event
+         */
+        window.utils.captureTouch = function ( element )
+        {
+            let _touch = { x: null, y: null, isPressed: false, event: null };
+
+
+            let _offsetLeft        = element.offsetLeft;
+
+            let _offsetTop         = element.offsetTop;
+
+
+            let _bodyScrollLeft    = document.body.scrollLeft;
+
+            let _bodyScrollTop     = document.body.scrollTop;
+
+
+            let _elementScrollLeft = document.documentElement.scrollLeft;
+
+            let _elementScrollTop  = document.documentElement.scrollTop;
+
+
+            element.addEventListener ( 'touchstart', function ( event )
+            {
+                _touch.isPressed = true;
+                _touch.event     = event;
+            } );
+
+            element.addEventListener ( 'touchend', function ( event )
+            {
+                _touch.isPressed = false;
+
+                _touch.x     = null;
+                _touch.y     = null;
+
+                _touch.event = event;
+            } );
+
+            element.addEventListener ( 'touchmove', function ( event )
+            {
+                let _x, _y;
+
+                let _touchEvent = event.touches [ 0 ];    //first touch
+
+
+                if ( _touchEvent.pageX || _touchEvent.pageY )
+                {
+                    _x = _touchEvent.pageX;
+
+                    _y = _touchEvent.pageY;
+                }
+                else
+                {
+                    _x = _touchEvent.clientX + _bodyScrollLeft + _elementScrollLeft;
+
+                    _y = _touchEvent.clientY + _bodyScrollTop + _elementScrollTop;
+                }
+
+                _x -= _offsetLeft;
+
+                _y -= _offsetTop;
+
+
+                _touch.x = x;
+
+                _touch.y = y;
+
+
+                _touch.event = event;
+            } );
+
+
+            return _touch;
+        };
+
+        /**
+         * Returns a color in the format: '#RRGGBB', or as a hex number if specified.
+         * @param {number|string} color
+         * @param {boolean=}      toNumber=false  Return color as a hex number.
+         * @return {string|number}
+         */
+        window.utils.parseColor = function ( color, toNumber )
+        {
+          if (toNumber === true) {
+            if (typeof color === 'number') {
+              return (color | 0); //chop off decimal
+            }
+            if (typeof color === 'string' && color[0] === '#') {
+              color = color.slice(1);
+            }
+            return window.parseInt(color, 16);
+          } else {
+            if (typeof color === 'number') {
+              color = '#' + ('00000' + (color | 0).toString(16)).substr(-6); //pad
+            }
+            return color;
+          }
+        };
+
+        /**
+         * Converts a color to the RGB string format: 'rgb(r,g,b)' or 'rgba(r,g,b,a)'
+         * @param {number|string} color
+         * @param {number}        alpha
+         * @return {string}
+         */
+        window.utils.colorToRGB = function ( color, alpha )
+        {
+          //number in octal format or string prefixed with #
+          if (typeof color === 'string' && color[0] === '#') {
+            color = window.parseInt(color.slice(1), 16);
+          }
+          alpha = (alpha === undefined) ? 1 : alpha;
+          //parse hex values
+          var r = color >> 16 & 0xff,
+              g = color >> 8 & 0xff,
+              b = color & 0xff,
+              a = (alpha < 0) ? 0 : ((alpha > 1) ? 1 : alpha);
+          //only use 'rgba' if needed
+          if (a === 1) {
+            return "rgb("+ r +","+ g +","+ b +")";
+          } else {
+            return "rgba("+ r +","+ g +","+ b +","+ a +")";
+          }
+        };
+
+        /**
+         * Determine if a rectangle contains the coordinates (x,y) within it's boundaries.
+         * @param {object}  rect  Object with properties: x, y, width, height.
+         * @param {number}  x     Coordinate position x.
+         * @param {number}  y     Coordinate position y.
+         * @return {boolean}
+         */
+        window.utils.containsPoint = function ( rect, x, y )
+        {
+          return !(x < rect.x ||
+                   x > rect.x + rect.width ||
+                   y < rect.y ||
+                   y > rect.y + rect.height);
+        };
+
+        /**
+         * Determine if two rectangles overlap.
+         * @param {object}  rectA Object with properties: x, y, width, height.
+         * @param {object}  rectB Object with properties: x, y, width, height.
+         * @return {boolean}
+         */
+        window.utils.intersects = function ( rectA, rectB )
+        {
+          return !(rectA.x + rectA.width < rectB.x ||
+                   rectB.x + rectB.width < rectA.x ||
+                   rectA.y + rectA.height < rectB.y ||
+                   rectB.y + rectB.height < rectA.y);
+        };
+
+        window.utils.getRandomNumber = function ( max )
+        {
+            return Math.floor ( Math.random ( ) * max );
+        };
+
+    </script>
+
+</body>
+</html>
