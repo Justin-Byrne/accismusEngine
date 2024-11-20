@@ -266,7 +266,11 @@ class Lab
             {
                 let _scripts = devSuite.getScripts ( );
 
-                let _script  = _scripts [ element.srcElement.innerHTML ];
+                let _title   = ( /\s/.test ( element.srcElement.innerHTML ) ) ? element.srcElement.innerHTML.replaceAll ( ' ', '' )
+
+                                                                              : element.srcElement.innerHTML;
+
+                let _script  = _scripts [ _title ];
 
 
                 this.loadScript ( _script );
@@ -633,6 +637,20 @@ class Lab
                             }
                         } );
 
+                        break;
+
+                    case 'gamepad':
+
+                        window.addEventListener ( "gamepadconnected", ( event ) =>
+                        {
+                            console.log ( "Gamepad connected at index %d: %s. %d buttons, %d axes.",
+                                          event.gamepad.index,
+                                          event.gamepad.id,
+                                          event.gamepad.buttons.length,
+                                          event.gamepad.axes.length,
+                                        );
+                        });
+
                     case 'keyboardCommands':
 
                         Mousetrap.bind ( 'space',     ( ) => this.runCode ( )          );
@@ -736,9 +754,13 @@ class Lab
 
                     for ( let _script in _scripts )
                     {
+                        let _title = _script.replace ( /([A-Z])/g, ' $1' ).trim ( );
+
+
+
                         let _li = document.createElement ( 'li' );
 
-                            _li.innerHTML = _script;
+                            _li.innerHTML = _title;
 
 
                             _popup.appendChild ( _li );

@@ -716,7 +716,7 @@ main {
           main .lab-station #lab #control-panel {
             height: 55px; } }
         main .lab-station #lab #control-panel .container {
-          font-size: 14px;
+          font-size: 14.5px;
           display: block;
           background: #484f56; }
           main .lab-station #lab #control-panel .container.data > .row {
@@ -773,7 +773,8 @@ main {
               color: white;
               cursor: pointer;
               list-style: none;
-              letter-spacing: 6px; }
+              letter-spacing: 2px;
+              text-transform: capitalize; }
               main .lab-station #lab #control-panel .container.data > .row .menu_popup li {
                 padding: 2px 10px;
                 transition: background 0.35s ease; }

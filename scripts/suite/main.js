@@ -16115,7 +16115,427 @@
      */
     let _scripts =
     {
-        ship: ( ) =>
+        // // 6:2
+        // fountainOfRegeneratingObjects: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse = { x: 0, y: 0 }
+
+        //         window.addEventListener ( 'mousemove', function ( )
+        //         {
+        //             _mouse.x = event.clientX;
+
+        //             _mouse.y = event.clientY;
+        //         } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _circles  = new Array;
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         ////    BALLS    ///////////////////////
+
+        //             let _numBalls = 80;
+
+        //             let _gravity  = 0.5;
+
+        //         ////    EASING    //////////////////////
+
+        //             let _easing  = 0.05;
+
+        //             let _targetY = _canvas.height;
+
+        //     ////    POPULATION    //////////////////////////
+
+        //         for ( let _circle, _i = 0; _i < _numBalls; _i++ )
+        //         {
+        //             let _radius = utils.getRandomNumber ( 10 );
+
+
+        //             _circle = new Circle;
+
+        //             _circle.canvas = 'canvas';
+
+        //             _circle.radius = _radius;
+
+
+        //             _circle.x = _canvas.width / 2;
+
+        //             _circle.y = _canvas.height;
+
+
+        //             _circle.velocity.x = Math.random ( ) * 2 - 1;
+
+        //             _circle.velocity.y = Math.random ( ) * -10 - 10;
+
+
+        //             _circles.push ( _circle );
+        //         }
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _drawCircle ( circle )
+        //         {
+        //             circle.velocity.y += _gravity;
+
+
+        //             circle.x += circle.velocity.x;
+
+        //             circle.y += circle.velocity.y;
+
+
+        //             if ( circle.x - circle.radius > canvas.width  || circle.x + circle.radius < 0 ||
+
+        //                  circle.y - circle.radius > canvas.height || circle.y + circle.radius < 0 )
+        //             {
+        //                 circle.x = _mouse.x;
+
+        //                 circle.y = _mouse.y;
+
+
+        //                 circle.velocity.x = Math.random ( ) * 2 - 1;
+
+        //                 circle.velocity.y = Math.random ( ) * -10 - 10;
+        //             }
+
+
+        //             circle.draw ( );
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //              window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _circles.forEach ( _drawCircle );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 6:8
+        // spaceshipSimulationWithFrictionApplied: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _screen  = { left: 0, right: _canvas.width, top: 0, bottom: _canvas.height }
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case 37:    _velocity.rotational = -3;                      break;  // left
+        //                 case 39:    _velocity.rotational =  3;                      break;  // right
+        //                 case 38:    [ _thrust, _ship.flame ] = [ 0.05, true ];      break;  // up
+        //             }
+        //         } );
+
+        //         window.addEventListener ( 'keyup', function ( )
+        //         {
+        //             _velocity.rotational = 0;
+        //             _thrust             = 0;
+        //             _ship.flame         = false;
+        //         } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _ship = new Ship;
+
+
+        //             _ship.canvas = 'canvas';
+
+
+        //             _ship.x = canvas.width  / 2;
+
+        //             _ship.y = canvas.height / 2;
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _velocity = new Point;
+
+
+        //             _velocity.x = 0;
+
+        //             _velocity.y = 0;
+
+
+        //             _velocity.rotational = 0
+
+        //         // let _velocityRotational = 0;
+
+        //         // let _velocityX          = 0;
+
+        //         // let _velocityY          = 0;
+
+        //         let _thrust             = 0;
+
+        //         let _friction           = 0.97;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _ship.position.rotation += _velocity.rotational * Math.PI / 180;
+
+
+        //                 let _angle = _ship.position.rotation;       // in radians
+
+
+        //                 let _acceleration = new Point;
+
+
+        //                     _acceleration.x = Math.cos ( _angle ) * _thrust;
+
+        //                     _acceleration.y = Math.sin ( _angle ) * _thrust;
+
+
+        //                 _velocity.x += _acceleration.x;
+
+        //                 _velocity.y += _acceleration.y;
+
+
+        //                 _velocity.x *= _friction;
+
+        //                 _velocity.y *= _friction;
+
+
+        //                 _ship.x += _velocity.x;
+
+        //                 _ship.y += _velocity.y;
+
+        //             ////    SCREEN WRAPPING    /////////////
+
+        //                 if ( _ship.x - _ship.width  / 2 > _screen.right )
+
+        //                     _ship.x = _screen.left   - _ship.width  / 2;
+
+
+        //                 if ( _ship.x + _ship.width  / 2 < _screen.left )
+
+        //                     _ship.x = _screen.right  + _ship.width  / 2;
+
+
+        //                 if ( _ship.y - _ship.height / 2 > _screen.bottom )
+
+        //                     _ship.y = _screen.top    - _ship.height / 2;
+
+
+        //                 if ( _ship.y < _screen.top - _ship.height / 2 )
+
+        //                     _ship.y = _screen.bottom + _ship.height / 2;
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _ship.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 7:6
+        // throwingAnObject: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _screen  = { left: 0, right: _canvas.width, top: 0, bottom: _canvas.height }
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _circle  = new Circle;
+
+        //             _circle.x = canvas.width  / 2;
+
+        //             _circle.y = canvas.height / 2;
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _velocity = new Point;
+
+        //             _velocity.x = Math.random() * 10 - 5;
+
+        //             _velocity.y = -10;
+
+
+        //         let _bounce    = -0.7;
+
+        //         let _gravity   = 0.2;
+
+
+        //         let _isMouseDown = false;
+
+
+        //         let _prior = new Point;
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         _canvas.addEventListener ( 'mousedown', function ( )
+        //         {
+        //             if ( utils.containsPoint ( _circle.bounds, _mouse.x, _mouse.y ) )
+        //             {
+        //                 _isMouseDown = true;
+
+
+        //                 [ _prior.x, _prior.y ] = [ _circle.x, _circle.y ];
+
+
+        //                 _canvas.addEventListener ( 'mouseup',   _onMouseUp   );
+
+        //                 _canvas.addEventListener ( 'mousemove', _onMouseMove );
+        //             }
+        //         } );
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _onMouseUp ( )
+        //         {
+        //             _isMouseDown = false;
+
+
+        //             _canvas.removeEventListener ( 'mouseup',   _onMouseUp   );
+
+        //             _canvas.removeEventListener ( 'mousemove', _onMouseMove );
+        //         }
+
+        //         function _onMouseMove ( event )
+        //         {
+        //             [ _circle.x, _circle.y ] = [ _mouse.x, _mouse.y ];
+        //         }
+
+        //         function _trackVelocity ( )
+        //         {
+        //             [ _velocity.x, _velocity.y ] = [ _circle.x - _prior.x, _circle.y - _prior.y ];
+
+        //             [ _prior.x,    _prior.y    ] = [ _circle.x,            _circle.y            ];
+        //         }
+
+        //         function _checkBoundaries ( )
+        //         {
+        //             _velocity.y += _gravity;
+
+
+        //             _circle.x += _velocity.x;
+
+        //             _circle.y += _velocity.y;
+
+
+        //             // BOUNDARY DETECT AND BOUNCE
+        //             if ( _circle.x + _circle.radius > _screen.right )
+        //             {
+        //                 _circle.x   = _screen.right - _circle.radius;
+
+        //                 _velocity.x *= _bounce;
+        //             }
+
+        //             if ( _circle.x - _circle.radius < _screen.left )
+        //             {
+        //                 _circle.x   = _screen.left + _circle.radius;
+
+        //                 _velocity.x *= _bounce;
+        //             }
+
+        //             if ( _circle.y + _circle.radius > _screen.bottom )
+        //             {
+        //                 _circle.y   = _screen.bottom - _circle.radius;
+
+        //                 _velocity.y *= _bounce;
+        //             }
+
+        //             if ( _circle.y - _circle.radius < _screen.top )
+        //             {
+        //                 _circle.y   = _screen.top + _circle.radius;
+
+        //                 _velocity.y *= _bounce;
+        //             }
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 ( _isMouseDown ) ? _trackVelocity ( )
+
+        //                                  : _checkBoundaries ( );
+
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _circle.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // 8:2
+        draggingAndEasing: ( ) =>
         {
             ////    CONTEXT    /////////////////////////////
 
@@ -16123,52 +16543,67 @@
 
                 let _context = _canvas.getContext ( '2d' );
 
-                let _screen  = { left: 0, right: _canvas.width, top: 0, bottom: _canvas.height, }
-
             ////    LOOP DATA    ///////////////////////////
 
                 let _timeCurrent = new Date ( );
 
             ////    INPUT    ///////////////////////////////
 
-                window.addEventListener ( 'keydown', function ( event )
-                {
-                    switch ( event.keyCode )
-                    {
-                        case 37:    _velocityRotational = -3;                       break;  // left
-                        case 39:    _velocityRotational =  3;                       break;  // right
-                        case 38:    [ _thrust, _ship.flame ] = [ 0.05, true ];      break;  // up
-                    }
-                } );
-
-                window.addEventListener ( 'keyup', function ( )
-                {
-                    _velocityRotational = 0;
-                    _thrust             = 0;
-                    _ship.flame         = false;
-                } );
+                let _mouse   = utils.captureMouse ( _canvas );
 
             ////    OBJECTS    /////////////////////////////
 
-                let _ship = new Ship;
+                let _circle = new Circle;
 
-                    _ship.canvas = 'canvas';
-
-                    _ship.x = canvas.width  / 2;
-
-                    _ship.y = canvas.height / 2;
+                    _circle.canvas = 'canvas';
 
             ////    SET DEFAULTS    ////////////////////////
 
-                let _velocityRotational = 0;
+                let _easing = 0.05;
 
-                let _velocityX          = 0;
 
-                let _velocityY          = 0;
+                let _isMouseDown = false;
 
-                let _thrust             = 0;
 
-                let _friction           = 0.97;
+                let _target = new Point;
+
+                    _target.x = _canvas.width  / 2;
+
+                    _target.y = _canvas.height / 2;
+
+
+                let _velocity = new Point;
+
+            ////    INPUT    ///////////////////////////////
+
+                _canvas.addEventListener ( 'mousedown', function ( )
+                {
+                    if ( utils.containsPoint ( _circle.bounds, _mouse.x, _mouse.y ) )
+                    {
+                        _isMouseDown = true;
+
+
+                        _canvas.addEventListener ( 'mouseup',   _onMouseUp   );
+
+                        _canvas.addEventListener ( 'mousemove', _onMouseMove );
+                    }
+                } );
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _onMouseUp ( )
+                {
+                    _isMouseDown = false;
+
+                    _canvas.removeEventListener ( 'mouseup',   _onMouseUp   );
+
+                    _canvas.removeEventListener ( 'mousemove', _onMouseMove );
+                }
+
+                function _onMouseMove ( )
+                {
+                    [ _circle.x, _circle.y ] = [ _mouse.x, _mouse.y ];
+                }
 
             ////    DRAW    ////////////////////////////////
 
@@ -16186,170 +16621,28 @@
 
                     ////    TRANSITIONS    /////////////////
 
-                        _ship.position.rotation += _velocityRotational * Math.PI / 180;
+                        if ( ! _isMouseDown )
+                        {
+                            _velocity.x = ( _target.x - _circle.x ) * _easing;
 
+                            _velocity.y = ( _target.y - _circle.y ) * _easing;
 
-                        let _angle = _ship.position.rotation;       // in radians
 
+                            _circle.x += _velocity.x;
 
-                        let _accelerationX = Math.cos ( _angle ) * _thrust;
-
-                        let _accelerationY = Math.sin ( _angle ) * _thrust;
-
-
-                        _velocityX += _accelerationX;
-
-                        _velocityY += _accelerationY;
-
-
-                        _velocityX *= _friction;
-
-                        _velocityY *= _friction;
-
-
-                        _ship.x += _velocityX;
-
-                        _ship.y += _velocityY;
-
-                    ////    SCREEN WRAPPING    /////////////
-
-                        if ( _ship.x - _ship.width  / 2 > _screen.right  ) _ship.x = _screen.left   - _ship.width  / 2;
-
-                        if ( _ship.x + _ship.width  / 2 < _screen.left   ) _ship.x = _screen.right  + _ship.width  / 2;
-
-                        if ( _ship.y - _ship.height / 2 > _screen.bottom ) _ship.y = _screen.top    - _ship.height / 2;
-
-                        if ( _ship.y < _screen.top - _ship.height / 2    ) _ship.y = _screen.bottom + _ship.height / 2;
-
-                    ////    DRAW    ////////////////////////////
-
-                        _ship.draw ( );
-                }
-
-
-                _drawFrame ( );
-        },
-        mouseFountain: ( ) =>
-        {
-            ////    CONTEXT    /////////////////////////////
-
-                let _canvas  = document.getElementById ( 'canvas' );
-
-                let _context = _canvas.getContext ( '2d' );
-
-            ////    LOOP DATA    ///////////////////////////
-
-                let _timeCurrent = new Date ( );
-
-            ////    INPUT    ///////////////////////////////
-
-                let _mouse = { x: 0, y: 0 }
-
-                window.addEventListener ( 'mousemove', function ( )
-                {
-                    _mouse.x = event.clientX;
-
-                    _mouse.y = event.clientY;
-                } );
-
-            ////    OBJECTS    /////////////////////////////
-
-                let _circles  = new Array;
-
-            ////    SET DEFAULTS    ////////////////////////
-
-                ////    BALLS    ///////////////////////
-
-                    let _numBalls = 80;
-
-                    let _gravity  = 0.5;
-
-                ////    EASING    //////////////////////
-
-                    let _easing  = 0.05;
-
-                    let _targetY = _canvas.height;
-
-            ////    POPULATION    //////////////////////////
-
-                for ( let _circle, _i = 0; _i < _numBalls; _i++ )
-                {
-                    let _radius = utils.getRandomNumber ( 10 );
-
-
-                    _circle = new Circle;
-
-                    _circle.canvas = 'canvas';
-
-                    _circle.radius = _radius;
-
-
-                    _circle.x = _canvas.width / 2;
-
-                    _circle.y = _canvas.height;
-
-
-                    _circle.velocity.x = Math.random ( ) * 2 - 1;
-
-                    _circle.velocity.y = Math.random ( ) * -10 - 10;
-
-
-                    _circles.push ( _circle );
-                }
-
-            ////    FUNCTIONS    ///////////////////////////
-
-                function _drawCircle ( circle )
-                {
-                    circle.velocity.y += _gravity;
-
-
-                    circle.x += circle.velocity.x;
-
-                    circle.y += circle.velocity.y;
-
-
-                    if ( circle.x - circle.radius > canvas.width  || circle.x + circle.radius < 0 ||
-
-                         circle.y - circle.radius > canvas.height || circle.y + circle.radius < 0 )
-                    {
-                        circle.x = _mouse.x;
-
-                        circle.y = _mouse.y;
-
-
-                        circle.velocity.x = Math.random ( ) * 2 - 1;
-
-                        circle.velocity.y = Math.random ( ) * -10 - 10;
-                    }
-
-
-                    circle.draw ( );
-                }
-
-            ////    DRAW    ////////////////////////////////
-
-                function _drawFrame ( )
-                {
-                     window.requestAnimationFrame ( _drawFrame, _canvas );
-
-                    ////    LOOP DATA    ///////////////////
-
-                        _timeCurrent = LAB.getFps ( _timeCurrent );
-
-                    ////    CLEAR SCREEN    ////////////////
-
-                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                            _circle.y += _velocity.y;
+                        }
 
                     ////    DRAW    ////////////////////////
 
-                        _circles.forEach ( _drawCircle );
+                        _circle.draw ( );
                 }
 
 
                 _drawFrame ( );
         },
-        easeInto: ( ) =>
+        // 8:3
+        simpleEasingWithEnd: ( ) =>
         {
             ////    CONTEXT    /////////////////////////////
 
@@ -16361,7 +16654,7 @@
 
                 let _timeCurrent = new Date ( );
 
-            ////    INPUT    ///////////////////////////////
+                let _animRequest = undefined;
 
             ////    OBJECTS    /////////////////////////////
 
@@ -16407,10 +16700,10 @@
 
                     ////    TRANSITIONS    /////////////////
 
-                        let _dy = _targetY - _circle.y;
+                        let _distance = _targetY - _circle.y;
 
 
-                        if ( Math.abs ( _dy ) < 1 )
+                        if ( Math.abs ( _distance ) < 1 )
                         {
                             _circle.y = _targetY;
                             /* ERRATA: 'cancelRequestAnimationFrame' renamed to 'cancelAnimationFrame' to reflect an update to the W3C Animation-Timing Spec.
@@ -16423,7 +16716,8 @@
                         }
                         else
                         {
-                            var _velocityY = _dy * _easing;
+                            let _velocityY = _distance.y * _easing;
+
 
                             _circle.y += _velocityY;
                         }
@@ -16436,7 +16730,254 @@
 
                 _drawFrame ( );
         },
-        danglingChain: ( ) =>
+        // 8:4
+        easeToAMovingTarget: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    INPUT    ///////////////////////////////
+
+                let _mouse   = utils.captureMouse ( _canvas );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle = new Circle;
+
+                    _circle.canvas = 'canvas';
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _easing = 0.05;
+
+                let _velocity = new Point;
+
+            ////    DRAW    ////////////////////////////////
+
+                function _drawFrame ()
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _velocity.x = ( _mouse.x - _circle.x ) * _easing;
+
+                        _velocity.y = ( _mouse.y - _circle.y ) * _easing;
+
+
+                        _circle.x += _velocity.x;
+
+                        _circle.y += _velocity.y;
+
+                    ////    DRAW    ////////////////////////
+
+                        _circle.draw ( );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 8:6
+        springingToAMovingTarget: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    INPUT    ///////////////////////////////
+
+                let _mouse   = utils.captureMouse ( _canvas );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle   = new Circle;
+
+                    _circle.canvas = 'canvas';
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _spring   = 0.03;
+
+                let _friction = 0.95;
+
+
+                let _velocity     = new Point;
+
+                let _distance     = new Point;
+
+                let _acceleration = new Point;
+
+            ////    DRAW    ////////////////////////////////
+
+            function _drawFrame ( )
+            {
+                window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                ////    LOOP DATA    ///////////////////
+
+                    _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                ////    CLEAR SCREEN    ////////////////
+
+                    _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                ////    TRANSITIONS    /////////////////
+
+                    _distance.x = _mouse.x - _circle.x;
+
+                    _distance.y = _mouse.y - _circle.y;
+
+
+                    _acceleration.x = _distance.x * _spring;
+
+                    _acceleration.y = _distance.y * _spring;
+
+
+                    _velocity.x += _acceleration.x;
+
+                    _velocity.y += _acceleration.y;
+
+
+                    _velocity.x *= _friction;
+
+                    _velocity.y *= _friction;
+
+
+                    _circle.x += _velocity.x;
+
+                    _circle.y += _velocity.y;
+
+                ////    DRAW    ////////////////////////
+
+                    _circle.draw ( );
+            }
+
+
+            _drawFrame ( );
+        },
+        // 8:9
+        addGravityAndDrawSpring: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    INPUT    ///////////////////////////////
+
+                let _mouse   = utils.captureMouse ( _canvas );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle  = new Circle;
+
+                    _circle.canvas = 'canvas';
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _spring   = 0.03;
+
+                let _friction = 0.9;
+
+                let _gravity  = 2;
+
+
+                let _velocity     = new Point;
+
+                let _distance     = new Point;
+
+                let _acceleration = new Point;
+
+            ////    DRAW    ////////////////////////////////
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _distance.x = _mouse.x - _circle.x;
+
+                        _distance.y = _mouse.y - _circle.y;
+
+
+                        _acceleration.x = _distance.x * _spring;
+
+                        _acceleration.y = _distance.y * _spring;
+
+
+                        _velocity.x += _acceleration.x;
+
+                        _velocity.y += _acceleration.y;
+
+
+                        _velocity.y += _gravity;
+
+                        _velocity.x *= _friction;
+
+
+                        _velocity.y *= _friction;
+
+
+                        _circle.x += _velocity.x;
+
+                        _circle.y += _velocity.y;
+
+                    ////    DRAW    ////////////////////////
+
+                        _context.beginPath ( );
+
+
+                        _context.moveTo ( _circle.x, _circle.y );
+
+                        _context.lineTo ( _mouse.x,  _mouse.y  );
+
+
+                        _context.stroke ( );
+
+
+                        _circle.draw ( );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 8:10
+        chainingMultipleSprings: ( ) =>
         {
             ////    CONTEXT    /////////////////////////////
 
@@ -16548,7 +17089,8 @@
 
                 _drawFrame ( );
         },
-        stackingBoxes: ( ) =>
+        // 8:12
+        springingToMultipleTargets: ( ) =>
         {
             ////    CONTEXT    /////////////////////////////
 
@@ -16562,44 +17104,356 @@
 
             ////    INPUT    ///////////////////////////////
 
+                let _mouse   = utils.captureMouse ( _canvas );
+
             ////    OBJECTS    /////////////////////////////
 
-                let _rectangles = new Array;
+                let _circle  = new Circle;
 
-                let _activeRectangle = _createRectangle ( );
+                let _handles = new Array;
 
             ////    SET DEFAULTS    ////////////////////////
 
-                let _gravity   = 0.2;
+                let _amount   = 3;
+
+
+                let _spring   = 0.03;
+
+                let _friction = 0.9;
+
+
+                let _movingHandle = undefined;
+
+            ////    POPULATION    //////////////////////////
+
+                for ( let _handle, _i = 0; _i < _amount; _i++ )
+                {
+                    _handle = new Circle;
+
+
+                    _handle.x = Math.random ( ) * _canvas.width;
+
+                    _handle.y = Math.random ( ) * _canvas.height;
+
+
+                    _handles.push ( _handle );
+                }
+
+            ////    INPUT    ///////////////////////////////
+
+                _canvas.addEventListener ( 'mousedown', function ( )
+                {
+                    _handles.forEach ( function ( handle )
+                    {
+                        if ( utils.containsPoint ( handle.bounds, _mouse.x, _mouse.y ) )
+
+                            _movingHandle = handle;
+                    } );
+                } );
+
+                _canvas.addEventListener ( 'mouseup', function ( )
+                {
+                    if ( _movingHandle )
+
+                        _movingHandle = null;
+                } );
+
+                _canvas.addEventListener ( 'mousemove', function ( )
+                {
+                    if ( _movingHandle )
+
+                        [ _movingHandle.x, _movingHandle.y ] = [ _mouse.x, _mouse.y ];
+                } );
 
             ////    FUNCTIONS    ///////////////////////////
 
-                function _createRectangle ( )
+                function _applyHandle ( handle )
                 {
-                    let _rectangle = new Rectangle;
-
-                        _rectangle.canvas = 'canvas';
-
-                        _rectangle.x      = Math.random ( ) * _canvas.width;
+                    let _distance = new Point;
 
 
-                    _rectangles.push ( _rectangle );
+                        _distance.x = handle.x - _circle.x;
+
+                        _distance.y = handle.y - _circle.y;
 
 
-                    return _rectangle;
+                    _circle.velocity.x += _distance.x * _spring;
+
+                    _circle.velocity.y += _distance.y * _spring;
                 }
 
-                function _drawRectangle ( rectangle )
+                function _drawHandle ( handle )
                 {
-                    if ( _activeRectangle !== rectangle && utils.intersects ( _activeRectangle, rectangle ) )
-                    {
-                        _activeRectangle.y = rectangle.y - _activeRectangle.height;
+                    _context.moveTo ( _circle.x, _circle.y );
 
-                        _activeRectangle   = _createRectangle ( );
-                    }
+                    _context.lineTo ( handle.x, handle.y );
+
+                    _context.stroke ( );
 
 
-                    rectangle.draw ( );
+                    handle.draw ( );
+                }
+
+            ////    DRAW    //////////////////////
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _handles.forEach ( _applyHandle );
+
+
+                        _circle.velocity.x *= _friction;
+
+                        _circle.velocity.y *= _friction;
+
+
+                        _circle.x += _circle.velocity.x;
+
+                        _circle.y += _circle.velocity.y;
+
+
+                        _context.beginPath ( );
+
+                    ////    DRAW    ////////////////////////
+
+                        _handles.forEach ( _drawHandle );
+
+                        _circle.draw ( );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 8:13
+        offsetTheSpringTarget: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    INPUT    ///////////////////////////////
+
+                let _mouse   = utils.captureMouse ( _canvas );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle  = new Circle;
+
+                    _circle.canvas = 'canvas';
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _spring       = 0.03;
+
+                let _friction     = 0.9;
+
+                let _springLength = 100;
+
+
+                let _velocity = new Point;
+
+                let _distance = new Point;
+
+                let _target   = new Point;
+
+            ////    DRAW    ////////////////////////////////
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _distance.x = _circle.x - _mouse.x;
+
+                        _distance.y = _circle.y - _mouse.y;
+
+
+                        let _angle = Math.atan2 ( _distance.y, _distance.x );
+
+
+                        _target.x = _mouse.x + Math.cos ( _angle ) * _springLength;
+
+                        _target.y = _mouse.y + Math.sin ( _angle ) * _springLength;
+
+
+                        _velocity.x += ( _target.x - _circle.x ) * _spring;
+
+                        _velocity.y += ( _target.y - _circle.y ) * _spring;
+
+
+                        _velocity.x *= _friction;
+
+                        _velocity.y *= _friction;
+
+
+                        _circle.x += _velocity.x;
+
+                        _circle.y += _velocity.y;
+
+                    ////    DRAW    ////////////////////////
+
+                        _context.beginPath ( );
+
+
+                        _context.moveTo ( _circle.x, _circle.y );
+
+                        _context.lineTo ( _mouse.x, _mouse.y );
+
+
+                        _context.stroke ( );
+
+
+                        _circle.draw ( );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 8:14
+        twoObjectsConnectedByASpring: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    INPUT    ///////////////////////////////
+
+                let _mouse   = utils.captureMouse ( _canvas );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle0 = new Circle;
+
+                    _circle0.canvas = 'canvas';
+
+                    _circle0.x = Math.random ( ) * _canvas.width;
+
+                    _circle0.y = Math.random ( ) * _canvas.height;
+
+                let _circle1 = new Circle;
+
+                    _circle1.canvas = 'canvas';
+
+                    _circle1.x = Math.random ( ) * _canvas.width;
+
+                    _circle1.y = Math.random ( ) * _canvas.height;
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _circle0_dragging = false;
+
+                let _circle1_dragging = false;
+
+
+                let _spring   = 0.03;
+
+                let _friction = 0.9;
+
+
+                let _springLength = 100;
+
+
+                let _velocity = new Point;
+
+                let _distance = new Point;
+
+                let _target   = new Point;
+
+            ////    INPUT    ///////////////////////////////
+
+                _canvas.addEventListener ( 'mousedown', function ( )
+                {
+                    if ( utils.containsPoint ( _circle0.bounds, _mouse.x, _mouse.y ) )
+
+                        _circle0_dragging = true;
+
+
+                    if ( utils.containsPoint ( _circle1.bounds, _mouse.x, _mouse.y ) )
+
+                        _circle1_dragging = true;
+                } );
+
+                _canvas.addEventListener ( 'mouseup', function ( )
+                {
+                    if ( _circle0_dragging || _circle1_dragging )
+
+                        _circle0_dragging = _circle1_dragging = false;
+                } );
+
+                _canvas.addEventListener ( 'mousemove', function ( )
+                {
+                    if ( _circle0_dragging )
+
+                        [ _circle0.x, _circle0.y ] = [ _mouse.x, _mouse.y ];
+
+
+                    if ( _circle1_dragging )
+
+                        [ _circle1.x, _circle1.y ] = [ _mouse.x, _mouse.y ];
+                } );
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _springTo ( circleA, circleB )
+                {
+                    _distance.x = circleB.x - circleA.x;
+
+                    _distance.y = circleB.y - circleA.y;
+
+
+                    let _angle = Math.atan2 ( _distance.y, _distance.x );
+
+
+                    _target.x = circleB.x - Math.cos ( _angle ) * _springLength;
+
+                    _target.y = circleB.y - Math.sin ( _angle ) * _springLength;
+
+
+                    circleA.velocity.x += ( _target.x - circleA.x ) * _spring;
+
+                    circleA.velocity.y += ( _target.y - circleA.y ) * _spring;
+
+
+                    circleA.velocity.x *= _friction;
+
+                    circleA.velocity.y *= _friction;
+
+
+                    circleA.x += circleA.velocity.x;
+
+                    circleA.y += circleA.velocity.y;
                 }
 
             ////    DRAW    ////////////////////////////////
@@ -16618,27 +17472,35 @@
 
                     ////    TRANSITIONS    /////////////////
 
-                        _activeRectangle.velocity.y += _gravity;
+                        if ( ! _circle0_dragging )
 
-                        _activeRectangle.y          += _activeRectangle.velocity.y;
+                            _springTo ( _circle0, _circle1 );
 
 
-                        if ( _activeRectangle.y + _activeRectangle.height > _canvas.height )
-                        {
-                            _activeRectangle.y = _canvas.height - _activeRectangle.height;
+                        if ( ! _circle1_dragging )
 
-                            _activeRectangle   = _createRectangle ( );
-                        }
+                            _springTo ( _circle1, _circle0 );
 
                     ////    DRAW    ////////////////////////
 
-                        _rectangles.forEach ( _drawRectangle );
+                        _context.beginPath ( );
+
+                        _context.moveTo ( _circle0.x, _circle0.y );
+                        _context.lineTo ( _circle1.x, _circle1.y );
+
+                        _context.stroke ( );
+
+
+                        _circle0.draw ( );
+
+                        _circle1.draw ( );
                 }
 
 
                 _drawFrame ( );
         },
-        distanceCollision: ( ) =>
+        // 8:15
+        threeObjectsConnectedByASpring: ( ) =>
         {
             ////    CONTEXT    /////////////////////////////
 
@@ -16651,6 +17513,332 @@
                 let _timeCurrent = new Date ( );
 
             ////    INPUT    ///////////////////////////////
+
+                let _mouse   = utils.captureMouse ( _canvas );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle0 = new Circle;
+
+                    _circle0.x = Math.random ( ) * _canvas.width;
+
+                    _circle0.y = Math.random ( ) * _canvas.height;
+
+                let _circle1 = new Circle;
+
+                    _circle1.x = Math.random ( ) * _canvas.width;
+
+                    _circle1.y = Math.random ( ) * _canvas.height;
+
+                let _circle2 = new Circle;
+
+                    _circle2.x = Math.random ( ) * _canvas.width;
+
+                    _circle2.y = Math.random ( ) * _canvas.height;
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _circle0_dragging = false;
+
+                let _circle1_dragging = false;
+
+                let _circle2_dragging = false;
+
+
+                let _spring       = 0.03;
+
+                let _friction     = 0.9;
+
+                let _springLength = 100;
+
+
+                let _velocity = new Point;
+
+                let _distance = new Point;
+
+                let _target   = new Point;
+
+            ////    INPUT    ///////////////////////////////
+
+                _canvas.addEventListener ( 'mousedown', function ( )
+                {
+                    if ( utils.containsPoint ( _circle0.bounds, _mouse.x, _mouse.y ) )
+                    {
+                        _circle0_dragging = true;
+                    }
+
+                    if ( utils.containsPoint ( _circle1.bounds, _mouse.x, _mouse.y ) )
+                    {
+                        _circle1_dragging = true;
+                    }
+
+                    if ( utils.containsPoint ( _circle2.bounds, _mouse.x, _mouse.y ) )
+                    {
+                        _circle2_dragging = true;
+                    }
+                } );
+
+                _canvas.addEventListener ( 'mouseup', function ( )
+                {
+                    if ( _circle0_dragging || _circle1_dragging || _circle2_dragging )
+                    {
+                        _circle0_dragging = false;
+                        _circle1_dragging = false;
+                        _circle2_dragging = false;
+                    }
+                } );
+
+                _canvas.addEventListener ( 'mousemove', function ( )
+                {
+                    if ( _circle0_dragging )
+                    {
+                        _circle0.x = _mouse.x;
+                        _circle0.y = _mouse.y;
+                    }
+
+                    if ( _circle1_dragging )
+                    {
+                        _circle1.x = _mouse.x;
+                        _circle1.y = _mouse.y;
+                    }
+
+                    if ( _circle2_dragging )
+                    {
+                        _circle2.x = _mouse.x;
+                        _circle2.y = _mouse.y;
+                    }
+                } );
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _springTo ( circleA, circleB )
+                {
+                    _distance.x = circleB.x - circleA.x;
+
+                    _distance.y = circleB.y - circleA.y;
+
+
+                    let _angle = Math.atan2 ( _distance.y, _distance.x );
+
+
+                    _target.x = circleB.x - Math.cos ( _angle ) * _springLength;
+
+                    _target.y = circleB.y - Math.sin ( _angle ) * _springLength;
+
+
+                    circleA.velocity.x += ( _target.x - circleA.x ) * _spring;
+
+                    circleA.velocity.y += ( _target.y - circleA.y ) * _spring;
+
+
+                    circleA.velocity.x *= _friction;
+
+                    circleA.velocity.y *= _friction;
+
+
+                    circleA.x += circleA.velocity.x;
+
+                    circleA.y += circleA.velocity.y;
+                }
+
+            ////    DRAW    ////////////////////////////////
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        if ( ! _circle0_dragging )
+                        {
+                            _springTo ( _circle0, _circle1 );
+                            _springTo ( _circle0, _circle2 );
+                        }
+
+                        if ( ! _circle1_dragging )
+                        {
+                            _springTo ( _circle1, _circle0 );
+                            _springTo ( _circle1, _circle2 );
+                        }
+
+                        if ( ! _circle2_dragging )
+                        {
+                            _springTo ( _circle2, _circle0 );
+                            _springTo ( _circle2, _circle1 );
+                        }
+
+                    ////    DRAW    ////////////////////////
+
+                        _context.beginPath ( );
+
+                        _context.moveTo ( _circle0.x, _circle0.y );
+                        _context.lineTo ( _circle1.x, _circle1.y );
+                        _context.lineTo ( _circle2.x, _circle2.y );
+                        _context.lineTo ( _circle0.x, _circle0.y );
+
+                        _context.stroke ( );
+
+
+                        _circle0.draw ( );
+
+                        _circle1.draw ( );
+
+                        _circle2.draw ( );
+                }
+
+
+                _drawFrame ( );
+        },
+        // // 9:2
+        // stackingBoxes: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _rectangles = new Array;
+
+        //         let _activeRectangle = _createRectangle ( );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _gravity   = 0.2;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _createRectangle ( )
+        //         {
+        //             let _rectangle = new Rectangle;
+
+        //                 _rectangle.canvas = 'canvas';
+
+        //                 _rectangle.x      = Math.random ( ) * _canvas.width;
+
+
+        //             _rectangles.push ( _rectangle );
+
+
+        //             return _rectangle;
+        //         }
+
+        //         function _drawRectangle ( rectangle )
+        //         {
+        //             if ( _activeRectangle !== rectangle && utils.intersects ( _activeRectangle, rectangle ) )
+        //             {
+        //                 _activeRectangle.y = rectangle.y - _activeRectangle.height;
+
+        //                 _activeRectangle   = _createRectangle ( );
+        //             }
+
+
+        //             rectangle.draw ( );
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _activeRectangle.velocity.y += _gravity;
+
+        //                 _activeRectangle.y          += _activeRectangle.velocity.y;
+
+
+        //                 if ( _activeRectangle.y + _activeRectangle.height > _canvas.height )
+        //                 {
+        //                     _activeRectangle.y = _canvas.height - _activeRectangle.height;
+
+        //                     _activeRectangle   = _createRectangle ( );
+        //                 }
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _rectangles.forEach ( _drawRectangle );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 9:3
+        // hitTestingAPointAndABoundingBox: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse = utils.captureMouse ( _canvas );
+
+        //             _canvas.addEventListener ( 'mousemove', function ( )
+        //             {
+        //                 if ( utils.containsPoint ( _circle.bounds, _mouse.x, _mouse.y ) )
+        //                 {
+        //                   console.log ( "Hit!" )
+        //                 }
+        //             } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _circle   = new Circle;
+
+        //             _circle.canvas = 'canvas';
+
+        //             _circle.x = canvas.width  / 2;
+
+        //             _circle.y = canvas.height / 2;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         _circle.draw ( );
+        // },
+        // 9:5
+        distanceBasedCollisionDetectionWithArbitrarySize: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
 
             ////    INPUT    ///////////////////////////////
 
@@ -16692,15 +17880,18 @@
                         _circleB.y = _mouse.y;
 
 
-                        let _dx = _circleB.x - _circleA.x;
-
-                        let _dy = _circleB.y - _circleA.y;
+                        let _distance = new Point;
 
 
-                        let _dist = Math.sqrt ( _dx * _dx + _dy * _dy );
+                        _distance.x = _circleB.x - _circleA.x;
+
+                        _distance.y = _circleB.y - _circleA.y;
 
 
-                        if ( _dist < _circleA.radius + _circleB.radius )
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                        if ( _distance.total < _circleA.radius + _circleB.radius )
                         {
                             console.log ( "Hit!" );
                         }
@@ -16715,7 +17906,8 @@
 
                 _drawFrame ( );
         },
-        hitPointCollision: ( ) =>
+        // 9:8
+        optimizedMultipleObjectCollisionDetectionAndSpringing: ( ) =>
         {
             ////    CONTEXT    /////////////////////////////
 
@@ -16727,35 +17919,170 @@
 
                 let _timeCurrent = new Date ( );
 
-            ////    INPUT    ///////////////////////////////
-
-            ////    INPUT    ///////////////////////////////
-
-                let _mouse = utils.captureMouse ( _canvas );
-
-                    _canvas.addEventListener ( 'mousemove', function ( )
-                    {
-                        if ( utils.containsPoint ( _circle.bounds, _mouse.x, _mouse.y ) )
-                        {
-                          console.log ( "Hit!" )
-                        }
-                    } );
-
             ////    OBJECTS    /////////////////////////////
 
-                let _circle   = new Circle;
+                let _circles = new Array;
 
-                    _circle.canvas = 'canvas';
+            ////    SET DEFAULTS    ////////////////////////
 
-                    _circle.x = canvas.width  / 2;
+                let _amount  = 10;
 
-                    _circle.y = canvas.height / 2;
+                let _bounce  = -0.5;
+
+                let _spring  = 0.015;
+
+                let _gravity = 0.1;
+
+
+                let _velocity     = new Point;
+
+                let _target       = new Point;
+
+                let _acceleration = new Point;
+
+
+            ////    POPULATION    //////////////////////////
+
+                for ( let _circle, _i = 0; _i < _amount; _i++ )
+                {
+                    _circle = new Circle;
+
+
+                    _circle.radius = Math.random ( ) * 30 + 20;
+
+
+                    _circle.x = Math.random ( ) * _canvas.width / 2;
+
+                    _circle.y = Math.random ( ) * _canvas.height / 2;
+
+
+                    _circle.velocity.x = Math.random ( ) * 6 - 3;
+
+                    _circle.velocity.y = Math.random ( ) * 6 - 3;
+
+
+                    _circles.push ( _circle );
+                }
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _checkCollision ( circleA, iter )
+                {
+                    for ( let _circleB, _distanceX, _distanceY, _distance, _min_distance, _j = iter + 1; _j < _amount; _j++ )
+                    {
+                        _circleB = _circles [ _j ];
+
+
+                        _distanceX = _circleB.x - circleA.x;
+
+                        _distanceY = _circleB.y - circleA.y;
+
+
+                        let _distance = Math.sqrt ( _distanceX * _distanceX + _distanceY * _distanceY );
+
+
+                        _min_distance = circleA.radius + _circleB.radius;
+
+
+                        if ( _distance < _min_distance )
+                        {
+                            _target.x = circleA.x + _distanceX / _distance * _min_distance;
+
+                            _target.y = circleA.y + _distanceY / _distance * _min_distance;
+
+
+                            _acceleration.x = (_target.x - _circleB.x) * _spring;
+
+                            _acceleration.y = (_target.y - _circleB.y) * _spring;
+
+
+                            circleA.velocity.x -= _acceleration.x;
+
+                            circleA.velocity.y -= _acceleration.y;
+
+
+                            _circleB.velocity.x += _acceleration.x;
+
+                            _circleB.velocity.y += _acceleration.y;
+                        }
+                    }
+                }
+
+                function _move ( circle )
+                {
+                    circle.velocity.y += _gravity;
+
+
+                    circle.x += circle.velocity.x;
+
+                    circle.y += circle.velocity.y;
+
+
+                    if ( circle.x + circle.radius > _canvas.width )
+                    {
+                        circle.x = _canvas.width - circle.radius;
+
+                        circle.velocity.x *= _bounce;
+                    }
+
+
+                    if ( circle.x - circle.radius < 0 )
+                    {
+                        circle.x = circle.radius;
+
+                        circle.velocity.x *= _bounce;
+                    }
+
+
+                    if ( circle.y + circle.radius > _canvas.height )
+                    {
+                        circle.y = _canvas.height - circle.radius;
+
+                        circle.velocity.y *= _bounce;
+                    }
+
+
+                    if ( circle.y - circle.radius < 0 )
+                    {
+                        circle.y = circle.radius;
+
+                        circle.velocity.y *= _bounce;
+                    }
+                }
 
             ////    DRAW    ////////////////////////////////
 
-                _circle.draw ( );
+                function _draw ( circle )
+                {
+                    circle.draw ( );
+                }
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    DRAW    ////////////////////////
+
+                        _circles.forEach ( _checkCollision );
+
+                        _circles.forEach ( _move );
+
+                        _circles.forEach ( _draw );
+                }
+
+
+                _drawFrame ( );
         },
-        rotateSingleObject: ( ) =>
+        // 10:2
+        rotatingAroundAPointUsingAdvancedCoordinateRotation: ( ) =>
         {
             ////    CONTEXT    /////////////////////////////
 
@@ -16831,7 +18158,8 @@
 
                 _drawFrmae ( );
         },
-        rotateMultipleObjects: ( ) =>
+        // 10:3
+        rotatingMultipleObjects: ( ) =>
         {
             ////    CONTEXT    /////////////////////////////
 
@@ -16938,7 +18266,8 @@
 
                 _drawFrame ( );
         },
-        bouncingOffAngle: ( ) =>
+        // 10:5
+        optimizedBouncingOffAnAngle: ( ) =>
         {
             ////    CONTEXT    /////////////////////////////
 
@@ -16949,8 +18278,6 @@
             ////    LOOP DATA    ///////////////////////////
 
                 let _timeCurrent = new Date ( );
-
-            ////    INPUT    ///////////////////////////////
 
             ////    OBJECTS    /////////////////////////////
 
@@ -17064,7 +18391,4082 @@
 
 
                 _drawFrame ( );
-        }
+        },
+        // 10:8
+        bouncingOffAngleAndCheckBoundingBox: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    INPUT    ///////////////////////////////
+
+                let _mouse   = utils.captureMouse ( _canvas );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle = new Circle;
+
+                    _circle.x = 100;
+
+                    _circle.y = 100;
+
+
+                let _line = new Line ( new Point ( 0, 0 ), new Point ( 300, 0 ) );
+
+                    _line.x = 50;
+
+                    _line.y = 200;
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _gravity = 0.2;
+
+                let _bounce  = -0.6;
+
+
+                let _start    = new Point;
+
+                let _end      = new Point;
+
+                let _velocity = new Point;
+
+            ////    DRAW    ////////////////////////////////
+
+            function _drawFrame ( )
+            {
+                window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                ////    LOOP DATA    ///////////////////
+
+                    _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                ////    CLEAR SCREEN    ////////////////
+
+                    _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                ////    TRANSITIONS    /////////////////
+
+                    let _bounds = _line.bounds;
+
+
+                    // MOVE _LINE WITH MOUSE
+                    _line.position.rotation = ( ( _canvas.width / 2 - _mouse.x ) * 0.1 ) * Math.PI / 180;
+
+                    // NORMAL MOTION CODE
+                    _circle.velocity.y += _gravity;
+
+
+                    _circle.x += _circle.velocity.x;
+
+                    _circle.y += _circle.velocity.y;
+
+
+                    if ( _circle.x + _circle.radius > _bounds.x && _circle.x - _circle.radius < _bounds.x + _bounds.width )
+                    {
+                        // GET ANGLE, SINE, AND COSINE
+                        let _cos = Math.cos ( _line.position.rotation );
+
+                        let _sin = Math.sin ( _line.position.rotation );
+
+
+                        // GET POSITION OF _CIRCLE, RELATIVE TO _LINE
+                        _start.x = _circle.x - _line.x;
+
+                        _start.y = _circle.y - _line.y;
+
+
+                        // ROTATE COORDINATES
+                        _end.y = _cos * _start.y - _sin * _start.x;
+
+
+                        // PERFORM BOUNCE WITH ROTATED VALUES
+                        if ( _end.y > - _circle.radius )
+                        {
+                            // ROTATE COORDINATES
+                            _end.x = _cos * _start.x + _sin * _start.y;
+
+                            // ROTATE VELOCITY
+                            _velocity.x = _cos * _circle.velocity.x + _sin * _circle.velocity.y;
+
+                            _velocity.y = _cos * _circle.velocity.y - _sin * _circle.velocity.x;
+
+
+                            _end.y = - _circle.radius;
+
+
+                            _velocity.y   *= _bounce;
+
+                            // ROTATE EVERYTHING BACK
+                            _start.x = _cos * _end.x - _sin * _end.y;
+
+                            _start.y = _cos * _end.y + _sin * _end.x;
+
+
+                            _circle.velocity.x = _cos * _velocity.x - _sin * _velocity.y;
+
+                            _circle.velocity.y = _cos * _velocity.y + _sin * _velocity.x;
+
+
+                            _circle.x = _line.x + _start.x;
+
+                            _circle.y = _line.y + _start.y;
+                        }
+                    }
+
+                ////    DRAW    ////////////////////////
+
+                    _circle.draw ( );
+
+                    _line.draw ( );
+            }
+
+
+            _drawFrame ( );
+        },
+        // 10:9
+        bouncingOffAngleAndWalls: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    INPUT    ///////////////////////////////
+
+                let _mouse   = utils.captureMouse ( _canvas );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle = new Circle;
+
+                    _circle.x = 100;
+
+                    _circle.y = 100;
+
+
+                let _line   = new Line ( new Point ( 0, 0 ), new Point ( 200, 0 ) );
+
+                    _line.x = 50;
+
+                    _line.y = 200;
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _gravity = 0.2;
+
+                let _bounce  = -0.6;
+
+
+                let _start    = new Point;
+
+                let _end      = new Point;
+
+                let _velocity = new Point;
+
+            ////    DRAW    ////////////////////////////////
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        let _bounds = _line.bounds;
+
+
+                        // MOVE LINE WITH MOUSE
+                        _line.position.rotation = ( ( _canvas.width / 2 - _mouse.x ) * 0.1 ) * Math.PI / 180;
+
+
+                        // NORMAL MOTION CODE
+                        _circle.velocity.y += _gravity;
+
+
+                        _circle.x += _circle.velocity.x;
+
+                        _circle.y += _circle.velocity.y;
+
+
+                        if ( _circle.x + _circle.radius > _bounds.x && _circle.x - _circle.radius < _bounds.x + _bounds.width )
+                        {
+                            // GET ANGLE, SINE, AND COSINE
+                            let _cos = Math.cos ( _line.position.rotation );
+
+                            let _sin = Math.sin ( _line.position.rotation );
+
+
+                            // GET POSITION OF _CIRCLE, RELATIVE TO _LINE
+                            _start.x = _circle.x - _line.x,
+
+                            _start.y = _circle.y - _line.y,
+
+
+                            // ROTATE COORDINATES
+                            _end.y = _cos * _start.y - _sin * _start.x;
+
+
+                            // ROTATE VELOCITY
+                            _velocity.y = _cos * _circle.velocity.y - _sin * _circle.velocity.x;
+
+
+                            // PERFORM BOUNCE WITH ROTATED VALUES
+                            if ( _end.y > - _circle.radius && _end.y < _velocity.y )
+                            {
+                                // ROTATE COORDINATES
+                                _end.x = _cos * _start.x + _sin * _start.y,
+
+
+                                // ROTATE VELOCITY
+                                _velocity.x  = _cos * _circle.velocity.x + _sin * _circle.velocity.y;
+
+                                _end.y       = - _circle.radius;
+
+                                _velocity.y *= _bounce;
+
+
+                                // ROTATE EVERYTHING BACK
+                                _start.x = _cos * _end.x - _sin * _end.y;
+
+                                _start.y = _cos * _end.y + _sin * _end.x;
+
+
+                                _circle.velocity.x = _cos * _velocity.x - _sin * _velocity.y;
+
+                                _circle.velocity.y = _cos * _velocity.y + _sin * _velocity.x;
+
+
+                                _circle.x = _line.x + _start.x;
+
+                                _circle.y = _line.y + _start.y;
+                            }
+                        }
+
+                        // BOUNCE OFF CEILING, FLOOR, AND WALLS
+                        if ( _circle.x + _circle.radius > _canvas.width )
+                        {
+                            _circle.x = _canvas.width - _circle.radius;
+
+                            _circle.velocity.x *= _bounce;
+                        }
+
+
+                        if ( _circle.x - _circle.radius < 0 )
+                        {
+                            _circle.x = _circle.radius;
+
+                            _circle.velocity.x *= _bounce;
+                        }
+
+
+                        if ( _circle.y + _circle.radius > _canvas.height )
+                        {
+                            _circle.y = _canvas.height - _circle.radius;
+
+                            _circle.velocity.y *= _bounce;
+                        }
+
+
+                        if ( _circle.y - _circle.radius < 0 )
+                        {
+                            _circle.y = _circle.radius;
+
+                            _circle.velocity.y *= _bounce;
+                        }
+
+
+                        _circle.draw ( );
+
+                        _line.draw ( );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 10:10
+        bouncingOffMultipleAngles: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle = new Circle;
+
+                    _circle.x = 100;
+
+                    _circle.y = 50;
+
+
+                let _lines  = new Array;
+
+                    // CREATE 5 LINES, POSITION AND ROTATE
+                    _lines [ 0 ] = new Line( new Point ( -50, 0 ), new Point ( 50, 0 ) );
+
+                    _lines [ 0 ].x = 100;
+                    _lines [ 0 ].y = 100;
+
+                    _lines [ 0 ].position.rotation = 30 * Math.PI / 180;
+
+
+                    _lines [ 1 ] = new Line( new Point ( -50, 0 ), new Point ( 50, 0 ) );
+
+                    _lines [ 1 ].x = 100;
+                    _lines [ 1 ].y = 200;
+
+                    _lines [ 1 ].position.rotation = 45 * Math.PI / 180;
+
+
+                    _lines [ 2 ] = new Line( new Point ( -50, 0 ), new Point ( 50, 0 ) );
+
+                    _lines [ 2 ].x = 220;
+                    _lines [ 2 ].y = 150;
+
+                    _lines [ 2 ].position.rotation = -20 * Math.PI / 180;
+
+
+                    _lines [ 3 ] = new Line( new Point ( -50, 0 ), new Point ( 50, 0 ) );
+
+                    _lines [ 3 ].x = 150;
+                    _lines [ 3 ].y = 330;
+
+                    _lines [ 3 ].position.rotation = 10 * Math.PI / 180;
+
+
+                    _lines [ 4 ] = new Line( new Point ( -50, 0 ), new Point ( 50, 0 ) );
+
+                    _lines [ 4 ].x = 230;
+                    _lines [ 4 ].y = 250;
+
+                    _lines [ 4 ].position.rotation = -30 * Math.PI / 180;
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _gravity = 0.2;
+
+                let _bounce  = -0.6;
+
+
+                let _start    = new Point;
+
+                let _end      = new Point;
+
+                let _velocity = new Point;
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _checkLine ( line )
+                {
+                    let _bounds = line.bounds;
+
+
+                    if ( _circle.x + _circle.radius > _bounds.x && _circle.x - _circle.radius < _bounds.x + _bounds.width )
+                    {
+                        // GET ANGLE, SINE, AND COSINE
+                        let _cos = Math.cos ( line.position.rotation );
+
+                        let _sin = Math.sin ( line.position.rotation );
+
+
+                        // GET POSITION OF _CIRCLE, RELATIVE TO LINE
+                        _start.x = _circle.x - line.x;
+
+                        _start.y = _circle.y - line.y;
+
+
+                        // ROTATE COORDINATES
+                        _end.y = _cos * _start.y - _sin * _start.x;
+
+
+                        // ROTATE VELOCITY
+                        _velocity.y = _cos * _circle.velocity.y - _sin * _circle.velocity.x;
+
+
+                        // PERFORM BOUNCE WITH ROTATED VALUES
+                        if ( _end.y > - _circle.radius && _end.y < _velocity.y )
+                        {
+                            // ROTATE COORDINATES
+                            _end.x = _cos * _start.x + _sin * _start.y;
+
+                            // ROTATE VELOCITY
+                            _velocity.x  = _cos * _circle.velocity.x + _sin * _circle.velocity.y;
+
+                            _end.y       = - _circle.radius;
+
+                            _velocity.y *= _bounce;
+
+
+                            // ROTATE EVERYTHING BACK
+                            _start.x = _cos * _end.x - _sin * _end.y;
+
+                            _start.y = _cos * _end.y + _sin * _end.x;
+
+
+                            _circle.velocity.x = _cos * _velocity.x - _sin * _velocity.y;
+
+                            _circle.velocity.y = _cos * _velocity.y + _sin * _velocity.x;
+
+
+                            _circle.x = line.x + _start.x;
+
+                            _circle.y = line.y + _start.y;
+                        }
+                    }
+                }
+
+                function _drawLine ( line )
+                {
+                    _checkLine ( line );
+
+                    line.draw ( );
+                }
+
+            ////    DRAW    ////////////////////////////////
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        // NORMAL MOTION CODE
+                        _circle.velocity.y += _gravity;
+
+                        _circle.x += _circle.velocity.x;
+                        _circle.y += _circle.velocity.y;
+
+                        // BOUNCE OFF CEILING, FLOOR, AND WALLS
+                        if ( _circle.x + _circle.radius > _canvas.width )
+                        {
+                            _circle.x = _canvas.width - _circle.radius;
+
+                            _circle.velocity.x *= _bounce;
+                        }
+
+
+                        if ( _circle.x - _circle.radius < 0 )
+                        {
+                            _circle.x = _circle.radius;
+
+                            _circle.velocity.x *= _bounce;
+                        }
+
+
+                        if ( _circle.y + _circle.radius > _canvas.height )
+                        {
+                            _circle.y = _canvas.height - _circle.radius;
+
+                            _circle.velocity.y *= _bounce;
+                        }
+
+
+                        if ( _circle.y - _circle.radius < 0 )
+                        {
+                            _circle.y = _circle.radius;
+
+                            _circle.velocity.y *= _bounce;
+                        }
+
+                    ////    DRAW    ////////////////////////
+
+                        _lines.forEach ( _drawLine );
+
+                        _circle.draw ( );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 11:2
+        optimizedConservationOfMomentumOnOneAxis: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle0 = new Circle;
+
+
+                    _circle0.mass = 2;
+
+
+                    _circle0.x = 50;
+
+                    _circle0.y = _canvas.height / 2;
+
+
+                    _circle0.velocity.x = 1;
+
+
+                let _circle1 = new Circle;
+
+
+                    _circle1.mass = 1;
+
+
+                    _circle1.x = 300;
+
+                    _circle1.y = _canvas.height / 2;
+
+
+                    _circle1.velocity.x = -1;
+
+            ////    DRAW    ////////////////////////////////
+
+                function _drawFrame ()
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _circle0.x += _circle0.velocity.x;
+
+                        _circle1.x += _circle1.velocity.x;
+
+
+                        let _distance = _circle1.x - _circle0.x;
+
+
+                        // ON COLLISION
+                        if ( Math.abs ( _distance ) < _circle0.radius + _circle1.radius )
+                        {
+                            let _velocityXTotal = _circle0.velocity.x - _circle1.velocity.x;
+
+
+                            _circle0.velocity.x = ( ( _circle0.mass - _circle1.mass) * _circle0.velocity.x + 2 * _circle1.mass * _circle1.velocity.x ) / ( _circle0.mass + _circle1.mass );
+
+                            _circle1.velocity.x = _velocityXTotal + _circle0.velocity.x;
+
+
+                            _circle0.x += _circle0.velocity.x;
+
+                            _circle1.y += _circle1.velocity.x;
+                        }
+
+                    ////    DRAW    ////////////////////////
+
+                        _circle0.draw ( );
+
+                        _circle1.draw ( );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 11:4
+        optimizedConservationOfMomentumOnTwoAxes: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circle0 = new Circle;
+
+
+                    _circle0.mass = 2;
+
+
+                    _circle0.x = canvas.width  - 200;
+
+                    _circle0.y = canvas.height - 200;
+
+
+                    _circle0.velocity.x = Math.random() * 10 - 5;
+
+                    _circle0.velocity.y = Math.random() * 10 - 5;
+
+
+                let _circle1 = new Circle();
+
+
+                    _circle1.mass = 1;
+
+
+                    _circle1.x = 100;
+
+                    _circle1.y = 100;
+
+
+                    _circle1.velocity.x = Math.random() * 10 - 5;
+
+                    _circle1.velocity.y = Math.random() * 10 - 5;
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _bounce = -1.0;
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _rotate ( x, y, sin, cos, reverse )
+                {
+                    return {
+                               x: ( reverse ) ? ( x * cos + y * sin ) : ( x * cos - y * sin ),
+
+                               y: ( reverse ) ? ( y * cos - x * sin ) : ( y * cos + x * sin )
+                           };
+                }
+
+                function _checkCollision ( object0, object1 )
+                {
+                    let _distance = new Point;
+
+
+                        _distance.x   = object1.x - object0.x;
+
+                        _distance.y   = object1.y - object0.y;
+
+
+                    _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    // COLLISION HANDLING CODE HERE
+                    if ( _distance.total < object0.radius + object1.radius )
+                    {
+                        // CALCULATE ANGLE, SINE, AND COSINE
+                        let _angle = Math.atan2 ( _distance.y, _distance.x );
+
+
+                        let _sin = Math.sin ( _angle );
+
+                        let _cos = Math.cos ( _angle );
+
+
+                        // ROTATE OBJECT0'S POSITION
+                        let _position0 = new Point;
+
+
+                        // ROTATE OBJECT1'S POSITION
+                        let _position1 = _rotate ( _distance.x, _distance.y, _sin, _cos, true );
+
+
+                        // ROTATE OBJECT0'S VELOCITY
+                        let _velocity0 = _rotate ( object0.velocity.x, object0.velocity.y, _sin, _cos, true );
+
+
+                        // ROTATE OBJECT1'S VELOCITY
+                        let _velocity1 = _rotate ( object1.velocity.x, object1.velocity.y, _sin, _cos, true );
+
+
+                        // COLLISION REACTION
+                        let _velocityXTotal = _velocity0.x - _velocity1.x;
+
+
+                            _velocity0.x = ( ( object0.mass - object1.mass ) * _velocity0.x + 2 * object1.mass * _velocity1.x ) / ( object0.mass + object1.mass );
+
+                            _velocity1.x = _velocityXTotal + _velocity0.x;
+
+
+                            // UPDATE POSITION
+                            _position0.x += _velocity0.x;
+
+                            _position1.x += _velocity1.x;
+
+
+                        // ROTATE POSITIONS BACK
+                        let _position0Final = _rotate ( _position0.x, _position0.y, _sin, _cos, false );
+
+                        let _position1Final = _rotate ( _position1.x, _position1.y, _sin, _cos, false );
+
+
+                        // ADJUST POSITIONS TO ACTUAL SCREEN POSITIONS
+                        object1.x = object0.x + _position1Final.x;
+
+                        object1.y = object0.y + _position1Final.y;
+
+
+                        object0.x = object0.x + _position0Final.x;
+
+                        object0.y = object0.y + _position0Final.y;
+
+
+                        // ROTATE VELOCITIES BACK
+                        let _velocity0Final = _rotate ( _velocity0.x, _velocity0.y, _sin, _cos, false );
+
+                        let _velocity1Final = _rotate ( _velocity1.x, _velocity1.y, _sin, _cos, false );
+
+
+                        object0.velocity.x = _velocity0Final.x;
+
+                        object0.velocity.y = _velocity0Final.y;
+
+
+                        object1.velocity.x = _velocity1Final.x;
+
+                        object1.velocity.y = _velocity1Final.y;
+                    }
+                }
+
+                function _checkWalls ( object )
+                {
+                    if ( object.x + object.radius > _canvas.width )
+                    {
+                        object.x           = _canvas.width - object.radius;
+
+                        object.velocity.x *= _bounce;
+                    }
+
+
+                    if ( object.x - object.radius < 0 )
+                    {
+                        object.x           = object.radius;
+
+                        object.velocity.x *= _bounce;
+                    }
+
+
+                    if ( object.y + object.radius > _canvas.height )
+                    {
+                        object.y           = _canvas.height - object.radius;
+
+                        object.velocity.y *= _bounce;
+                    }
+
+
+                    if ( object.y - object.radius < 0 )
+                    {
+                        object.y           = object.radius;
+
+                        object.velocity.y *= _bounce;
+                    }
+                }
+
+            ////    DRAW    ////////////////////////////////
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _circle0.x += _circle0.velocity.x;
+
+                        _circle0.y += _circle0.velocity.y;
+
+
+                        _circle1.x += _circle1.velocity.x;
+
+                        _circle1.y += _circle1.velocity.y;
+
+
+                        _checkCollision ( _circle0, _circle1 );
+
+
+                        _checkWalls ( _circle0 );
+
+                        _checkWalls ( _circle1 );
+
+                    ////    DRAW    ////////////////////////
+
+                        _circle0.draw ( );
+
+                        _circle1.draw ( );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 11:6
+        multipleObjectCollisionsWithProblemFixed: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _circles = new Array;
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _amount = 15;
+
+                let _bounce = -1.0;
+
+
+                for ( let _radius, _circle, _i = 0; _i < _amount; _i++ )
+                {
+                    _radius = Math.random ( ) * 20 + 15;
+
+
+                    _circle = new Circle;
+
+
+                    _circle.radius = _circle.mass = _radius;
+
+
+                    _circle.x = Math.random ( ) * _canvas.width;
+
+                    _circle.y = Math.random ( ) * _canvas.height;
+
+
+                    _circle.velocity.x = Math.random ( ) * 10 - 5;
+
+                    _circle.velocity.y = Math.random ( ) * 10 - 5;
+
+
+                    _circles.push ( _circle );
+                }
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _rotate ( x, y, sin, cos, reverse )
+                {
+                    return {
+                               x: ( reverse ) ? ( x * cos + y * sin ) : ( x * cos - y * sin ),
+
+                               y: ( reverse ) ? ( y * cos - x * sin ) : ( y * cos + x * sin )
+                           };
+                }
+
+                function _checkCollision ( object0, object1 )
+                {
+                    let _distance = new Point;
+
+
+                        _distance.x = object1.x - object0.x;
+
+                        _distance.y = object1.y - object0.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    // COLLISION HANDLING CODE HERE
+                    if ( _distance.total < object0.radius + object1.radius )
+                    {
+                        // CALCULATE ANGLE, SINE, AND COSINE
+                        let _angle = Math.atan2 ( _distance.y, _distance.x );
+
+
+                        let _sin = Math.sin ( _angle );
+
+                        let _cos = Math.cos ( _angle );
+
+
+                        // ROTATE OBJECT0'S POSITION
+                        let _position0 = new Point;
+
+
+                        // ROTATE OBJECT1'S POSITION
+                        let _position1 = _rotate ( _distance.x, _distance.y, _sin, _cos, true );
+
+
+                        // ROTATE OBJECT0'S VELOCITY
+                        let _velocity0 = _rotate ( object0.velocity.x, object0.velocity.y, _sin, _cos, true );
+
+
+                        // ROTATE OBJECT1'S VELOCITY
+                        let _velocity1 = _rotate ( object1.velocity.x, object1.velocity.y, _sin, _cos, true );
+
+
+                        // COLLISION REACTION
+                        let _vxTotal = _velocity0.x - _velocity1.x;
+
+
+                            _velocity0.x = ( ( object0.mass - object1.mass ) * _velocity0.x + 2 * object1.mass * _velocity1.x ) / ( object0.mass + object1.mass );
+
+                            _velocity1.x = _vxTotal + _velocity0.x;
+
+
+                        // UPDATE POSITION - TO AVOID OBJECTS BECOMING STUCK TOGETHER
+                        let _absoluteVelocity = Math.abs ( _velocity0.x ) + Math.abs ( _velocity1.x );
+
+
+                        let _overlap = ( object0.radius + object1.radius ) - Math.abs ( _position0.x - _position1.x );
+
+
+                            _position0.x += _velocity0.x / _absoluteVelocity * _overlap;
+
+                            _position1.x += _velocity1.x / _absoluteVelocity * _overlap;
+
+
+                        // ROTATE POSITIONS BACK
+                        let _position0Final = _rotate ( _position0.x, _position0.y, _sin, _cos, false );
+
+                        let _position1Final = _rotate ( _position1.x, _position1.y, _sin, _cos, false );
+
+
+                        // ADJUST POSITIONS TO ACTUAL SCREEN POSITIONS
+                        object1.x = object0.x + _position1Final.x;
+
+                        object1.y = object0.y + _position1Final.y;
+
+
+                        object0.x = object0.x + _position0Final.x;
+
+                        object0.y = object0.y + _position0Final.y;
+
+
+                        // ROTATE VELOCITIES BACK
+                        let _velocity0Final = _rotate ( _velocity0.x, _velocity0.y, _sin, _cos, false );
+
+                        let _velocity1Final = _rotate ( _velocity1.x, _velocity1.y, _sin, _cos, false );
+
+
+                        object0.velocity.x = _velocity0Final.x;
+
+                        object0.velocity.y = _velocity0Final.y;
+
+
+                        object1.velocity.x = _velocity1Final.x;
+
+                        object1.velocity.y = _velocity1Final.y;
+                    }
+                }
+
+                function _checkWalls ( object )
+                {
+                    if ( object.x + object.radius > _canvas.width )
+                    {
+                        object.x           = _canvas.width - object.radius;
+
+                        object.velocity.x *= _bounce;
+                    }
+
+
+                    if ( object.x - object.radius < 0 )
+                    {
+                        object.x           = object.radius;
+
+                        object.velocity.x *= _bounce;
+                    }
+
+
+                    if ( object.y + object.radius > _canvas.height )
+                    {
+                        object.y           = _canvas.height - object.radius;
+
+                        object.velocity.y *= _bounce;
+                    }
+
+
+                    if ( object.y - object.radius < 0 )
+                    {
+                        object.y           = object.radius;
+
+                        object.velocity.y *= _bounce;
+                    }
+                }
+
+                function _move ( object )
+                {
+                    object.x += object.velocity.x;
+
+                    object.y += object.velocity.y;
+
+
+                    _checkWalls ( object );
+                }
+
+            ////    DRAW    ////////////////////////////////
+
+                function _draw ( object )
+                {
+                    object.draw ( );
+                }
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _circles.forEach ( _move );
+
+
+                        for ( let _objectA, _i = 0, _length = _amount - 1; _i < _length; _i++ )
+                        {
+                            _objectA = _circles [ _i ];
+
+
+                            for ( let _objectB, _j = _i + 1; _j < _amount; _j++ )
+                            {
+                                _objectB = _circles [ _j ];
+
+                                _checkCollision ( _objectA, _objectB );
+                            }
+                        }
+
+                    ////    DRAW    ////////////////////////
+
+                        _circles.forEach ( _draw );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 12:3
+        gravitationalForceAndCollisionDetectionWithRandomSizes: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _particles = new Array;
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _amount = 30;
+
+            ////    POPULATION    //////////////////////////
+
+                for ( let _size, _particle, _i = 0; _i < _amount; _i++ )
+                {
+                    _size = Math.random ( ) * 25 + 5;
+
+
+                    _particle = new Circle;
+
+
+                    _particle.radius = _size;
+
+
+                    _particle.x = Math.random ( ) * _canvas.width;
+
+                    _particle.y = Math.random ( ) * _canvas.height;
+
+
+                    _particle.mass = _size;
+
+
+                    _particles.push ( _particle );
+                }
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _rotate ( x, y, sin, cos, reverse )
+                {
+                    return {
+                               x: ( reverse ) ? ( x * cos + y * sin ) : ( x * cos - y * sin ),
+
+                               y: ( reverse ) ? ( y * cos - x * sin ) : ( y * cos + x * sin )
+                           };
+                }
+
+                function _checkCollision ( object0, object1 )
+                {
+                    let _distance = new Point;
+
+
+                        _distance.x = object1.x - object0.x;
+
+                        _distance.y = object1.y - object0.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    // COLLISION HANDLING CODE HERE
+                    if ( _distance.total < object0.radius + object1.radius )
+                    {
+                        // CALCULATE ANGLE, SINE, AND COSINE
+                        let _angle = Math.atan2 ( _distance.y, _distance.x );
+
+                        let _sin   = Math.sin ( _angle );
+
+                        let _cos   = Math.cos ( _angle );
+
+
+                        // ROTATE BALL0'S POSITION
+                        let _position0 = new Point;
+
+
+                        // ROTATE BALL1'S POSITION
+                        let _position1 = _rotate ( _distance.x, _distance.y, _sin, _cos, true );
+
+
+                        // ROTATE BALL0'S VELOCITY
+                        let _velocity0 = _rotate ( object0.velocity.x, object0.velocity.y, _sin, _cos, true );
+
+
+                        // ROTATE BALL1'S VELOCITY
+                        let _velocity1 = _rotate ( object1.velocity.x, object1.velocity.y, _sin, _cos, true );
+
+
+                        // COLLISION REACTION
+                        let _vxTotal = _velocity0.x - _velocity1.x;
+
+
+                            _velocity0.x = ( ( object0.mass - object1.mass ) * _velocity0.x + 2 * object1.mass * _velocity1.x ) / ( object0.mass + object1.mass );
+
+                            _velocity1.x = _vxTotal + _velocity0.x;
+
+
+                        // UPDATE POSITION - TO AVOID OBJECTS BECOMING STUCK TOGETHER
+                        let _absoluteVelocity = Math.abs ( _velocity0.x ) + Math.abs ( _velocity1.x );
+
+
+                        let _overlap = ( object0.radius + object1.radius ) - Math.abs ( _position0.x - _position1.x );
+
+
+                            _position0.x += _velocity0.x / _absoluteVelocity * _overlap;
+
+                            _position1.x += _velocity1.x / _absoluteVelocity * _overlap;
+
+
+                        // ROTATE POSITIONS BACK
+                        let _position0Final = _rotate ( _position0.x, _position0.y, _sin, _cos, false );
+
+                        let _position1Final = _rotate ( _position1.x, _position1.y, _sin, _cos, false );
+
+
+                        // ADJUST POSITIONS TO ACTUAL SCREEN POSITIONS
+                        object1.x = object0.x + _position1Final.x;
+
+                        object1.y = object0.y + _position1Final.y;
+
+
+                        object0.x = object0.x + _position0Final.x;
+
+                        object0.y = object0.y + _position0Final.y;
+
+
+                        // ROTATE VELOCITIES BACK
+                        let _velocity0Final = _rotate ( _velocity0.x, _velocity0.y, _sin, _cos, false );
+
+                        let _velocity1Final = _rotate ( _velocity1.x, _velocity1.y, _sin, _cos, false );
+
+
+                        object0.velocity.x = _velocity0Final.x;
+
+                        object0.velocity.y = _velocity0Final.y;
+
+
+                        object1.velocity.x = _velocity1Final.x;
+
+                        object1.velocity.y = _velocity1Final.y;
+                    }
+                }
+
+                function _gravitate ( objectA, objectB )
+                {
+                    let _distance = new Point;
+
+                    let _acceleration = new Point;
+
+
+                        _distance.x = objectB.x - objectA.x;
+
+                        _distance.y = objectB.y - objectA.y;
+
+
+                        _distance.squared = _distance.x * _distance.x + _distance.y * _distance.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.squared );
+
+
+                    let _force = objectA.mass * objectB.mass / _distance.squared;
+
+
+                        _acceleration.x = _force * _distance.x / _distance.total;
+
+                        _acceleration.y = _force * _distance.y / _distance.total;
+
+
+                    objectA.velocity.x += _acceleration.x / objectA.mass;
+
+                    objectA.velocity.y += _acceleration.y / objectA.mass;
+
+
+                    objectB.velocity.x -= _acceleration.x / objectB.mass;
+
+                    objectB.velocity.y -= _acceleration.y / objectB.mass;
+                }
+
+                function _move ( objectA, iter )
+                {
+                    objectA.x += objectA.velocity.x;
+
+                    objectA.y += objectA.velocity.y;
+
+
+                    for ( let _objectB, _j = iter + 1; _j < _amount; _j++ )
+                    {
+                        _objectB = _particles [ _j ];
+
+
+                        _checkCollision ( objectA, _objectB );
+
+
+                        _gravitate ( objectA, _objectB );
+                    }
+                }
+
+            ////    DRAW    ////////////////////////////////
+
+                function _draw ( particle )
+                {
+                    particle.draw ( );
+                }
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _particles.forEach ( _move );
+
+                    ////    DRAW    ////////////////////////
+
+                        _particles.forEach ( _draw );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 12:4
+        objectInOrbit: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _sun = new Circle;
+
+
+                    _sun.radius = 100;
+
+
+                    _sun.x = canvas.width  / 2;
+
+                    _sun.y = canvas.height / 2;
+
+
+                    _sun.mass = 10000;
+
+
+                let _planet = new Circle;
+
+
+                    _planet.radius = 10;
+
+
+                    _planet.x = canvas.width  / 2 + 200;
+
+                    _planet.y = canvas.height / 2;
+
+
+                    _planet.velocity.y = 7;
+
+
+                    _planet.mass = 1;
+
+
+                let _particles = new Array;
+
+
+                    _particles.push ( _sun );
+
+                    _particles.push ( _planet );
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _rotate ( x, y, sin, cos, reverse )
+                {
+                    return {
+                               x: ( reverse ) ? ( x * cos + y * sin ) : ( x * cos - y * sin ),
+
+                               y: ( reverse ) ? ( y * cos - x * sin ) : ( y * cos + x * sin )
+                           };
+                }
+
+                function _checkCollision ( ball0, ball1 )
+                {
+                    let _distance = new Point;
+
+
+                        _distance.x = ball1.x - ball0.x;
+
+                        _distance.y = ball1.y - ball0.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    // COLLISION HANDLING CODE HERE
+                    if ( _distance.total < ball0.radius + ball1.radius )
+                    {
+                        // CALCULATE ANGLE, SINE, AND COSINE
+                        let _angle = Math.atan2 ( _distance.y, _distance.x );
+
+
+                        let _sin = Math.sin ( _angle );
+
+                        let _cos = Math.cos ( _angle );
+
+
+                        // ROTATE BALL0'S POSITION
+                        let _position0 = new Point;
+
+
+                        // ROTATE BALL1'S POSITION
+                        let _position1 = _rotate ( _distance.x, _distance.y, _sin, _cos, true );
+
+
+                        // ROTATE BALL0'S VELOCITY
+                        let _velocity0 = _rotate ( ball0.velocity.x, ball0.velocity.y, _sin, _cos, true );
+
+
+                        // ROTATE BALL1'S VELOCITY
+                        let _velocity1 = _rotate ( ball1.velocity.x, ball1.velocity.y, _sin, _cos, true );
+
+
+                        // COLLISION REACTION
+                        let _vxTotal = _velocity0.x - _velocity1.x;
+
+
+                            _velocity0.x = ( ( ball0.mass - ball1.mass ) * _velocity0.x + 2 * ball1.mass * _velocity1.x ) / ( ball0.mass + ball1.mass );
+
+                            _velocity1.x = _vxTotal + _velocity0.x;
+
+
+                        // UPDATE POSITION - TO AVOID OBJECTS BECOMING STUCK TOGETHER
+                        let _absoluteVelocity = Math.abs ( _velocity0.x ) + Math.abs ( _velocity1.x );
+
+
+                        let _overlap = ( ball0.radius + ball1.radius ) - Math.abs ( _position0.x - _position1.x );
+
+
+                            _position0.x += _velocity0.x / _absoluteVelocity * _overlap;
+
+                            _position1.x += _velocity1.x / _absoluteVelocity * _overlap;
+
+
+                        // ROTATE POSITIONS BACK
+                        let _position0Final = _rotate ( _position0.x, _position0.y, _sin, _cos, false );
+
+                        let _position1Final = _rotate ( _position1.x, _position1.y, _sin, _cos, false );
+
+
+                        // ADJUST POSITIONS TO ACTUAL SCREEN POSITIONS
+                        ball1.x = ball0.x + _position1Final.x;
+
+                        ball1.y = ball0.y + _position1Final.y;
+
+
+                        ball0.x = ball0.x + _position0Final.x;
+
+                        ball0.y = ball0.y + _position0Final.y;
+
+
+                        // ROTATE VELOCITIES BACK
+                        let _velocity0Final = _rotate ( _velocity0.x, _velocity0.y, _sin, _cos, false );
+
+                        let _velocity1Final = _rotate ( _velocity1.x, _velocity1.y, _sin, _cos, false );
+
+
+                        ball0.velocity.x = _velocity0Final.x;
+
+                        ball0.velocity.y = _velocity0Final.y;
+
+
+                        ball1.velocity.x = _velocity1Final.x;
+
+                        ball1.velocity.y = _velocity1Final.y;
+                    }
+                }
+
+                function _gravitate ( objectA, objectB )
+                {
+                    let _distance     = new Point;
+
+                    let _acceleration = new Point;
+
+
+                        _distance.x = objectB.x - objectA.x;
+
+                        _distance.y = objectB.y - objectA.y;
+
+
+                        _distance.squared = _distance.x * _distance.x + _distance.y * _distance.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.squared );
+
+
+                    let _force = objectA.mass * objectB.mass / _distance.squared;
+
+
+                        _acceleration.x = _force * _distance.x / _distance.total;
+
+                        _acceleration.y = _force * _distance.y / _distance.total;
+
+
+                    objectA.velocity.x += _acceleration.x / objectA.mass;
+
+                    objectA.velocity.y += _acceleration.y / objectA.mass;
+
+
+                    objectB.velocity.x -= _acceleration.x / objectB.mass;
+
+                    objectB.velocity.y -= _acceleration.y / objectB.mass;
+                }
+
+                function _move ( objectA, iter )
+                {
+                    objectA.x += objectA.velocity.x;
+
+                    objectA.y += objectA.velocity.y;
+
+
+                    for ( let _objectB, _j = iter + 1; _j < _particles.length; _j++ )
+                    {
+                        _objectB = _particles [ _j ];
+
+
+                        _checkCollision ( objectA, _objectB );
+
+                        _gravitate ( objectA, _objectB );
+                    }
+                }
+
+            ////    DRAW    ////////////////////////////////
+
+                function _draw ( particle )
+                {
+                    particle.draw ( );
+                }
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _particles.forEach ( _move );
+
+                    ////    DRAW    ////////////////////////
+
+                        _particles.forEach ( _draw );
+                }
+
+                _drawFrame ( );
+        },
+        // 12:5
+        drawingAlongTheOrbitalPath: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _sun = new Circle;
+
+
+                    _sun.radius = 100;
+
+
+                    _sun.x = canvas.width  / 2;
+
+                    _sun.y = canvas.height / 2;
+
+
+                    _sun.mass = 10000;
+
+
+                let _planet = new Circle;
+
+
+                    _planet.radius = 10;
+
+
+                    _planet.x = canvas.width  / 2 + 200;
+
+                    _planet.y = canvas.height / 2;
+
+
+                    _planet.velocity.y = 7;
+
+
+                    _planet.mass = 1;
+
+
+                let _particles = new Array;
+
+
+                    _particles.push ( _sun );
+
+                    _particles.push ( _planet );
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _rotate ( x, y, sin, cos, reverse )
+                {
+                    return {
+                               x: ( reverse ) ? ( x * cos + y * sin ) : ( x * cos - y * sin ),
+
+                               y: ( reverse ) ? ( y * cos - x * sin ) : ( y * cos + x * sin )
+                           };
+                }
+
+                function _checkCollision ( ball0, ball1 )
+                {
+                    let _distance = new Point;
+
+
+                        _distance.x = ball1.x - ball0.x;
+
+                        _distance.y = ball1.y - ball0.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    // COLLISION HANDLING CODE HERE
+                    if ( _distance.total < ball0.radius + ball1.radius )
+                    {
+                        // CALCULATE ANGLE, SINE, AND COSINE
+                        let _angle = Math.atan2 ( _distance.y, _distance.x );
+
+
+                        let _sin = Math.sin ( _angle );
+
+                        let _cos = Math.cos ( _angle );
+
+
+                        // ROTATE BALL0'S POSITION
+                        let _position0 = new Point;
+
+
+                        // ROTATE BALL1'S POSITION
+                        let _position1 = _rotate ( _distance.x, _distance.y, _sin, _cos, true );
+
+
+                        // ROTATE BALL0'S VELOCITY
+                        let _velocity0 = _rotate ( ball0.velocity.x, ball0.velocity.y, _sin, _cos, true );
+
+
+                        // ROTATE BALL1'S VELOCITY
+                        let _velocity1 = _rotate ( ball1.velocity.x, ball1.velocity.y, _sin, _cos, true );
+
+
+                        // COLLISION REACTION
+                        let _vxTotal = _velocity0.x - _velocity1.x;
+
+
+                            _velocity0.x = ( ( ball0.mass - ball1.mass ) * _velocity0.x + 2 * ball1.mass * _velocity1.x ) / ( ball0.mass + ball1.mass );
+
+                            _velocity1.x = _vxTotal + _velocity0.x;
+
+
+                        // UPDATE POSITION - TO AVOID OBJECTS BECOMING STUCK TOGETHER
+                        let _absoluteVelocity = Math.abs ( _velocity0.x ) + Math.abs ( _velocity1.x );
+
+
+                        let _overlap = ( ball0.radius + ball1.radius ) - Math.abs ( _position0.x - _position1.x );
+
+
+                            _position0.x += _velocity0.x / _absoluteVelocity * _overlap;
+
+                            _position1.x += _velocity1.x / _absoluteVelocity * _overlap;
+
+
+                        // ROTATE POSITIONS BACK
+                        let _position0Final = _rotate ( _position0.x, _position0.y, _sin, _cos, false );
+
+                        let _position1Final = _rotate ( _position1.x, _position1.y, _sin, _cos, false );
+
+
+                        // ADJUST POSITIONS TO ACTUAL SCREEN POSITIONS
+                        ball1.x = ball0.x + _position1Final.x;
+
+                        ball1.y = ball0.y + _position1Final.y;
+
+
+                        ball0.x = ball0.x + _position0Final.x;
+
+                        ball0.y = ball0.y + _position0Final.y;
+
+
+                        // ROTATE VELOCITIES BACK
+                        let _velocity0Final = _rotate ( _velocity0.x, _velocity0.y, _sin, _cos, false );
+
+                        let _velocity1Final = _rotate ( _velocity1.x, _velocity1.y, _sin, _cos, false );
+
+
+                        ball0.velocity.x = _velocity0Final.x;
+
+                        ball0.velocity.y = _velocity0Final.y;
+
+
+                        ball1.velocity.x = _velocity1Final.x;
+
+                        ball1.velocity.y = _velocity1Final.y;
+                    }
+                }
+
+                function _gravitate ( objectA, objectB )
+                {
+                    let _distance     = new Point;
+
+                    let _acceleration = new Point;
+
+
+                        _distance.x = objectB.x - objectA.x;
+
+                        _distance.y = objectB.y - objectA.y;
+
+
+                        _distance.squared = _distance.x * _distance.x + _distance.y * _distance.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.squared );
+
+
+                    let _force = objectA.mass * objectB.mass / _distance.squared;
+
+
+                        _acceleration.x = _force * _distance.x / _distance.total;
+
+                        _acceleration.y = _force * _distance.y / _distance.total;
+
+
+                    objectA.velocity.x += _acceleration.x / objectA.mass;
+
+                    objectA.velocity.y += _acceleration.y / objectA.mass;
+
+
+                    objectB.velocity.x -= _acceleration.x / objectB.mass;
+
+                    objectB.velocity.y -= _acceleration.y / objectB.mass;
+                }
+
+                function _move ( objectA, iter )
+                {
+                    objectA.x += objectA.velocity.x;
+
+                    objectA.y += objectA.velocity.y;
+
+
+                    for ( let _objectB, _j = iter + 1; _j < _particles.length; _j++ )
+                    {
+                        _objectB = _particles [ _j ];
+
+
+                        _checkCollision ( objectA, _objectB );
+
+                        _gravitate ( objectA, _objectB );
+                    }
+                }
+
+            ////    DRAW    ////////////////////////////////
+
+                function _draw ( particle )
+                {
+                    particle.draw ( );
+                }
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        // _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _particles.forEach ( _move );
+
+                    ////    DRAW    ////////////////////////
+
+                        _particles.forEach ( _draw );
+                }
+
+                _drawFrame ( );
+        },
+        // 12:6
+        connectingParticlesWithSprings: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _particles = new Array;
+
+            ////   SET DEFAULTS    /////////////////////////
+
+                let _amount       = 30;
+
+                let _minDistance  = 100;
+
+                let _springAmount = 0.001;
+
+            ////    POPULATION    //////////////////////////
+
+                for ( let _particle, _i = 0; _i < _amount; _i++ )
+                {
+                    _particle = new Circle;
+
+
+                    _particle.radius = 5;
+
+
+                    _particle.x = Math.random ( ) * _canvas.width;
+
+                    _particle.y = Math.random ( ) * _canvas.height;
+
+
+                    _particle.velocity.x = Math.random ( ) * 6 - 3;
+
+                    _particle.velocity.y = Math.random ( ) * 6 - 3;
+
+
+                    _particles.push ( _particle );
+                }
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _spring ( objectA, objectB )
+                {
+                    let _distance     = new Point;
+
+                    let _acceleration = new Point;
+
+
+                        _distance.x = objectB.x - objectA.x;
+
+                        _distance.y = objectB.y - objectA.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    if ( _distance.total < _minDistance )
+                    {
+                        _acceleration.x = _distance.x * _springAmount;
+
+                        _acceleration.y = _distance.y * _springAmount;
+
+
+                        objectA.velocity.x += _acceleration.x;
+
+                        objectA.velocity.y += _acceleration.y;
+
+
+                        objectB.velocity.x -= _acceleration.x;
+
+                        objectB.velocity.y -= _acceleration.y;
+                    }
+                }
+
+                function _move ( objectA, iter )
+                {
+                    objectA.x += objectA.velocity.x;
+
+                    objectA.y += objectA.velocity.y;
+
+
+                    if ( objectA.x > _canvas.width )
+
+                        objectA.x = 0;
+
+
+                    if ( objectA.x < 0 )
+
+                        objectA.x = _canvas.width;
+
+
+                    if ( objectA.y > _canvas.height )
+
+                        objectA.y = 0;
+
+
+                    if ( objectA.y < 0 )
+
+                        objectA.y = _canvas.height;
+
+
+                    for ( let _objectB, _j = iter + 1; _j < _amount; _j++ )
+                    {
+                        _objectB = _particles [ _j ];
+
+
+                        _spring ( objectA, _objectB );
+                    }
+                }
+
+            ////    DRAW    ////////////////////////////////
+
+                function _draw ( particle )
+                {
+                    particle.draw ( );
+                }
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _particles.forEach ( _move );
+
+                    ////    DRAW    ////////////////////////
+
+                        _particles.forEach ( _draw );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 12:7
+        drawingLinesBetweenConnectedParticles: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _particles = new Array;
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _amount       = 30;
+
+                let _minDistance  = 100;
+
+                let _springAmount = 0.001;
+
+            ////    POPULATION    //////////////////////////
+
+                for ( let _particle, _i = 0; _i < _amount; _i++ )
+                {
+                    _particle = new Circle;
+
+
+                    _particle.radius = 5;
+
+
+                    _particle.x = Math.random ( ) * _canvas.width;
+
+                    _particle.y = Math.random ( ) * _canvas.height;
+
+
+                    _particle.velocity.x = Math.random ( ) * 6 - 3;
+
+                    _particle.velocity.y = Math.random ( ) * 6 - 3;
+
+
+                    _particles.push ( _particle );
+                }
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _spring ( objectA, objectB )
+                {
+                    let _distance     = new Point;
+
+                    let _acceleration = new Point;
+
+
+                        _distance.x = objectB.x - objectA.x;
+
+                        _distance.y = objectB.y - objectA.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    if ( _distance.total < _minDistance )
+                    {
+                        let _alpha = 1 - _distance.total / _minDistance;
+
+
+                        _context.strokeStyle = utils.colorToRGB ( "#000000", _alpha );
+
+
+                        _context.beginPath ( );
+
+
+                        _context.moveTo ( objectA.x, objectA.y );
+
+                        _context.lineTo ( objectB.x, objectB.y );
+
+
+                        _context.stroke ( );
+
+
+                        _acceleration.x = _distance.x * _springAmount;
+
+                        _acceleration.y = _distance.y * _springAmount;
+
+
+                        objectA.velocity.x += _acceleration.x;
+
+                        objectA.velocity.y += _acceleration.y;
+
+
+                        objectB.velocity.x -= _acceleration.x;
+
+                        objectB.velocity.y -= _acceleration.y;
+                    }
+                }
+
+                function _move ( objectA, iter )
+                {
+                    objectA.x += objectA.velocity.x;
+
+                    objectA.y += objectA.velocity.y;
+
+
+                    if ( objectA.x > _canvas.width )
+
+                        objectA.x = 0;
+
+
+                    if ( objectA.x < 0 )
+
+                        objectA.x = _canvas.width;
+
+
+                    if ( objectA.y > _canvas.height )
+
+                        objectA.y = 0;
+
+
+                    if ( objectA.y < 0 )
+
+                        objectA.y = _canvas.height;
+
+
+                    for ( let _objectB, _j = iter + 1; _j < _amount; _j++ )
+                    {
+                        _objectB = _particles [ _j ];
+
+                        _spring ( objectA, _objectB );
+                    }
+                }
+
+            ////    DRAW    ////////////////////////////////
+
+                function _draw ( particle )
+                {
+                    particle.draw ( );
+                }
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _particles.forEach ( _move );
+
+                    ////    DRAW    ////////////////////////
+
+                        _particles.forEach ( _draw );
+                }
+
+
+                _drawFrame ( );
+        },
+        // 12:8
+        applyingMassToConnectedParticles: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
+
+                let _canvas  = document.getElementById ( 'canvas' );
+
+                let _context = _canvas.getContext ( '2d' );
+
+            ////    LOOP DATA    ///////////////////////////
+
+                let _timeCurrent = new Date ( );
+
+            ////    OBJECTS    /////////////////////////////
+
+                let _particles = new Array;
+
+            ////    SET DEFAULTS    ////////////////////////
+
+                let _amount       = 30;
+
+                let _minDistance  = 100;
+
+                let _springAmount = 0.005;
+
+            ////    POPULATION    //////////////////////////
+
+                for ( let _size, _particle, _i = 0; _i < _amount; _i++ )
+                {
+                    _particle = new Circle;
+
+
+                    _size = Math.random ( ) * 10 + 2;
+
+
+                    _particle.radius = _size;
+
+                    _particle.mass   = _size;
+
+
+                    _particle.x = Math.random ( ) * _canvas.width;
+
+                    _particle.y = Math.random ( ) * _canvas.height;
+
+
+                    _particle.velocity.x = Math.random ( ) * 6 - 3;
+
+                    _particle.velocity.y = Math.random ( ) * 6 - 3;
+
+
+                    _particles.push ( _particle );
+                }
+
+            ////    FUNCTIONS    ///////////////////////////
+
+                function _spring ( objectA, objectB )
+                {
+                    let _distance     = new Point;
+
+                    let _acceleration = new Point;
+
+
+                        _distance.x = objectB.x - objectA.x;
+
+                        _distance.y = objectB.y - objectA.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    if ( _distance.total < _minDistance )
+                    {
+                        let _alpha = 1 - _distance.total / _minDistance;
+
+
+                        _context.strokeStyle = utils.colorToRGB ( "#000000", _alpha );
+
+
+                        _context.beginPath ( );
+
+
+                        _context.moveTo ( objectA.x, objectA.y );
+
+                        _context.lineTo ( objectB.x, objectB.y );
+
+
+                        _context.stroke ( );
+
+
+                        _acceleration.x = _distance.x * _springAmount;
+
+                        _acceleration.y = _distance.y * _springAmount;
+
+
+                        objectA.velocity.x += _acceleration.x / objectA.mass;
+
+                        objectA.velocity.y += _acceleration.y / objectA.mass;
+
+
+                        objectB.velocity.x -= _acceleration.x / objectB.mass;
+
+                        objectB.velocity.y -= _acceleration.y / objectB.mass;
+                    }
+                }
+
+                function _move ( objectA, iter )
+                {
+                    objectA.x += objectA.velocity.x;
+
+                    objectA.y += objectA.velocity.y;
+
+
+                    if ( objectA.x > _canvas.width )
+
+                        objectA.x = 0;
+
+
+                    if ( objectA.x < 0 )
+
+                        objectA.x = _canvas.width;
+
+
+                    if ( objectA.y > _canvas.height )
+
+                        objectA.y = 0;
+
+
+                    if ( objectA.y < 0 )
+
+                        objectA.y = _canvas.height;
+
+
+                    for ( let _objectB, _j = iter + 1; _j < _amount; _j++ )
+                    {
+                        _objectB = _particles [ _j ];
+
+                        _spring ( objectA, _objectB );
+                    }
+                }
+
+            ////    DRAW    ////////////////////////////////
+
+                function _draw ( particle )
+                {
+                    particle.draw ( );
+                }
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _particles.forEach ( _move );
+
+                    ////    DRAW    ////////////////////////
+
+                        _particles.forEach ( _draw );
+                }
+
+
+                _drawFrame ( );
+        },
+        // // 13:2
+        // singleSegmentAndSlider: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment = new Segment ( new Point ( 100, 100 ), new Aspect ( 100, 20 ) );
+
+        //         let _slider  = new Slider ( new Point ( 300, 20 ), undefined, new Range ( - 90, 90, 0 ) );
+
+        //             _slider.captureMouse ( _canvas );
+
+        //             _slider.onchange = _drawFrame;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _segment.position.rotation = _slider.value * Math.PI / 180;
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segment.draw ( );
+
+        //                 _slider.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 13:3
+        // movingTwoSegmentsIndependent: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( new Point ( 100, 100 ), new Aspect ( 100, 20 ) );
+
+        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+
+
+        //         let _slider0 = new Slider ( new Point ( 320, 20 ), undefined, new Range ( - 90, 90, 0 ) );
+
+        //             _slider0.captureMouse ( _canvas );
+
+        //             _slider0.onchange = _drawFrame;
+
+
+        //         let _slider1 = new Slider ( new Point ( 340, 20 ), undefined, new Range ( - 90, 90, 0 ) );
+
+        //             _slider1.captureMouse ( _canvas );
+
+        //             _slider1.onchange = _drawFrame;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //     function _drawFrame ( )
+        //     {
+        //         ////    LOOP DATA    ///////////////////
+
+        //             _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //         ////    CLEAR SCREEN    ////////////////
+
+        //             _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //         ////    TRANSITIONS    /////////////////
+
+        //             _segment0.rotation = _slider0.value * Math.PI / 180;
+
+        //             _segment1.rotation = _slider1.value * Math.PI / 180;
+
+
+        //             _segment1.x = _segment0.pin.x;
+
+        //             _segment1.y = _segment0.pin.y;
+
+        //         ////    DRAW    ///////////////////////
+
+        //         _segment0.draw ( );
+
+        //         _segment1.draw ( );
+
+
+        //         _slider0.draw ( );
+
+        //         _slider1.draw ( );
+        //     }
+
+
+        //     _drawFrame (  );
+        // },
+        // // 13:4
+        // movingTwoSegmentsJoined: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( new Point ( 100, 100 ), new Aspect ( 100, 20 ) );
+
+        //         let _segment1 = new Segment ( undefined,              new Aspect ( 100, 20 ) );
+
+
+        //         let _slider0 = new Slider ( new Point ( 320, 20 ), undefined, new Range ( - 90, 90, 0 ) );
+
+        //             _slider0.captureMouse ( _canvas );
+
+        //             _slider0.onchange = _drawFrame;
+
+
+        //         let _slider1 = new Slider ( new Point ( 340, 20 ), undefined, new Range ( - 160, 90, 0 ) );
+
+        //             _slider1.captureMouse ( _canvas );
+
+        //             _slider1.onchange = _drawFrame;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //     function _drawFrame ( )
+        //     {
+        //         ////    LOOP DATA    ///////////////////
+
+        //             _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //         ////    CLEAR SCREEN    ////////////////
+
+        //             _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //         ////    TRANSITIONS    /////////////////
+
+        //             _segment0.rotation = _slider0.value * Math.PI / 180;
+
+        //             _segment1.rotation = _segment0.rotation + ( _slider1.value * Math.PI / 180 );
+
+
+        //             _segment1.x = _segment0.pin.x;
+
+        //             _segment1.y = _segment0.pin.y;
+
+        //         ////    DRAW    ///////////////////////
+
+        //         _segment0.draw ( );
+
+        //         _segment1.draw ( );
+
+
+        //         _slider0.draw ( );
+
+        //         _slider1.draw ( );
+        //     }
+
+
+        //     _drawFrame (  );
+        // },
+        // // 13:5
+        // automateWalk: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
+
+        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+
+        //             _segment1.x = _segment0.pin.x;
+
+        //             _segment1.y = _segment0.pin.y;
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _cycle = 0;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _cycle += 0.02;
+
+
+        //                 let _angle = ( Math.sin ( _cycle ) * 90 ) * Math.PI / 180;
+
+
+        //                 _segment0.rotation = _angle;
+
+        //                 _segment1.rotation = _segment0.rotation + _angle;
+
+
+        //                 _segment1.x = _segment0.pin.x;
+
+        //                 _segment1.y = _segment0.pin.y;
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segment0.draw ( );
+
+        //                 _segment1.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 13:6
+        // naturalWalk: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
+
+        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+
+        //             _segment1.x = _segment0.pin.x;
+
+        //             _segment1.y = _segment0.pin.y;
+
+        //     ////    SET DEFAUlTS    ////////////////////////
+
+        //         let _cycle = 0;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _cycle += 0.02;
+
+
+        //                 let _angle0 = ( Math.sin ( _cycle ) * 45 + 90 ) * Math.PI / 180;
+
+        //                 let _angle1 = ( Math.sin ( _cycle ) * 45 + 45 ) * Math.PI / 180;
+
+
+        //                 _segment0.rotation = _angle0;
+
+        //                 _segment1.rotation = _segment0.rotation + _angle1;
+
+
+        //                 _segment1.x = _segment0.pin.x;
+
+        //                 _segment1.y = _segment0.pin.y;
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segment0.draw ( );
+
+        //                 _segment1.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 13:7
+        // naturalWalkWithTwoLegs: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
+
+
+        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+
+        //             _segment1.x = _segment0.pin.x;
+
+        //             _segment1.y = _segment0.pin.y;
+
+
+        //         let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
+
+
+        //         let _segment3 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+
+        //             _segment3.x = _segment2.pin.x;
+
+        //             _segment3.y = _segment2.pin.y;
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _cycle = 0;
+
+        //         let _offset = - Math.PI / 2; //should be between PI and -PI
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _walk ( segmentA, segmentB, cycle )
+        //         {
+        //             let _angle0 = ( Math.sin ( cycle ) * 45 + 90 ) * Math.PI / 180;
+
+        //             let _angle1 = ( Math.sin ( cycle + _offset ) * 45 + 45 ) * Math.PI / 180;
+
+
+        //             segmentA.rotation = _angle0;
+
+        //             segmentB.rotation = segmentA.rotation + _angle1;
+
+
+        //             segmentB.x = segmentA.pin.x;
+
+        //             segmentB.y = segmentA.pin.y;
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _cycle += 0.02;
+
+
+        //                 _walk ( _segment0, _segment1, _cycle );
+
+        //                 _walk ( _segment2, _segment3, _cycle );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segment0.draw ( );
+
+        //                 _segment1.draw ( );
+
+        //                 _segment2.draw ( );
+
+        //                 _segment3.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 13:8
+        // naturalWalkWithTwoVisibleLegs: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
+
+
+        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+
+        //             _segment1.x = _segment0.pin.x;
+
+        //             _segment1.y = _segment0.pin.y;
+
+
+        //         let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
+
+
+        //         let _segment3 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+
+        //             _segment3.x = _segment2.pin.x;
+
+        //             _segment3.y = _segment2.pin.y;
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _cycle  = 0;
+
+        //         let _offset = - Math.PI / 2;      // SHOULD BE BETWEEN PI AND -PI
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _walk ( segmentA, segmentB, cycle )
+        //         {
+        //             let _angle0 = ( Math.sin ( cycle ) * 45 + 90 ) * Math.PI / 180;
+        //             let _angle1 = ( Math.sin ( cycle + _offset ) * 45 + 45 ) * Math.PI / 180;
+
+        //             segmentA.rotation = _angle0;
+        //             segmentB.rotation = segmentA.rotation + _angle1;
+
+        //             segmentB.x = segmentA.pin.x;
+        //             segmentB.y = segmentA.pin.y;
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _cycle += 0.02;
+
+        //                 _walk ( _segment0, _segment1, _cycle );
+
+        //                 _walk ( _segment2, _segment3, _cycle + Math.PI );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segment0.draw ( );
+
+        //                 _segment1.draw ( );
+
+        //                 _segment2.draw ( );
+
+        //                 _segment3.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 13:9
+        // dynamicWalkControls: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
+
+
+        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+
+        //             _segment1.x = _segment0.pin.x;
+
+        //             _segment1.y = _segment0.pin.y;
+
+
+        //         let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
+
+
+        //         let _segment3 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+
+        //             _segment3.x = _segment2.pin.x;
+
+        //             _segment3.y = _segment2.pin.y;
+
+
+        //         let _speedSlider = new Slider ( new Point ( 310, 10 ), undefined, new Range ( 0, 0.2, 0.08 ) );
+
+        //             _speedSlider.captureMouse ( _canvas );
+
+
+        //         let _thighRangeSlider = new Slider ( new Point ( 330, 10 ), undefined, new Range ( 0, 90, 45 ) );
+
+        //             _thighRangeSlider.captureMouse ( _canvas );
+
+
+        //         let _thighBaseSlider = new Slider ( new Point ( 350, 10 ), undefined, new Range ( 0, 180, 90 ) );
+
+        //             _thighBaseSlider.captureMouse ( _canvas );
+
+
+        //         let _calfRangeSlider = new Slider ( new Point ( 370, 10 ), undefined, new Range ( 0, 90, 45 ) );
+
+        //             _calfRangeSlider.captureMouse ( _canvas );
+
+
+        //         let _calfOffsetSlider = new Slider ( new Point ( 390, 10 ), undefined, new Range ( -3.14, 3.14, -1.57 ) );
+
+        //             _calfOffsetSlider.captureMouse ( _canvas );
+
+
+        //         let _cycle = 0;
+
+        //     ////    FUNCTIONS    ///////////////////////////////////
+
+        //         function _walk ( segmentA, segmentB, cycle )
+        //         {
+        //             let _angle0 = ( Math.sin ( cycle ) * _thighRangeSlider.value + _thighBaseSlider.value ) * Math.PI / 180;
+
+        //             let _angle1 = ( Math.sin ( cycle + _calfOffsetSlider.value ) * _calfRangeSlider.value + _calfRangeSlider.value ) * Math.PI / 180;
+
+
+        //             segmentA.rotation = _angle0;
+
+        //             segmentB.rotation = segmentA.rotation + _angle1;
+
+
+        //             segmentB.x = segmentA.pin.x;
+
+        //             segmentB.y = segmentA.pin.y;
+        //         }
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _cycle += _speedSlider.value;
+
+
+        //                 _walk ( _segment0, _segment1, _cycle );
+
+        //                 _walk ( _segment2, _segment3, _cycle + Math.PI );
+
+        //             ////    DRAW    ////////////////////////////////////
+
+        //                 _segment0.draw ( );
+
+        //                 _segment1.draw ( );
+
+        //                 _segment2.draw ( );
+
+        //                 _segment3.draw ( );
+
+
+        //                 _speedSlider.draw ( );
+
+        //                 _thighRangeSlider.draw ( );
+
+        //                 _thighBaseSlider.draw ( );
+
+        //                 _calfRangeSlider.draw ( );
+
+        //                 _calfOffsetSlider.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 13:10
+        // realWalkOnTheGround: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 50, 15 ) );
+
+
+        //         let _segment1 = new Segment ( new Point, new Aspect ( 50, 10 ) );
+
+        //             _segment1.x = _segment0.pin.x;
+
+        //             _segment1.y = _segment0.pin.y;
+
+
+        //         let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 50, 15 ) );
+
+
+        //         let _segment3 = new Segment ( new Point, new Aspect ( 50, 10 ) );
+
+        //             _segment3.x = _segment2.pin.x;
+
+        //             _segment3.y = _segment2.pin.y;
+
+
+        //         let _speedSlider = new Slider ( new Point ( 310, 10 ), undefined, new Range ( 0, 0.2, 0.08 ) );
+
+        //             _speedSlider.captureMouse ( _canvas );
+
+
+        //         let _thighRangeSlider = new Slider ( new Point ( 330, 10 ), undefined, new Range ( 0, 90, 45 ) );
+
+        //             _thighRangeSlider.captureMouse ( _canvas );
+
+
+        //         let _thighBaseSlider = new Slider ( new Point ( 350, 10 ), undefined, new Range ( 0, 180, 90 ) );
+
+        //             _thighBaseSlider.captureMouse ( _canvas );
+
+
+        //         let _calfRangeSlider = new Slider ( new Point ( 370, 10 ), undefined, new Range ( 0, 90, 45 ) );
+
+        //             _calfRangeSlider.captureMouse ( _canvas );
+
+
+        //         let _calfOffsetSlider = new Slider ( new Point ( 390, 10 ), undefined, new Range ( - 3.14, 3.14, - 1.57 ) );
+
+        //             _calfOffsetSlider.captureMouse ( _canvas );
+
+
+        //         let _gravitySlider = new Slider ( new Point ( 410, 10 ), undefined, new Range ( 0, 1, 0.2 ) );
+
+        //             _gravitySlider.captureMouse ( _canvas );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _cycle    = 0;
+
+        //         let _velocity = new Point;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _setVelocity (  )
+        //         {
+        //             _velocity.y += _gravitySlider.value;
+
+
+        //             _segment0.x += _velocity.x;
+
+        //             _segment0.y += _velocity.y;
+
+
+        //             _segment2.x += _velocity.x;
+
+        //             _segment2.y += _velocity.y;
+        //         }
+
+        //         function _walk ( segmentA, segmentB, cycle )
+        //         {
+        //             let _angle0 = ( Math.sin ( cycle ) * _thighRangeSlider.value + _thighBaseSlider.value ) * Math.PI / 180;
+
+        //             let _angle1 = ( Math.sin ( cycle + _calfOffsetSlider.value ) * _calfRangeSlider.value + _calfRangeSlider.value ) * Math.PI / 180;
+
+
+        //             let _foot = segmentB.pin;
+
+
+        //             segmentA.rotation = _angle0;
+
+        //             segmentB.rotation = segmentA.rotation + _angle1;
+
+
+        //             segmentB.x = segmentA.pin.x;
+
+        //             segmentB.y = segmentA.pin.y;
+
+
+        //             segmentB.velocity.x = segmentB.pin.x - _foot.x;
+
+        //             segmentB.velocity.y = segmentB.pin.y - _foot.y;
+        //         }
+
+        //         function _checkFloor ( segment )
+        //         {
+        //             let _yMax = segment.pin.y + ( segment.height / 2 );
+
+
+        //             if ( _yMax > _canvas.height )
+        //             {
+        //                 let _dy = _yMax - _canvas.height;
+
+
+        //                 _segment0.y -= _dy;
+
+        //                 _segment1.y -= _dy;
+
+        //                 _segment2.y -= _dy;
+
+        //                 _segment3.y -= _dy;
+
+
+        //                 _velocity.x -= segment.velocity.x;
+
+        //                 _velocity.y -= segment.velocity.y;
+        //             }
+        //         }
+
+        //         function _checkWalls ( )
+        //         {
+        //             let _width = _canvas.width + 200;
+
+
+        //             if ( _segment0.x > _canvas.width + 100 )
+        //             {
+        //                 _segment0.x -= _width;
+
+        //                 _segment1.x -= _width;
+
+        //                 _segment2.x -= _width;
+
+        //                 _segment3.x -= _width;
+        //             }
+
+
+        //             if  ( _segment0.x < - 100 )
+        //             {
+        //                 _segment0.x += _width;
+
+        //                 _segment1.x += _width;
+
+        //                 _segment2.x += _width;
+
+        //                 _segment3.x += _width;
+        //             }
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //     function _drawFrame ( )
+        //     {
+        //         window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //         ////    LOOP DATA    ///////////////////
+
+        //             _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //         ////    CLEAR SCREEN    ////////////////
+
+        //             _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //         ////    TRANSITIONS    /////////////////
+
+        //             _cycle += _speedSlider.value;
+
+        //             _setVelocity (  );
+
+
+        //             _walk ( _segment0, _segment1, _cycle );
+
+        //             _walk ( _segment2, _segment3, _cycle + Math.PI );
+
+
+        //             _checkFloor ( _segment1 );
+
+        //             _checkFloor ( _segment3 );
+
+
+        //             _checkWalls ( );
+
+        //         ////    DRAW    ////////////////////////////
+
+        //         _segment0.draw ( );
+
+        //         _segment1.draw ( );
+
+        //         _segment2.draw ( );
+
+        //         _segment3.draw ( );
+
+
+        //         _speedSlider.draw ( );
+
+        //         _thighRangeSlider.draw ( );
+
+        //         _thighBaseSlider.draw ( );
+
+        //         _calfRangeSlider.draw ( );
+
+        //         _calfOffsetSlider.draw ( );
+
+        //         _gravitySlider.draw ( );
+        //     }
+
+
+        //     _drawFrame ( );
+        // },
+        // // 14:1
+        // reachingWithASingleSegment: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment = new Segment;
+
+
+        //             _segment.width  = 100;
+
+        //             _segment.height = 20;
+
+
+        //             _segment.x = _canvas.width  / 2;
+
+        //             _segment.y = _canvas.height / 2;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _distance = new Point;
+
+
+        //                 _distance.x = _mouse.x - _segment.x;
+
+        //                 _distance.y = _mouse.y - _segment.y;
+
+
+        //                 _segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segment.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 14:2
+        // draggingASingleSegment: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment = new Segment;
+
+        //             _segment.width  = 100;
+
+        //             _segment.height = 20;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _distance = new Point;
+
+        //                     _distance.x = _mouse.x - _segment.x;
+
+        //                     _distance.y = _mouse.y - _segment.y;
+
+
+        //                 _segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+
+
+        //                 let _width  = _segment.pin.x - _segment.x;
+
+        //                 let _height = _segment.pin.y - _segment.y;
+
+
+        //                 _segment.x = _mouse.x - _width;
+
+        //                 _segment.y = _mouse.y - _height;
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segment.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 14:3
+        // draggingTwoSegments: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( 100, 20 );
+
+        //             _segment0.width  = 100;
+
+        //             _segment0.height = 20;
+
+        //         let _segment1 = new Segment ( 100, 20 );
+
+        //             _segment1.width  = 100;
+
+        //             _segment1.height = 20;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _drag ( segment, x, y )
+        //         {
+        //             let _distance = new Point;
+
+        //                 _distance.x = x - segment.x;
+
+        //                 _distance.y = y - segment.y;
+
+
+        //             segment.position.rotation = Math.atan2(_distance.y, _distance.x);
+
+
+        //             let _width  = segment.pin.x - segment.x;
+
+        //             let _height = segment.pin.y - segment.y;
+
+
+        //             segment.x = x - _width;
+
+        //             segment.y = y - _height;
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _drag ( _segment0, _mouse.x, _mouse.y );
+
+        //                 _drag ( _segment1, _segment0.x, _segment0.y );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segment0.draw ( );
+
+        //                 _segment1.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 14:4
+        // draggingManySegments: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segments = new Array;
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _amount = 5;
+
+        //     ////    POPULATION    //////////////////////////
+
+        //         while ( _amount-- )
+        //         {
+        //             let _segment = new Segment;
+
+        //                 _segment.width  = 50;
+
+        //                 _segment.height = 10;
+
+
+        //             _segments.push ( _segment );
+        //         }
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _drag ( segment, x, y )
+        //         {
+        //             let _distance = new Point;
+
+        //                 _distance.x = x - segment.x;
+
+        //                 _distance.y = y - segment.y;
+
+
+        //             segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+
+
+        //             let _width  = segment.pin.x - segment.x;
+
+        //             let _height = segment.pin.y - segment.y;
+
+
+        //             segment.x = x - _width;
+
+        //             segment.y = y - _height;
+        //         }
+
+        //         function _move ( segment, iter )
+        //         {
+        //             if ( iter !== 0 )
+
+        //                 _drag ( segment, _segments [ iter - 1 ].x, _segments [ iter - 1 ].y );
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _draw ( segment )
+        //         {
+        //             segment.draw ( );
+        //         }
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _drag ( _segments [ 0 ], _mouse.x, _mouse.y );
+
+        //                 _segments.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segments.forEach ( _draw );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 14:5
+        // reachingWithTwoSegments: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( undefined, { width: 100, height: 20 } );
+
+        //         let _segment1 = new Segment ( undefined, { width: 100, height: 20 } );
+
+        //             _segment1.x = _canvas.width  / 2;
+
+        //             _segment1.y = _canvas.height / 2;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _reach ( segment, x, y )
+        //         {
+        //             let _distance = new Point;
+
+        //                 _distance.x = x - segment.x;
+
+        //                 _distance.y = y - segment.y;
+
+
+        //             segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+
+
+        //             let _width  = segment.pin.x - segment.x;
+
+        //             let _height = segment.pin.y - segment.y;
+
+
+        //             return {
+        //                        x: x - _width,
+        //                        y: y - _height
+        //                    };
+        //         }
+
+        //         function _position ( segmentA, segmentB )
+        //         {
+        //             segmentA.x = segmentB.pin.x;
+
+        //             segmentA.y = segmentB.pin.y;
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //     function _drawFrame ( )
+        //     {
+        //         window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //         ////    LOOP DATA    ///////////////////
+
+        //             _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //         ////    CLEAR SCREEN    ////////////////
+
+        //             _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //         ////    TRANSITIONS    /////////////////
+
+        //             let _target = _reach ( _segment0, _mouse.x, _mouse.y );
+
+
+        //             _reach ( _segment1, _target.x, _target.y );
+
+        //             _position ( _segment0, _segment1 );
+
+        //         ////    DRAW    ////////////////////////
+
+        //             _segment0.draw ( );
+
+        //             _segment1.draw ( );
+        //     }
+
+
+        //     _drawFrame  (  )
+        // },
+        // // 14:6
+        // reachingWithManySegments: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segments = new Array;
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _amount = 5;
+
+        //         let _target = undefined;
+
+        //     ////    POPULATION    //////////////////////////
+
+        //         while ( _amount-- )
+        //         {
+        //             _segments.push ( new Segment ( undefined, { width: 50, height: 10 } ) );
+        //         }
+
+
+        //         // CENTER THE LAST ONE
+        //         _segments [ _segments.length - 1 ].x = _canvas.width  / 2;
+
+        //         _segments [ _segments.length - 1 ].y = _canvas.height / 2;
+
+        //     ////    FUNCTIONS    /////////////////
+
+        //         function _reach ( segment, x, y )
+        //         {
+        //             let _distance = new Point;
+
+        //                 _distance.x = x - segment.x;
+
+        //                 _distance.y = y - segment.y;
+
+
+        //             segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+
+
+        //             let _width  = segment.pin.x - segment.x;
+
+        //             let _height = segment.pin.y - segment.y;
+
+
+        //             return {
+        //                        x: x - _width,
+
+        //                        y: y - _height
+        //                    };
+        //         }
+
+        //         function _position ( segmentA, segmentB )
+        //         {
+        //             segmentA.x = segmentB.pin.x;
+
+        //             segmentA.y = segmentB.pin.y;
+        //         }
+
+        //         function _move ( segment, iter )
+        //         {
+        //             if ( iter !== 0 )
+        //             {
+        //                 _target = _reach ( segment, _target.x, _target.y );
+
+        //                 _position ( _segments [ iter - 1 ], segment );
+        //             }
+        //         }
+
+        //     ////    DRAW    //////////////////////
+
+        //         function _draw ( segment )
+        //         {
+        //             segment.draw ( );
+        //         }
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _target = _reach ( _segments [ 0 ], _mouse.x, _mouse.y );
+
+        //                 _segments.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segments.forEach ( _draw );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 14:7
+        // reachingForAnObject: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _circle = new Circle;
+
+        //             _circle.radius = 20;
+
+        //             _circle.velocity.x = 10;
+
+
+        //         let _segments = new Array;
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _amount  = 5;
+
+        //         let _gravity = 0.5;
+
+        //         let _bounce = -0.9;
+
+        //         let _target = undefined;
+
+        //     ////    POPULATION    //////////////////////////
+
+        //         while ( _amount-- )
+        //         {
+        //             _segments.push ( new Segment ( undefined, { width: 20, height: 10 } ) );
+        //         }
+
+
+        //         // CENTER THE LAST ONE
+        //         _segments [ _segments.length - 1 ].x = _canvas.width  / 2;
+
+        //         _segments [ _segments.length - 1 ].y = _canvas.height / 2;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _moveBall ( )
+        //         {
+        //             _circle.velocity.y += _gravity;
+
+
+        //             _circle.x += _circle.velocity.x;
+
+        //             _circle.y += _circle.velocity.y;
+
+
+        //             if ( _circle.x + _circle.radius > _canvas.width )
+        //             {
+        //                 _circle.x           = _canvas.width - _circle.radius;
+        //                 _circle.velocity.x *= _bounce;
+        //             }
+
+
+        //             if ( _circle.x - _circle.radius < 0 )
+        //             {
+        //                 _circle.x           = _circle.radius;
+        //                 _circle.velocity.x *= _bounce;
+        //             }
+
+
+        //             if ( _circle.y + _circle.radius > _canvas.height )
+        //             {
+        //                 _circle.y           = _canvas.height - _circle.radius;
+        //                 _circle.velocity.y *= _bounce;
+        //             }
+
+
+        //             if ( _circle.y - _circle.radius < 0 )
+        //             {
+        //                 _circle.y           = _circle.radius;
+        //                 _circle.velocity.y *= _bounce;
+        //             }
+        //         }
+
+        //         function _reach ( segment, x, y )
+        //         {
+        //             let _distance = new Point;
+
+        //                 _distance.x = x - segment.x,
+
+        //                 _distance.y = y - segment.y;
+
+
+        //             segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+
+
+        //             let _width  = segment.pin.x - segment.x;
+
+        //             let _height = segment.pin.y - segment.y;
+
+
+        //             return {
+        //                        x: x - _width,
+        //                        y: y - _height
+        //                    };
+        //         }
+
+        //         function _position ( segmentA, segmentB )
+        //         {
+        //             segmentA.x = segmentB.pin.x;
+
+        //             segmentA.y = segmentB.pin.y;
+        //         }
+
+        //         function _checkHit ( )
+        //         {
+        //             let _segment  = _segments [ 0 ];
+
+
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = _segment.pin.x - _circle.x;
+
+        //                 _distance.y = _segment.pin.y - _circle.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < _circle.radius )
+        //             {
+        //                 _circle.velocity.x += Math.random (  ) * 2 - 1;
+
+        //                 _circle.velocity.y -= 1;
+        //             }
+        //         }
+
+        //         function _move ( segment, iter )
+        //         {
+        //             if  ( iter !== 0 )
+        //             {
+        //                 _target = _reach ( segment, _target.x, _target.y );
+
+        //                 _position ( _segments [ iter - 1 ], segment );
+        //             }
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _draw ( segment )
+        //         {
+        //             segment.draw ( );
+        //         }
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _moveBall ( );
+
+        //                 _target = _reach ( _segments [ 0 ], _circle.x, _circle.y );
+
+        //                 _segments.forEach ( _move );
+
+        //                 _checkHit (  );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segments.forEach ( _draw );
+
+        //                 _circle.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 14:8
+        // reachingWithTheLawOfCosines: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( undefined, { width: 100, height: 20 } );
+
+        //         let _segment1 = new Segment ( undefined, { width: 100, height: 20 } );
+
+        //             _segment1.x = _canvas.width  / 2;
+
+        //             _segment1.y = _canvas.height / 2;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _distance = new Point;
+
+        //                     _distance.x = _mouse.x - _segment1.x;
+
+        //                     _distance.y = _mouse.y - _segment1.y;
+
+
+        //                     _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //                 let _a = 100;
+
+        //                 let _b = 100;
+
+
+        //                 let _c = Math.min ( _distance.total, _a + _b );
+
+
+        //                 let _B = Math.acos ( ( _b * _b - _a * _a - _c * _c ) / ( - 2 * _a * _c ) );
+
+        //                 let _C = Math.acos ( ( _c * _c - _a * _a - _b * _b ) / ( - 2 * _a * _b ) );
+
+
+        //                 let _D = Math.atan2 ( _distance.y, _distance.x );
+
+
+        //                 let _E = _D + _B + Math.PI + _C;
+
+
+        //                 _segment1.position.rotation = ( _D + _B );
+
+
+        //                 _segment0.x = _segment1.pin.x;
+
+        //                 _segment0.y = _segment1.pin.y;
+
+
+        //                 _segment0.position.rotation = _E;
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segment0.draw ( );
+
+        //                 _segment1.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // // 14:9
+        // reachingWithTheLawOfCosinesReverse: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _segment0 = new Segment ( undefined, { width: 100, height: 20 } );
+
+        //         let _segment1 = new Segment ( undefined, { width: 100, height: 20 } );
+
+        //             _segment1.x = _canvas.width  / 2;
+
+        //             _segment1.y = _canvas.height / 2;
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _distance = new Point;
+
+        //                     _distance.x = _mouse.x - _segment1.x;
+
+        //                     _distance.y = _mouse.y - _segment1.y;
+
+        //                     _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //                 let _a = 100;
+
+        //                 let _b = 100;
+
+
+        //                 let _c = Math.min ( _distance.total, _a + _b );
+
+
+        //                 let _B = Math.acos ( ( _b * _b - _a * _a - _c * _c ) / ( - 2 * _a * _c ) );
+
+        //                 let _C = Math.acos ( ( _c * _c - _a * _a - _b * _b ) / ( - 2 * _a * _b ) );
+
+
+        //                 let _D = Math.atan2 ( _distance.y, _distance.x );
+
+
+        //                 let _E = _D - _B + Math.PI - _C;
+
+
+        //                 _segment1.position.rotation = ( _D - _B );
+
+
+        //                 _segment0.x = _segment1.pin.x;
+
+        //                 _segment0.y = _segment1.pin.y;
+
+
+        //                 _segment0.position.rotation = _E;
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _segment0.draw ( );
+
+        //                 _segment1.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // }
     }
 
     ////    SETTERS    /////////////////////////////////////////////////////////////////////////////
@@ -17200,7 +22602,7 @@
             {
                 UI.init  ( );
 
-                LAB.init ( _scripts.mouseFountain );
+                LAB.init ( _scripts.draggingAndEasing );
 
 
                 if ( true )

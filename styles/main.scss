@@ -1298,7 +1298,7 @@ main
 
                 .container
                 {
-                    font-size:  14px;
+                    font-size:  14.5px;
 
                     display:    block;
 
@@ -1398,7 +1398,8 @@ main
                                 cursor:         pointer;
 
                                 list-style:     none;
-                                letter-spacing: 6px;
+                                letter-spacing: 2px;
+                                text-transform: capitalize;
 
                                 li
                                 {
