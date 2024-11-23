@@ -637,35 +637,21 @@ class Lab
                             }
                         } );
 
-                        break;
-
-                    case 'gamepad':
-
-                        window.addEventListener ( "gamepadconnected", ( event ) =>
-                        {
-                            console.log ( "Gamepad connected at index %d: %s. %d buttons, %d axes.",
-                                          event.gamepad.index,
-                                          event.gamepad.id,
-                                          event.gamepad.buttons.length,
-                                          event.gamepad.axes.length,
-                                        );
-                        });
-
                     case 'keyboardCommands':
 
                         Mousetrap.bind ( 'space',     ( ) => this.runCode ( )          );
 
-                        Mousetrap.bind ( 'n',         ( ) => UI.toggle.navigation  ( ) );
+                        // Mousetrap.bind ( 'n',         ( ) => UI.toggle.navigation  ( ) );
 
                         Mousetrap.bind ( 'f',         ( ) => UI.toggle.fullscreen  ( ) );
 
                         Mousetrap.bind ( 'g',         ( ) => UI.toggle.grid        ( ) );
 
-                        Mousetrap.bind ( 'd',         ( ) => UI.toggle.download    ( ) );
+                        // Mousetrap.bind ( 'd',         ( ) => UI.toggle.download    ( ) );
 
                         Mousetrap.bind ( 'c',         ( ) => UI.toggle.coordinates ( ) );
 
-                        Mousetrap.bind ( 'a',         ( ) => UI.toggle.angle       ( ) );
+                        Mousetrap.bind ( 'n',         ( ) => UI.toggle.angle       ( ) );
                 }
             }
 

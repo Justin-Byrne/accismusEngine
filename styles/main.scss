@@ -1267,7 +1267,7 @@ main
             {
                 position: absolute;
 
-                background-color: rgb(225, 250, 160);
+                background-color: rgb(0, 0, 0);
             }
 
             #editor
@@ -1545,11 +1545,22 @@ main
     #lab-open
     {
         position:   fixed;
-        width:      120px;
-        height:     100vh;
-        bottom:     0;
-        right:      0;
+        width:      360px;
+        height:     360px;
+        bottom:     -180px;
+        right:      -180px;
         z-index:    50;
+
+        opacity:    0;
+
+        transition: opacity 1s ease;
+
+        background: radial-gradient(circle, #800010 0%, rgba(121, 9, 23, 0) 73%);
+
+        &:hover
+        {
+            opacity: 0.5;
+        }
     }
 
     #byrne-systems-logo
