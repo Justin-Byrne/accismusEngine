@@ -513,12 +513,6 @@ class Lab
 
                             _clear.addEventListener ( 'click', ( ) => UI.toggle.labButton ( _clear ) );
 
-                    case 'boolean':
-
-                        let _boolean = document.querySelector ( '#input-boolean' );
-
-                            _boolean.addEventListener ( 'click', ( ) => UI.toggle.boolean ( ) );
-
                     case 'timing':
 
                         this._setTimingPopup ( );
@@ -541,6 +535,18 @@ class Lab
                         let _fps = document.getElementById ( 'input-fps' );
 
                             _fps.addEventListener ( 'click', ( ) => UI.toggle.fps ( ) );
+
+                    case 'gamepad':
+
+                        let _gamepad = document.querySelector ( '#input-gamepad' );
+
+                            _gamepad.addEventListener ( 'click', ( ) => UI.toggle.gamepad ( ) );
+
+                    case 'boolean':
+
+                        let _boolean = document.querySelector ( '#input-boolean' );
+
+                            _boolean.addEventListener ( 'click', ( ) => UI.toggle.boolean ( ) );
 
                     case 'valuePlus':
 
@@ -713,17 +719,21 @@ class Lab
 
                         Mousetrap.bind ( 'space',     ( ) => this.runCode ( )          );
 
-                        // Mousetrap.bind ( 'n',         ( ) => UI.toggle.navigation  ( ) );
+                        // Mousetrap.bind ( 'n',         ( ) => UI.toggle.navigation ( ) );
 
-                        Mousetrap.bind ( 'f',         ( ) => UI.toggle.fullscreen  ( ) );
+                        Mousetrap.bind ( ']',         ( ) => UI.toggle.fullscreen  ( ) );
 
-                        Mousetrap.bind ( 'g',         ( ) => UI.toggle.grid        ( ) );
+                        Mousetrap.bind ( 'g',         ( ) => UI.toggle.grid ( ) );
 
-                        // Mousetrap.bind ( 'd',         ( ) => UI.toggle.download    ( ) );
+                        Mousetrap.bind ( 'f',         ( ) => UI.toggle.fps ( ))
+
+                        // Mousetrap.bind ( 'd',         ( ) => UI.toggle.download ( ) );
 
                         Mousetrap.bind ( 'c',         ( ) => UI.toggle.coordinates ( ) );
 
-                        Mousetrap.bind ( 'n',         ( ) => UI.toggle.angle       ( ) );
+                        Mousetrap.bind ( 'n',         ( ) => UI.toggle.angle ( ) );
+
+                        Mousetrap.bind ( 'g',         ( ) => UI.toggle.gamepad ( ) );
                 }
             }
 
@@ -1031,9 +1041,11 @@ class Lab
 
                 ////    EDITOR ELEMENT    //////////////////////////////////////////
 
-                    let _editorElement              = document.getElementById ( _id );
+                    let _padding       = 23;
 
-                        _editorElement.style.height = `${window.innerHeight - _controlPanelHeight}px`;
+                    let _editorElement = document.getElementById ( _id );
+
+                        _editorElement.style.height = `${window.innerHeight - _controlPanelHeight + _padding}px`;
 
                 ////    EDITOR    //////////////////////////////////////////////////
 
@@ -3179,7 +3191,7 @@ class Ui
                     switch ( _element.tagName )
                     {
                         case 'DIV':
-                        case 'SPAN':                    this._cardPlus        ( _element );     break;
+                        case 'SPAN':        this._cardPlus ( _element );        break;
                     }
 
                 else
@@ -3307,6 +3319,7 @@ class Ui
 
                 LAB.setCanvasSize ( );
 
+
                 this._resetLabControl ( 'grid' );
 
                 this._resetLabControl ( 'coordinates' );
@@ -3315,11 +3328,30 @@ class Ui
 
                 this._resetLabControl ( 'fps' );
 
+
                 LAB.runCode ( );
 
                 ////    EVENT LISTENER    //////////////////////////////////////////
 
                 _open.addEventListener ( 'click', ( ) => this.fullscreen ( ) );
+            },
+
+            /**
+             * Toggles gamepad data
+             * @public
+             * @function
+             */
+            gamepad ( )
+            {
+                if ( ! devSuite.config.boostrapOffcanvas )
+                {
+                    let _offcanvas = document.querySelector ( '.offcanvas' );
+
+                    devSuite.config.boostrapOffcanvas = new bootstrap.Offcanvas ( _offcanvas );
+                }
+
+
+                devSuite.config.boostrapOffcanvas.toggle ( );
             },
 
             /**
@@ -20429,425 +20461,425 @@ class Ui
      */
     let _scripts =
     {
-        // // 6:2
-        // fountainOfRegeneratingObjects: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+        // 6:2
+        fountainOfRegeneratingObjects: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse = { x: 0, y: 0 }
+                let _mouse = { x: 0, y: 0 }
 
-        //         window.addEventListener ( 'mousemove', function ( )
-        //         {
-        //             _mouse.x = event.clientX;
+                window.addEventListener ( 'mousemove', function ( )
+                {
+                    _mouse.x = event.clientX;
 
-        //             _mouse.y = event.clientY;
-        //         } );
+                    _mouse.y = event.clientY;
+                } );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _circles  = new Array;
+                let _circles  = new Array;
 
-        //     ////    SET DEFAULTS    ////////////////////////
+            ////    SET DEFAULTS    ////////////////////////
 
-        //         ////    BALLS    ///////////////////////
+                ////    BALLS    ///////////////////////
 
-        //             let _numBalls = 80;
+                    let _numBalls = 80;
 
-        //             let _gravity  = 0.5;
+                    let _gravity  = 0.5;
 
-        //         ////    EASING    //////////////////////
+                ////    EASING    //////////////////////
 
-        //             let _easing  = 0.05;
+                    let _easing  = 0.05;
 
-        //             let _targetY = _canvas.height;
+                    let _targetY = _canvas.height;
 
-        //     ////    POPULATION    //////////////////////////
+            ////    POPULATION    //////////////////////////
 
-        //         for ( let _circle, _i = 0; _i < _numBalls; _i++ )
-        //         {
-        //             let _radius = utils.getRandomNumber ( 10 );
+                for ( let _circle, _i = 0; _i < _numBalls; _i++ )
+                {
+                    let _radius = utils.getRandomNumber ( 10 );
 
 
-        //             _circle = new Circle;
+                    _circle = new Circle;
 
-        //             _circle.canvas = 'canvas';
+                    _circle.canvas = 'canvas';
 
-        //             _circle.radius = _radius;
+                    _circle.radius = _radius;
 
 
-        //             _circle.x = _canvas.width / 2;
+                    _circle.x = _canvas.width / 2;
 
-        //             _circle.y = _canvas.height;
+                    _circle.y = _canvas.height;
 
 
-        //             _circle.velocity.x = Math.random ( ) * 2 - 1;
+                    _circle.velocity.x = Math.random ( ) * 2 - 1;
 
-        //             _circle.velocity.y = Math.random ( ) * -10 - 10;
+                    _circle.velocity.y = Math.random ( ) * -10 - 10;
 
 
-        //             _circles.push ( _circle );
-        //         }
+                    _circles.push ( _circle );
+                }
 
-        //     ////    FUNCTIONS    ///////////////////////////
+            ////    FUNCTIONS    ///////////////////////////
 
-        //         function _drawCircle ( circle )
-        //         {
-        //             circle.velocity.y += _gravity;
+                function _drawCircle ( circle )
+                {
+                    circle.velocity.y += _gravity;
 
 
-        //             circle.x += circle.velocity.x;
+                    circle.x += circle.velocity.x;
 
-        //             circle.y += circle.velocity.y;
+                    circle.y += circle.velocity.y;
 
 
-        //             if ( circle.x - circle.radius > canvas.width  || circle.x + circle.radius < 0 ||
+                    if ( circle.x - circle.radius > canvas.width  || circle.x + circle.radius < 0 ||
 
-        //                  circle.y - circle.radius > canvas.height || circle.y + circle.radius < 0 )
-        //             {
-        //                 circle.x = _mouse.x;
+                         circle.y - circle.radius > canvas.height || circle.y + circle.radius < 0 )
+                    {
+                        circle.x = _mouse.x;
 
-        //                 circle.y = _mouse.y;
+                        circle.y = _mouse.y;
 
 
-        //                 circle.velocity.x = Math.random ( ) * 2 - 1;
+                        circle.velocity.x = Math.random ( ) * 2 - 1;
 
-        //                 circle.velocity.y = Math.random ( ) * -10 - 10;
-        //             }
+                        circle.velocity.y = Math.random ( ) * -10 - 10;
+                    }
 
 
-        //             circle.draw ( );
-        //         }
+                    circle.draw ( );
+                }
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //              window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                     window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _circles.forEach ( _drawCircle );
-        //         }
+                        _circles.forEach ( _drawCircle );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 6:8
-        // spaceshipSimulationWithFrictionApplied: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 6:8
+        spaceshipSimulationWithFrictionApplied: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //         let _screen  = { left: 0, right: _canvas.width, top: 0, bottom: _canvas.height }
+                let _screen  = { left: 0, right: _canvas.width, top: 0, bottom: _canvas.height }
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         window.addEventListener ( 'keydown', function ( event )
-        //         {
-        //             switch ( event.keyCode )
-        //             {
-        //                 case 37:    _velocity.rotational = -3;                      break;  // left
-        //                 case 39:    _velocity.rotational =  3;                      break;  // right
-        //                 case 38:    [ _thrust, _ship.flame ] = [ 0.05, true ];      break;  // up
-        //             }
-        //         } );
+                window.addEventListener ( 'keydown', function ( event )
+                {
+                    switch ( event.keyCode )
+                    {
+                        case 37:    _velocity.rotational = -3;                      break;  // left
+                        case 39:    _velocity.rotational =  3;                      break;  // right
+                        case 38:    [ _thrust, _ship.flame ] = [ 0.05, true ];      break;  // up
+                    }
+                } );
 
-        //         window.addEventListener ( 'keyup', function ( )
-        //         {
-        //             _velocity.rotational = 0;
-        //             _thrust             = 0;
-        //             _ship.flame         = false;
-        //         } );
+                window.addEventListener ( 'keyup', function ( )
+                {
+                    _velocity.rotational = 0;
+                    _thrust             = 0;
+                    _ship.flame         = false;
+                } );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _ship = new Ship;
+                let _ship = new Ship;
 
 
-        //             _ship.canvas = 'canvas';
+                    _ship.canvas = 'canvas';
 
 
-        //             _ship.x = canvas.width  / 2;
+                    _ship.x = canvas.width  / 2;
 
-        //             _ship.y = canvas.height / 2;
+                    _ship.y = canvas.height / 2;
 
-        //     ////    SET DEFAULTS    ////////////////////////
+            ////    SET DEFAULTS    ////////////////////////
 
-        //         let _velocity = new Point;
+                let _velocity = new Point;
 
 
-        //             _velocity.x = 0;
+                    _velocity.x = 0;
 
-        //             _velocity.y = 0;
+                    _velocity.y = 0;
 
 
-        //             _velocity.rotational = 0
+                    _velocity.rotational = 0
 
-        //         // let _velocityRotational = 0;
+                // let _velocityRotational = 0;
 
-        //         // let _velocityX          = 0;
+                // let _velocityX          = 0;
 
-        //         // let _velocityY          = 0;
+                // let _velocityY          = 0;
 
-        //         let _thrust             = 0;
+                let _thrust             = 0;
 
-        //         let _friction           = 0.97;
+                let _friction           = 0.97;
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _ship.position.rotation += _velocity.rotational * Math.PI / 180;
+                        _ship.position.rotation += _velocity.rotational * Math.PI / 180;
 
 
-        //                 let _angle = _ship.position.rotation;       // in radians
+                        let _angle = _ship.position.rotation;       // in radians
 
 
-        //                 let _acceleration = new Point;
+                        let _acceleration = new Point;
 
 
-        //                     _acceleration.x = Math.cos ( _angle ) * _thrust;
+                            _acceleration.x = Math.cos ( _angle ) * _thrust;
 
-        //                     _acceleration.y = Math.sin ( _angle ) * _thrust;
+                            _acceleration.y = Math.sin ( _angle ) * _thrust;
 
 
-        //                 _velocity.x += _acceleration.x;
+                        _velocity.x += _acceleration.x;
 
-        //                 _velocity.y += _acceleration.y;
+                        _velocity.y += _acceleration.y;
 
 
-        //                 _velocity.x *= _friction;
+                        _velocity.x *= _friction;
 
-        //                 _velocity.y *= _friction;
+                        _velocity.y *= _friction;
 
 
-        //                 _ship.x += _velocity.x;
+                        _ship.x += _velocity.x;
 
-        //                 _ship.y += _velocity.y;
+                        _ship.y += _velocity.y;
 
-        //             ////    SCREEN WRAPPING    /////////////
+                    ////    SCREEN WRAPPING    /////////////
 
-        //                 if ( _ship.x - _ship.width  / 2 > _screen.right )
+                        if ( _ship.x - _ship.width  / 2 > _screen.right )
 
-        //                     _ship.x = _screen.left   - _ship.width  / 2;
+                            _ship.x = _screen.left   - _ship.width  / 2;
 
 
-        //                 if ( _ship.x + _ship.width  / 2 < _screen.left )
+                        if ( _ship.x + _ship.width  / 2 < _screen.left )
 
-        //                     _ship.x = _screen.right  + _ship.width  / 2;
+                            _ship.x = _screen.right  + _ship.width  / 2;
 
 
-        //                 if ( _ship.y - _ship.height / 2 > _screen.bottom )
+                        if ( _ship.y - _ship.height / 2 > _screen.bottom )
 
-        //                     _ship.y = _screen.top    - _ship.height / 2;
+                            _ship.y = _screen.top    - _ship.height / 2;
 
 
-        //                 if ( _ship.y < _screen.top - _ship.height / 2 )
+                        if ( _ship.y < _screen.top - _ship.height / 2 )
 
-        //                     _ship.y = _screen.bottom + _ship.height / 2;
+                            _ship.y = _screen.bottom + _ship.height / 2;
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _ship.draw ( );
-        //         }
+                        _ship.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 7:6
-        // throwingAnObject: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 7:6
+        throwingAnObject: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //         let _screen  = { left: 0, right: _canvas.width, top: 0, bottom: _canvas.height }
+                let _screen  = { left: 0, right: _canvas.width, top: 0, bottom: _canvas.height }
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _circle  = new Circle;
+                let _circle  = new Circle;
 
-        //             _circle.x = canvas.width  / 2;
+                    _circle.x = canvas.width  / 2;
 
-        //             _circle.y = canvas.height / 2;
+                    _circle.y = canvas.height / 2;
 
-        //     ////    SET DEFAULTS    ////////////////////////
+            ////    SET DEFAULTS    ////////////////////////
 
-        //         let _velocity = new Point;
+                let _velocity = new Point;
 
-        //             _velocity.x = Math.random() * 10 - 5;
+                    _velocity.x = Math.random() * 10 - 5;
 
-        //             _velocity.y = -10;
+                    _velocity.y = -10;
 
 
-        //         let _bounce    = -0.7;
+                let _bounce    = -0.7;
 
-        //         let _gravity   = 0.2;
+                let _gravity   = 0.2;
 
 
-        //         let _isMouseDown = false;
+                let _isMouseDown = false;
 
 
-        //         let _prior = new Point;
+                let _prior = new Point;
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         _canvas.addEventListener ( 'mousedown', function ( )
-        //         {
-        //             if ( utils.containsPoint ( _circle.bounds, _mouse.x, _mouse.y ) )
-        //             {
-        //                 _isMouseDown = true;
+                _canvas.addEventListener ( 'mousedown', function ( )
+                {
+                    if ( utils.containsPoint ( _circle.bounds, _mouse.x, _mouse.y ) )
+                    {
+                        _isMouseDown = true;
 
 
-        //                 [ _prior.x, _prior.y ] = [ _circle.x, _circle.y ];
+                        [ _prior.x, _prior.y ] = [ _circle.x, _circle.y ];
 
 
-        //                 _canvas.addEventListener ( 'mouseup',   _onMouseUp   );
+                        _canvas.addEventListener ( 'mouseup',   _onMouseUp   );
 
-        //                 _canvas.addEventListener ( 'mousemove', _onMouseMove );
-        //             }
-        //         } );
+                        _canvas.addEventListener ( 'mousemove', _onMouseMove );
+                    }
+                } );
 
-        //     ////    FUNCTIONS    ///////////////////////////
+            ////    FUNCTIONS    ///////////////////////////
 
-        //         function _onMouseUp ( )
-        //         {
-        //             _isMouseDown = false;
+                function _onMouseUp ( )
+                {
+                    _isMouseDown = false;
 
 
-        //             _canvas.removeEventListener ( 'mouseup',   _onMouseUp   );
+                    _canvas.removeEventListener ( 'mouseup',   _onMouseUp   );
 
-        //             _canvas.removeEventListener ( 'mousemove', _onMouseMove );
-        //         }
+                    _canvas.removeEventListener ( 'mousemove', _onMouseMove );
+                }
 
-        //         function _onMouseMove ( event )
-        //         {
-        //             [ _circle.x, _circle.y ] = [ _mouse.x, _mouse.y ];
-        //         }
+                function _onMouseMove ( event )
+                {
+                    [ _circle.x, _circle.y ] = [ _mouse.x, _mouse.y ];
+                }
 
-        //         function _trackVelocity ( )
-        //         {
-        //             [ _velocity.x, _velocity.y ] = [ _circle.x - _prior.x, _circle.y - _prior.y ];
+                function _trackVelocity ( )
+                {
+                    [ _velocity.x, _velocity.y ] = [ _circle.x - _prior.x, _circle.y - _prior.y ];
 
-        //             [ _prior.x,    _prior.y    ] = [ _circle.x,            _circle.y            ];
-        //         }
+                    [ _prior.x,    _prior.y    ] = [ _circle.x,            _circle.y            ];
+                }
 
-        //         function _checkBoundaries ( )
-        //         {
-        //             _velocity.y += _gravity;
+                function _checkBoundaries ( )
+                {
+                    _velocity.y += _gravity;
 
 
-        //             _circle.x += _velocity.x;
+                    _circle.x += _velocity.x;
 
-        //             _circle.y += _velocity.y;
+                    _circle.y += _velocity.y;
 
 
-        //             // BOUNDARY DETECT AND BOUNCE
-        //             if ( _circle.x + _circle.radius > _screen.right )
-        //             {
-        //                 _circle.x   = _screen.right - _circle.radius;
+                    // BOUNDARY DETECT AND BOUNCE
+                    if ( _circle.x + _circle.radius > _screen.right )
+                    {
+                        _circle.x   = _screen.right - _circle.radius;
 
-        //                 _velocity.x *= _bounce;
-        //             }
+                        _velocity.x *= _bounce;
+                    }
 
-        //             if ( _circle.x - _circle.radius < _screen.left )
-        //             {
-        //                 _circle.x   = _screen.left + _circle.radius;
+                    if ( _circle.x - _circle.radius < _screen.left )
+                    {
+                        _circle.x   = _screen.left + _circle.radius;
 
-        //                 _velocity.x *= _bounce;
-        //             }
+                        _velocity.x *= _bounce;
+                    }
 
-        //             if ( _circle.y + _circle.radius > _screen.bottom )
-        //             {
-        //                 _circle.y   = _screen.bottom - _circle.radius;
+                    if ( _circle.y + _circle.radius > _screen.bottom )
+                    {
+                        _circle.y   = _screen.bottom - _circle.radius;
 
-        //                 _velocity.y *= _bounce;
-        //             }
+                        _velocity.y *= _bounce;
+                    }
 
-        //             if ( _circle.y - _circle.radius < _screen.top )
-        //             {
-        //                 _circle.y   = _screen.top + _circle.radius;
+                    if ( _circle.y - _circle.radius < _screen.top )
+                    {
+                        _circle.y   = _screen.top + _circle.radius;
 
-        //                 _velocity.y *= _bounce;
-        //             }
-        //         }
+                        _velocity.y *= _bounce;
+                    }
+                }
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 ( _isMouseDown ) ? _trackVelocity ( )
+                        ( _isMouseDown ) ? _trackVelocity ( )
 
-        //                                  : _checkBoundaries ( );
+                                         : _checkBoundaries ( );
 
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _circle.draw ( );
-        //         }
+                        _circle.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
+                _drawFrame ( );
+        },
         // 8:2
         draggingAndEasing: ( ) =>
         {
@@ -22081,8 +22113,6 @@ class Ui
 
                 let _timeCurrent = new Date ( );
 
-            ////    INPUT    ///////////////////////////////
-
             ////    OBJECTS    /////////////////////////////
 
                 let _circle0 = new Circle;
@@ -22789,136 +22819,134 @@ class Ui
 
                 _drawFrame ( );
         },
-        // // 9:2
-        // stackingBoxes: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+        // 9:2
+        stackingBoxes: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //     ////    OBJECTS    /////////////////////////////
+                let _rectangles = new Array;
 
-        //         let _rectangles = new Array;
+                let _activeRectangle = _createRectangle ( );
 
-        //         let _activeRectangle = _createRectangle ( );
+            ////    SET DEFAULTS    ////////////////////////
 
-        //     ////    SET DEFAULTS    ////////////////////////
+                let _gravity   = 0.2;
 
-        //         let _gravity   = 0.2;
+            ////    FUNCTIONS    ///////////////////////////
 
-        //     ////    FUNCTIONS    ///////////////////////////
+                function _createRectangle ( )
+                {
+                    let _rectangle = new Rectangle;
 
-        //         function _createRectangle ( )
-        //         {
-        //             let _rectangle = new Rectangle;
+                        _rectangle.canvas = 'canvas';
 
-        //                 _rectangle.canvas = 'canvas';
-
-        //                 _rectangle.x      = Math.random ( ) * _canvas.width;
+                        _rectangle.x      = Math.random ( ) * _canvas.width;
 
 
-        //             _rectangles.push ( _rectangle );
+                    _rectangles.push ( _rectangle );
 
 
-        //             return _rectangle;
-        //         }
+                    return _rectangle;
+                }
 
-        //         function _drawRectangle ( rectangle )
-        //         {
-        //             if ( _activeRectangle !== rectangle && utils.intersects ( _activeRectangle, rectangle ) )
-        //             {
-        //                 _activeRectangle.y = rectangle.y - _activeRectangle.height;
+                function _drawRectangle ( rectangle )
+                {
+                    if ( _activeRectangle !== rectangle && utils.intersects ( _activeRectangle, rectangle ) )
+                    {
+                        _activeRectangle.y = rectangle.y - _activeRectangle.height;
 
-        //                 _activeRectangle   = _createRectangle ( );
-        //             }
-
-
-        //             rectangle.draw ( );
-        //         }
-
-        //     ////    DRAW    ////////////////////////////////
-
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
-
-        //             ////    LOOP DATA    ///////////////////
-
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
-
-        //             ////    CLEAR SCREEN    ////////////////
-
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
-
-        //             ////    TRANSITIONS    /////////////////
-
-        //                 _activeRectangle.velocity.y += _gravity;
-
-        //                 _activeRectangle.y          += _activeRectangle.velocity.y;
+                        _activeRectangle   = _createRectangle ( );
+                    }
 
 
-        //                 if ( _activeRectangle.y + _activeRectangle.height > _canvas.height )
-        //                 {
-        //                     _activeRectangle.y = _canvas.height - _activeRectangle.height;
+                    rectangle.draw ( );
+                }
 
-        //                     _activeRectangle   = _createRectangle ( );
-        //                 }
+            ////    DRAW    ////////////////////////////////
 
-        //             ////    DRAW    ////////////////////////
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //                 _rectangles.forEach ( _drawRectangle );
-        //         }
+                    ////    LOOP DATA    ///////////////////
+
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
+
+                    ////    CLEAR SCREEN    ////////////////
+
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    TRANSITIONS    /////////////////
+
+                        _activeRectangle.velocity.y += _gravity;
+
+                        _activeRectangle.y          += _activeRectangle.velocity.y;
 
 
-        //         _drawFrame ( );
-        // },
-        // // 9:3
-        // hitTestingAPointAndABoundingBox: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                        if ( _activeRectangle.y + _activeRectangle.height > _canvas.height )
+                        {
+                            _activeRectangle.y = _canvas.height - _activeRectangle.height;
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                            _activeRectangle   = _createRectangle ( );
+                        }
 
-        //         let _context = _canvas.getContext ( '2d' );
+                    ////    DRAW    ////////////////////////
 
-        //     ////    LOOP DATA    ///////////////////////////
+                        _rectangles.forEach ( _drawRectangle );
+                }
 
-        //         let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+                _drawFrame ( );
+        },
+        // 9:3
+        hitTestingAPointAndABoundingBox: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _mouse = utils.captureMouse ( _canvas );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //             _canvas.addEventListener ( 'mousemove', function ( )
-        //             {
-        //                 if ( utils.containsPoint ( _circle.bounds, _mouse.x, _mouse.y ) )
-        //                 {
-        //                   console.log ( "Hit!" )
-        //                 }
-        //             } );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _circle   = new Circle;
+                let _timeCurrent = new Date ( );
 
-        //             _circle.canvas = 'canvas';
+            ////    INPUT    ///////////////////////////////
 
-        //             _circle.x = canvas.width  / 2;
+                let _mouse = utils.captureMouse ( _canvas );
 
-        //             _circle.y = canvas.height / 2;
+                    _canvas.addEventListener ( 'mousemove', function ( )
+                    {
+                        if ( utils.containsPoint ( _circle.bounds, _mouse.x, _mouse.y ) )
+                        {
+                          console.log ( "Hit!" )
+                        }
+                    } );
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         _circle.draw ( );
-        // },
+                let _circle   = new Circle;
+
+                    _circle.canvas = 'canvas';
+
+                    _circle.x = canvas.width  / 2;
+
+                    _circle.y = canvas.height / 2;
+
+            ////    DRAW    ////////////////////////////////
+
+                _circle.draw ( );
+        },
         // 9:5
         distanceBasedCollisionDetectionWithArbitrarySize: ( ) =>
         {
@@ -25775,1786 +25803,1786 @@ class Ui
 
                 _drawFrame ( );
         },
-        // // 13:2
-        // singleSegmentAndSlider: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+        // 13:2
+        singleSegmentAndSlider: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment = new Segment ( new Point ( 100, 100 ), new Aspect ( 100, 20 ) );
+                let _segment = new Segment ( new Point ( 100, 100 ), new Aspect ( 100, 20 ) );
 
-        //         let _slider  = new Slider ( new Point ( 300, 20 ), undefined, new Range ( - 90, 90, 0 ) );
+                let _slider  = new Slider ( new Point ( 300, 20 ), undefined, new Range ( - 90, 90, 0 ) );
 
-        //             _slider.captureMouse ( _canvas );
+                    _slider.captureMouse ( _canvas );
 
-        //             _slider.onchange = _drawFrame;
+                    _slider.onchange = _drawFrame;
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _segment.position.rotation = _slider.value * Math.PI / 180;
+                        _segment.position.rotation = _slider.value * Math.PI / 180;
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segment.draw ( );
+                        _segment.draw ( );
 
-        //                 _slider.draw ( );
-        //         }
+                        _slider.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 13:3
-        // movingTwoSegmentsIndependent: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 13:3
+        movingTwoSegmentsIndependent: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( new Point ( 100, 100 ), new Aspect ( 100, 20 ) );
+                let _segment0 = new Segment ( new Point ( 100, 100 ), new Aspect ( 100, 20 ) );
 
-        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+                let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
 
 
-        //         let _slider0 = new Slider ( new Point ( 320, 20 ), undefined, new Range ( - 90, 90, 0 ) );
+                let _slider0 = new Slider ( new Point ( 320, 20 ), undefined, new Range ( - 90, 90, 0 ) );
 
-        //             _slider0.captureMouse ( _canvas );
+                    _slider0.captureMouse ( _canvas );
 
-        //             _slider0.onchange = _drawFrame;
+                    _slider0.onchange = _drawFrame;
 
 
-        //         let _slider1 = new Slider ( new Point ( 340, 20 ), undefined, new Range ( - 90, 90, 0 ) );
+                let _slider1 = new Slider ( new Point ( 340, 20 ), undefined, new Range ( - 90, 90, 0 ) );
 
-        //             _slider1.captureMouse ( _canvas );
+                    _slider1.captureMouse ( _canvas );
 
-        //             _slider1.onchange = _drawFrame;
+                    _slider1.onchange = _drawFrame;
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //     function _drawFrame ( )
-        //     {
-        //         ////    LOOP DATA    ///////////////////
+            function _drawFrame ( )
+            {
+                ////    LOOP DATA    ///////////////////
 
-        //             _timeCurrent = LAB.getFps ( _timeCurrent );
+                    _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //         ////    CLEAR SCREEN    ////////////////
+                ////    CLEAR SCREEN    ////////////////
 
-        //             _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                    _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //         ////    TRANSITIONS    /////////////////
+                ////    TRANSITIONS    /////////////////
 
-        //             _segment0.rotation = _slider0.value * Math.PI / 180;
+                    _segment0.rotation = _slider0.value * Math.PI / 180;
 
-        //             _segment1.rotation = _slider1.value * Math.PI / 180;
+                    _segment1.rotation = _slider1.value * Math.PI / 180;
 
 
-        //             _segment1.x = _segment0.pin.x;
+                    _segment1.x = _segment0.pin.x;
 
-        //             _segment1.y = _segment0.pin.y;
+                    _segment1.y = _segment0.pin.y;
 
-        //         ////    DRAW    ///////////////////////
+                ////    DRAW    ///////////////////////
 
-        //         _segment0.draw ( );
+                _segment0.draw ( );
 
-        //         _segment1.draw ( );
+                _segment1.draw ( );
 
 
-        //         _slider0.draw ( );
+                _slider0.draw ( );
 
-        //         _slider1.draw ( );
-        //     }
+                _slider1.draw ( );
+            }
 
 
-        //     _drawFrame (  );
-        // },
-        // // 13:4
-        // movingTwoSegmentsJoined: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+            _drawFrame (  );
+        },
+        // 13:4
+        movingTwoSegmentsJoined: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( new Point ( 100, 100 ), new Aspect ( 100, 20 ) );
+                let _segment0 = new Segment ( new Point ( 100, 100 ), new Aspect ( 100, 20 ) );
 
-        //         let _segment1 = new Segment ( undefined,              new Aspect ( 100, 20 ) );
+                let _segment1 = new Segment ( undefined,              new Aspect ( 100, 20 ) );
 
 
-        //         let _slider0 = new Slider ( new Point ( 320, 20 ), undefined, new Range ( - 90, 90, 0 ) );
+                let _slider0 = new Slider ( new Point ( 320, 20 ), undefined, new Range ( - 90, 90, 0 ) );
 
-        //             _slider0.captureMouse ( _canvas );
+                    _slider0.captureMouse ( _canvas );
 
-        //             _slider0.onchange = _drawFrame;
+                    _slider0.onchange = _drawFrame;
 
 
-        //         let _slider1 = new Slider ( new Point ( 340, 20 ), undefined, new Range ( - 160, 90, 0 ) );
+                let _slider1 = new Slider ( new Point ( 340, 20 ), undefined, new Range ( - 160, 90, 0 ) );
 
-        //             _slider1.captureMouse ( _canvas );
+                    _slider1.captureMouse ( _canvas );
 
-        //             _slider1.onchange = _drawFrame;
+                    _slider1.onchange = _drawFrame;
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //     function _drawFrame ( )
-        //     {
-        //         ////    LOOP DATA    ///////////////////
+            function _drawFrame ( )
+            {
+                ////    LOOP DATA    ///////////////////
 
-        //             _timeCurrent = LAB.getFps ( _timeCurrent );
+                    _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //         ////    CLEAR SCREEN    ////////////////
+                ////    CLEAR SCREEN    ////////////////
 
-        //             _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                    _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //         ////    TRANSITIONS    /////////////////
+                ////    TRANSITIONS    /////////////////
 
-        //             _segment0.rotation = _slider0.value * Math.PI / 180;
+                    _segment0.rotation = _slider0.value * Math.PI / 180;
 
-        //             _segment1.rotation = _segment0.rotation + ( _slider1.value * Math.PI / 180 );
+                    _segment1.rotation = _segment0.rotation + ( _slider1.value * Math.PI / 180 );
 
 
-        //             _segment1.x = _segment0.pin.x;
+                    _segment1.x = _segment0.pin.x;
 
-        //             _segment1.y = _segment0.pin.y;
+                    _segment1.y = _segment0.pin.y;
 
-        //         ////    DRAW    ///////////////////////
+                ////    DRAW    ///////////////////////
 
-        //         _segment0.draw ( );
+                _segment0.draw ( );
 
-        //         _segment1.draw ( );
+                _segment1.draw ( );
 
 
-        //         _slider0.draw ( );
+                _slider0.draw ( );
 
-        //         _slider1.draw ( );
-        //     }
+                _slider1.draw ( );
+            }
 
 
-        //     _drawFrame (  );
-        // },
-        // // 13:5
-        // automateWalk: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+            _drawFrame (  );
+        },
+        // 13:5
+        automateWalk: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
+                let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
 
-        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+                let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
 
-        //             _segment1.x = _segment0.pin.x;
+                    _segment1.x = _segment0.pin.x;
 
-        //             _segment1.y = _segment0.pin.y;
+                    _segment1.y = _segment0.pin.y;
 
-        //     ////    SET DEFAULTS    ////////////////////////
+            ////    SET DEFAULTS    ////////////////////////
 
-        //         let _cycle = 0;
+                let _cycle = 0;
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _cycle += 0.02;
+                        _cycle += 0.02;
 
 
-        //                 let _angle = ( Math.sin ( _cycle ) * 90 ) * Math.PI / 180;
+                        let _angle = ( Math.sin ( _cycle ) * 90 ) * Math.PI / 180;
 
 
-        //                 _segment0.rotation = _angle;
+                        _segment0.rotation = _angle;
 
-        //                 _segment1.rotation = _segment0.rotation + _angle;
+                        _segment1.rotation = _segment0.rotation + _angle;
 
 
-        //                 _segment1.x = _segment0.pin.x;
+                        _segment1.x = _segment0.pin.x;
 
-        //                 _segment1.y = _segment0.pin.y;
+                        _segment1.y = _segment0.pin.y;
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segment0.draw ( );
+                        _segment0.draw ( );
 
-        //                 _segment1.draw ( );
-        //         }
+                        _segment1.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 13:6
-        // naturalWalk: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 13:6
+        naturalWalk: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
+                let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
 
-        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+                let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
 
-        //             _segment1.x = _segment0.pin.x;
+                    _segment1.x = _segment0.pin.x;
 
-        //             _segment1.y = _segment0.pin.y;
+                    _segment1.y = _segment0.pin.y;
 
-        //     ////    SET DEFAUlTS    ////////////////////////
+            ////    SET DEFAUlTS    ////////////////////////
 
-        //         let _cycle = 0;
+                let _cycle = 0;
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _cycle += 0.02;
+                        _cycle += 0.02;
 
 
-        //                 let _angle0 = ( Math.sin ( _cycle ) * 45 + 90 ) * Math.PI / 180;
+                        let _angle0 = ( Math.sin ( _cycle ) * 45 + 90 ) * Math.PI / 180;
 
-        //                 let _angle1 = ( Math.sin ( _cycle ) * 45 + 45 ) * Math.PI / 180;
+                        let _angle1 = ( Math.sin ( _cycle ) * 45 + 45 ) * Math.PI / 180;
 
 
-        //                 _segment0.rotation = _angle0;
+                        _segment0.rotation = _angle0;
 
-        //                 _segment1.rotation = _segment0.rotation + _angle1;
+                        _segment1.rotation = _segment0.rotation + _angle1;
 
 
-        //                 _segment1.x = _segment0.pin.x;
+                        _segment1.x = _segment0.pin.x;
 
-        //                 _segment1.y = _segment0.pin.y;
+                        _segment1.y = _segment0.pin.y;
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segment0.draw ( );
+                        _segment0.draw ( );
 
-        //                 _segment1.draw ( );
-        //         }
+                        _segment1.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 13:7
-        // naturalWalkWithTwoLegs: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 13:7
+        naturalWalkWithTwoLegs: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
+                let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
 
 
-        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+                let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
 
-        //             _segment1.x = _segment0.pin.x;
+                    _segment1.x = _segment0.pin.x;
 
-        //             _segment1.y = _segment0.pin.y;
+                    _segment1.y = _segment0.pin.y;
 
 
-        //         let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
+                let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 20 ) );
 
 
-        //         let _segment3 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+                let _segment3 = new Segment ( undefined, new Aspect ( 100, 20 ) );
 
-        //             _segment3.x = _segment2.pin.x;
+                    _segment3.x = _segment2.pin.x;
 
-        //             _segment3.y = _segment2.pin.y;
+                    _segment3.y = _segment2.pin.y;
 
-        //     ////    SET DEFAULTS    ////////////////////////
+            ////    SET DEFAULTS    ////////////////////////
 
-        //         let _cycle = 0;
+                let _cycle = 0;
 
-        //         let _offset = - Math.PI / 2; //should be between PI and -PI
+                let _offset = - Math.PI / 2; //should be between PI and -PI
 
-        //     ////    FUNCTIONS    ///////////////////////////
+            ////    FUNCTIONS    ///////////////////////////
 
-        //         function _walk ( segmentA, segmentB, cycle )
-        //         {
-        //             let _angle0 = ( Math.sin ( cycle ) * 45 + 90 ) * Math.PI / 180;
+                function _walk ( segmentA, segmentB, cycle )
+                {
+                    let _angle0 = ( Math.sin ( cycle ) * 45 + 90 ) * Math.PI / 180;
 
-        //             let _angle1 = ( Math.sin ( cycle + _offset ) * 45 + 45 ) * Math.PI / 180;
+                    let _angle1 = ( Math.sin ( cycle + _offset ) * 45 + 45 ) * Math.PI / 180;
 
 
-        //             segmentA.rotation = _angle0;
+                    segmentA.rotation = _angle0;
 
-        //             segmentB.rotation = segmentA.rotation + _angle1;
+                    segmentB.rotation = segmentA.rotation + _angle1;
 
 
-        //             segmentB.x = segmentA.pin.x;
+                    segmentB.x = segmentA.pin.x;
 
-        //             segmentB.y = segmentA.pin.y;
-        //         }
+                    segmentB.y = segmentA.pin.y;
+                }
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _cycle += 0.02;
+                        _cycle += 0.02;
 
 
-        //                 _walk ( _segment0, _segment1, _cycle );
+                        _walk ( _segment0, _segment1, _cycle );
 
-        //                 _walk ( _segment2, _segment3, _cycle );
+                        _walk ( _segment2, _segment3, _cycle );
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segment0.draw ( );
+                        _segment0.draw ( );
 
-        //                 _segment1.draw ( );
+                        _segment1.draw ( );
 
-        //                 _segment2.draw ( );
+                        _segment2.draw ( );
 
-        //                 _segment3.draw ( );
-        //         }
+                        _segment3.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 13:8
-        // naturalWalkWithTwoVisibleLegs: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 13:8
+        naturalWalkWithTwoVisibleLegs: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
+                let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
 
 
-        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+                let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
 
-        //             _segment1.x = _segment0.pin.x;
+                    _segment1.x = _segment0.pin.x;
 
-        //             _segment1.y = _segment0.pin.y;
+                    _segment1.y = _segment0.pin.y;
 
 
-        //         let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
+                let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
 
 
-        //         let _segment3 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+                let _segment3 = new Segment ( undefined, new Aspect ( 100, 20 ) );
 
-        //             _segment3.x = _segment2.pin.x;
+                    _segment3.x = _segment2.pin.x;
 
-        //             _segment3.y = _segment2.pin.y;
+                    _segment3.y = _segment2.pin.y;
 
-        //     ////    SET DEFAULTS    ////////////////////////
+            ////    SET DEFAULTS    ////////////////////////
 
-        //         let _cycle  = 0;
+                let _cycle  = 0;
 
-        //         let _offset = - Math.PI / 2;      // SHOULD BE BETWEEN PI AND -PI
+                let _offset = - Math.PI / 2;      // SHOULD BE BETWEEN PI AND -PI
 
-        //     ////    FUNCTIONS    ///////////////////////////
+            ////    FUNCTIONS    ///////////////////////////
 
-        //         function _walk ( segmentA, segmentB, cycle )
-        //         {
-        //             let _angle0 = ( Math.sin ( cycle ) * 45 + 90 ) * Math.PI / 180;
-        //             let _angle1 = ( Math.sin ( cycle + _offset ) * 45 + 45 ) * Math.PI / 180;
+                function _walk ( segmentA, segmentB, cycle )
+                {
+                    let _angle0 = ( Math.sin ( cycle ) * 45 + 90 ) * Math.PI / 180;
+                    let _angle1 = ( Math.sin ( cycle + _offset ) * 45 + 45 ) * Math.PI / 180;
 
-        //             segmentA.rotation = _angle0;
-        //             segmentB.rotation = segmentA.rotation + _angle1;
+                    segmentA.rotation = _angle0;
+                    segmentB.rotation = segmentA.rotation + _angle1;
 
-        //             segmentB.x = segmentA.pin.x;
-        //             segmentB.y = segmentA.pin.y;
-        //         }
+                    segmentB.x = segmentA.pin.x;
+                    segmentB.y = segmentA.pin.y;
+                }
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _cycle += 0.02;
+                        _cycle += 0.02;
 
-        //                 _walk ( _segment0, _segment1, _cycle );
+                        _walk ( _segment0, _segment1, _cycle );
 
-        //                 _walk ( _segment2, _segment3, _cycle + Math.PI );
+                        _walk ( _segment2, _segment3, _cycle + Math.PI );
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segment0.draw ( );
+                        _segment0.draw ( );
 
-        //                 _segment1.draw ( );
+                        _segment1.draw ( );
 
-        //                 _segment2.draw ( );
+                        _segment2.draw ( );
 
-        //                 _segment3.draw ( );
-        //         }
+                        _segment3.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 13:9
-        // dynamicWalkControls: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 13:9
+        dynamicWalkControls: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
+                let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
 
 
-        //         let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+                let _segment1 = new Segment ( undefined, new Aspect ( 100, 20 ) );
 
-        //             _segment1.x = _segment0.pin.x;
+                    _segment1.x = _segment0.pin.x;
 
-        //             _segment1.y = _segment0.pin.y;
+                    _segment1.y = _segment0.pin.y;
 
 
-        //         let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
+                let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 100, 30 ) );
 
 
-        //         let _segment3 = new Segment ( undefined, new Aspect ( 100, 20 ) );
+                let _segment3 = new Segment ( undefined, new Aspect ( 100, 20 ) );
 
-        //             _segment3.x = _segment2.pin.x;
+                    _segment3.x = _segment2.pin.x;
 
-        //             _segment3.y = _segment2.pin.y;
+                    _segment3.y = _segment2.pin.y;
 
 
-        //         let _speedSlider = new Slider ( new Point ( 310, 10 ), undefined, new Range ( 0, 0.2, 0.08 ) );
+                let _speedSlider = new Slider ( new Point ( 310, 10 ), undefined, new Range ( 0, 0.2, 0.08 ) );
 
-        //             _speedSlider.captureMouse ( _canvas );
+                    _speedSlider.captureMouse ( _canvas );
 
 
-        //         let _thighRangeSlider = new Slider ( new Point ( 330, 10 ), undefined, new Range ( 0, 90, 45 ) );
+                let _thighRangeSlider = new Slider ( new Point ( 330, 10 ), undefined, new Range ( 0, 90, 45 ) );
 
-        //             _thighRangeSlider.captureMouse ( _canvas );
+                    _thighRangeSlider.captureMouse ( _canvas );
 
 
-        //         let _thighBaseSlider = new Slider ( new Point ( 350, 10 ), undefined, new Range ( 0, 180, 90 ) );
+                let _thighBaseSlider = new Slider ( new Point ( 350, 10 ), undefined, new Range ( 0, 180, 90 ) );
 
-        //             _thighBaseSlider.captureMouse ( _canvas );
+                    _thighBaseSlider.captureMouse ( _canvas );
 
 
-        //         let _calfRangeSlider = new Slider ( new Point ( 370, 10 ), undefined, new Range ( 0, 90, 45 ) );
+                let _calfRangeSlider = new Slider ( new Point ( 370, 10 ), undefined, new Range ( 0, 90, 45 ) );
 
-        //             _calfRangeSlider.captureMouse ( _canvas );
+                    _calfRangeSlider.captureMouse ( _canvas );
 
 
-        //         let _calfOffsetSlider = new Slider ( new Point ( 390, 10 ), undefined, new Range ( -3.14, 3.14, -1.57 ) );
+                let _calfOffsetSlider = new Slider ( new Point ( 390, 10 ), undefined, new Range ( -3.14, 3.14, -1.57 ) );
 
-        //             _calfOffsetSlider.captureMouse ( _canvas );
+                    _calfOffsetSlider.captureMouse ( _canvas );
 
 
-        //         let _cycle = 0;
+                let _cycle = 0;
 
-        //     ////    FUNCTIONS    ///////////////////////////////////
+            ////    FUNCTIONS    ///////////////////////////////////
 
-        //         function _walk ( segmentA, segmentB, cycle )
-        //         {
-        //             let _angle0 = ( Math.sin ( cycle ) * _thighRangeSlider.value + _thighBaseSlider.value ) * Math.PI / 180;
+                function _walk ( segmentA, segmentB, cycle )
+                {
+                    let _angle0 = ( Math.sin ( cycle ) * _thighRangeSlider.value + _thighBaseSlider.value ) * Math.PI / 180;
 
-        //             let _angle1 = ( Math.sin ( cycle + _calfOffsetSlider.value ) * _calfRangeSlider.value + _calfRangeSlider.value ) * Math.PI / 180;
+                    let _angle1 = ( Math.sin ( cycle + _calfOffsetSlider.value ) * _calfRangeSlider.value + _calfRangeSlider.value ) * Math.PI / 180;
 
 
-        //             segmentA.rotation = _angle0;
+                    segmentA.rotation = _angle0;
 
-        //             segmentB.rotation = segmentA.rotation + _angle1;
+                    segmentB.rotation = segmentA.rotation + _angle1;
 
 
-        //             segmentB.x = segmentA.pin.x;
+                    segmentB.x = segmentA.pin.x;
 
-        //             segmentB.y = segmentA.pin.y;
-        //         }
+                    segmentB.y = segmentA.pin.y;
+                }
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _cycle += _speedSlider.value;
+                        _cycle += _speedSlider.value;
 
 
-        //                 _walk ( _segment0, _segment1, _cycle );
+                        _walk ( _segment0, _segment1, _cycle );
 
-        //                 _walk ( _segment2, _segment3, _cycle + Math.PI );
+                        _walk ( _segment2, _segment3, _cycle + Math.PI );
 
-        //             ////    DRAW    ////////////////////////////////////
+                    ////    DRAW    ////////////////////////////////////
 
-        //                 _segment0.draw ( );
+                        _segment0.draw ( );
 
-        //                 _segment1.draw ( );
+                        _segment1.draw ( );
 
-        //                 _segment2.draw ( );
+                        _segment2.draw ( );
 
-        //                 _segment3.draw ( );
+                        _segment3.draw ( );
 
 
-        //                 _speedSlider.draw ( );
+                        _speedSlider.draw ( );
 
-        //                 _thighRangeSlider.draw ( );
+                        _thighRangeSlider.draw ( );
 
-        //                 _thighBaseSlider.draw ( );
+                        _thighBaseSlider.draw ( );
 
-        //                 _calfRangeSlider.draw ( );
+                        _calfRangeSlider.draw ( );
 
-        //                 _calfOffsetSlider.draw ( );
-        //         }
+                        _calfOffsetSlider.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 13:10
-        // realWalkOnTheGround: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 13:10
+        realWalkOnTheGround: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 50, 15 ) );
+                let _segment0 = new Segment ( new Point ( 200, 200 ), new Aspect ( 50, 15 ) );
 
 
-        //         let _segment1 = new Segment ( new Point, new Aspect ( 50, 10 ) );
+                let _segment1 = new Segment ( new Point, new Aspect ( 50, 10 ) );
 
-        //             _segment1.x = _segment0.pin.x;
+                    _segment1.x = _segment0.pin.x;
 
-        //             _segment1.y = _segment0.pin.y;
+                    _segment1.y = _segment0.pin.y;
 
 
-        //         let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 50, 15 ) );
+                let _segment2 = new Segment ( new Point ( 200, 200 ), new Aspect ( 50, 15 ) );
 
 
-        //         let _segment3 = new Segment ( new Point, new Aspect ( 50, 10 ) );
+                let _segment3 = new Segment ( new Point, new Aspect ( 50, 10 ) );
 
-        //             _segment3.x = _segment2.pin.x;
+                    _segment3.x = _segment2.pin.x;
 
-        //             _segment3.y = _segment2.pin.y;
+                    _segment3.y = _segment2.pin.y;
 
 
-        //         let _speedSlider = new Slider ( new Point ( 310, 10 ), undefined, new Range ( 0, 0.2, 0.08 ) );
+                let _speedSlider = new Slider ( new Point ( 310, 10 ), undefined, new Range ( 0, 0.2, 0.08 ) );
 
-        //             _speedSlider.captureMouse ( _canvas );
+                    _speedSlider.captureMouse ( _canvas );
 
 
-        //         let _thighRangeSlider = new Slider ( new Point ( 330, 10 ), undefined, new Range ( 0, 90, 45 ) );
+                let _thighRangeSlider = new Slider ( new Point ( 330, 10 ), undefined, new Range ( 0, 90, 45 ) );
 
-        //             _thighRangeSlider.captureMouse ( _canvas );
+                    _thighRangeSlider.captureMouse ( _canvas );
 
 
-        //         let _thighBaseSlider = new Slider ( new Point ( 350, 10 ), undefined, new Range ( 0, 180, 90 ) );
+                let _thighBaseSlider = new Slider ( new Point ( 350, 10 ), undefined, new Range ( 0, 180, 90 ) );
 
-        //             _thighBaseSlider.captureMouse ( _canvas );
+                    _thighBaseSlider.captureMouse ( _canvas );
 
 
-        //         let _calfRangeSlider = new Slider ( new Point ( 370, 10 ), undefined, new Range ( 0, 90, 45 ) );
+                let _calfRangeSlider = new Slider ( new Point ( 370, 10 ), undefined, new Range ( 0, 90, 45 ) );
 
-        //             _calfRangeSlider.captureMouse ( _canvas );
+                    _calfRangeSlider.captureMouse ( _canvas );
 
 
-        //         let _calfOffsetSlider = new Slider ( new Point ( 390, 10 ), undefined, new Range ( - 3.14, 3.14, - 1.57 ) );
+                let _calfOffsetSlider = new Slider ( new Point ( 390, 10 ), undefined, new Range ( - 3.14, 3.14, - 1.57 ) );
 
-        //             _calfOffsetSlider.captureMouse ( _canvas );
+                    _calfOffsetSlider.captureMouse ( _canvas );
 
 
-        //         let _gravitySlider = new Slider ( new Point ( 410, 10 ), undefined, new Range ( 0, 1, 0.2 ) );
+                let _gravitySlider = new Slider ( new Point ( 410, 10 ), undefined, new Range ( 0, 1, 0.2 ) );
 
-        //             _gravitySlider.captureMouse ( _canvas );
+                    _gravitySlider.captureMouse ( _canvas );
 
-        //     ////    SET DEFAULTS    ////////////////////////
+            ////    SET DEFAULTS    ////////////////////////
 
-        //         let _cycle    = 0;
+                let _cycle    = 0;
 
-        //         let _velocity = new Point;
+                let _velocity = new Point;
 
-        //     ////    FUNCTIONS    ///////////////////////////
+            ////    FUNCTIONS    ///////////////////////////
 
-        //         function _setVelocity (  )
-        //         {
-        //             _velocity.y += _gravitySlider.value;
+                function _setVelocity (  )
+                {
+                    _velocity.y += _gravitySlider.value;
 
 
-        //             _segment0.x += _velocity.x;
+                    _segment0.x += _velocity.x;
 
-        //             _segment0.y += _velocity.y;
+                    _segment0.y += _velocity.y;
 
 
-        //             _segment2.x += _velocity.x;
+                    _segment2.x += _velocity.x;
 
-        //             _segment2.y += _velocity.y;
-        //         }
+                    _segment2.y += _velocity.y;
+                }
 
-        //         function _walk ( segmentA, segmentB, cycle )
-        //         {
-        //             let _angle0 = ( Math.sin ( cycle ) * _thighRangeSlider.value + _thighBaseSlider.value ) * Math.PI / 180;
+                function _walk ( segmentA, segmentB, cycle )
+                {
+                    let _angle0 = ( Math.sin ( cycle ) * _thighRangeSlider.value + _thighBaseSlider.value ) * Math.PI / 180;
 
-        //             let _angle1 = ( Math.sin ( cycle + _calfOffsetSlider.value ) * _calfRangeSlider.value + _calfRangeSlider.value ) * Math.PI / 180;
+                    let _angle1 = ( Math.sin ( cycle + _calfOffsetSlider.value ) * _calfRangeSlider.value + _calfRangeSlider.value ) * Math.PI / 180;
 
 
-        //             let _foot = segmentB.pin;
+                    let _foot = segmentB.pin;
 
 
-        //             segmentA.rotation = _angle0;
+                    segmentA.rotation = _angle0;
 
-        //             segmentB.rotation = segmentA.rotation + _angle1;
+                    segmentB.rotation = segmentA.rotation + _angle1;
 
 
-        //             segmentB.x = segmentA.pin.x;
+                    segmentB.x = segmentA.pin.x;
 
-        //             segmentB.y = segmentA.pin.y;
+                    segmentB.y = segmentA.pin.y;
 
 
-        //             segmentB.velocity.x = segmentB.pin.x - _foot.x;
+                    segmentB.velocity.x = segmentB.pin.x - _foot.x;
 
-        //             segmentB.velocity.y = segmentB.pin.y - _foot.y;
-        //         }
+                    segmentB.velocity.y = segmentB.pin.y - _foot.y;
+                }
 
-        //         function _checkFloor ( segment )
-        //         {
-        //             let _yMax = segment.pin.y + ( segment.height / 2 );
+                function _checkFloor ( segment )
+                {
+                    let _yMax = segment.pin.y + ( segment.height / 2 );
 
 
-        //             if ( _yMax > _canvas.height )
-        //             {
-        //                 let _dy = _yMax - _canvas.height;
+                    if ( _yMax > _canvas.height )
+                    {
+                        let _dy = _yMax - _canvas.height;
 
 
-        //                 _segment0.y -= _dy;
+                        _segment0.y -= _dy;
 
-        //                 _segment1.y -= _dy;
+                        _segment1.y -= _dy;
 
-        //                 _segment2.y -= _dy;
+                        _segment2.y -= _dy;
 
-        //                 _segment3.y -= _dy;
+                        _segment3.y -= _dy;
 
 
-        //                 _velocity.x -= segment.velocity.x;
+                        _velocity.x -= segment.velocity.x;
 
-        //                 _velocity.y -= segment.velocity.y;
-        //             }
-        //         }
+                        _velocity.y -= segment.velocity.y;
+                    }
+                }
 
-        //         function _checkWalls ( )
-        //         {
-        //             let _width = _canvas.width + 200;
+                function _checkWalls ( )
+                {
+                    let _width = _canvas.width + 200;
 
 
-        //             if ( _segment0.x > _canvas.width + 100 )
-        //             {
-        //                 _segment0.x -= _width;
+                    if ( _segment0.x > _canvas.width + 100 )
+                    {
+                        _segment0.x -= _width;
 
-        //                 _segment1.x -= _width;
+                        _segment1.x -= _width;
 
-        //                 _segment2.x -= _width;
+                        _segment2.x -= _width;
 
-        //                 _segment3.x -= _width;
-        //             }
+                        _segment3.x -= _width;
+                    }
 
 
-        //             if  ( _segment0.x < - 100 )
-        //             {
-        //                 _segment0.x += _width;
+                    if  ( _segment0.x < - 100 )
+                    {
+                        _segment0.x += _width;
 
-        //                 _segment1.x += _width;
+                        _segment1.x += _width;
 
-        //                 _segment2.x += _width;
+                        _segment2.x += _width;
 
-        //                 _segment3.x += _width;
-        //             }
-        //         }
+                        _segment3.x += _width;
+                    }
+                }
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //     function _drawFrame ( )
-        //     {
-        //         window.requestAnimationFrame ( _drawFrame, _canvas );
+            function _drawFrame ( )
+            {
+                window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //         ////    LOOP DATA    ///////////////////
+                ////    LOOP DATA    ///////////////////
 
-        //             _timeCurrent = LAB.getFps ( _timeCurrent );
+                    _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //         ////    CLEAR SCREEN    ////////////////
+                ////    CLEAR SCREEN    ////////////////
 
-        //             _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                    _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //         ////    TRANSITIONS    /////////////////
+                ////    TRANSITIONS    /////////////////
 
-        //             _cycle += _speedSlider.value;
+                    _cycle += _speedSlider.value;
 
-        //             _setVelocity (  );
+                    _setVelocity (  );
 
 
-        //             _walk ( _segment0, _segment1, _cycle );
+                    _walk ( _segment0, _segment1, _cycle );
 
-        //             _walk ( _segment2, _segment3, _cycle + Math.PI );
+                    _walk ( _segment2, _segment3, _cycle + Math.PI );
 
 
-        //             _checkFloor ( _segment1 );
+                    _checkFloor ( _segment1 );
 
-        //             _checkFloor ( _segment3 );
+                    _checkFloor ( _segment3 );
 
 
-        //             _checkWalls ( );
+                    _checkWalls ( );
 
-        //         ////    DRAW    ////////////////////////////
+                ////    DRAW    ////////////////////////////
 
-        //         _segment0.draw ( );
+                _segment0.draw ( );
 
-        //         _segment1.draw ( );
+                _segment1.draw ( );
 
-        //         _segment2.draw ( );
+                _segment2.draw ( );
 
-        //         _segment3.draw ( );
+                _segment3.draw ( );
 
 
-        //         _speedSlider.draw ( );
+                _speedSlider.draw ( );
 
-        //         _thighRangeSlider.draw ( );
+                _thighRangeSlider.draw ( );
 
-        //         _thighBaseSlider.draw ( );
+                _thighBaseSlider.draw ( );
 
-        //         _calfRangeSlider.draw ( );
+                _calfRangeSlider.draw ( );
 
-        //         _calfOffsetSlider.draw ( );
+                _calfOffsetSlider.draw ( );
 
-        //         _gravitySlider.draw ( );
-        //     }
+                _gravitySlider.draw ( );
+            }
 
 
-        //     _drawFrame ( );
-        // },
-        // // 14:1
-        // reachingWithASingleSegment: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+            _drawFrame ( );
+        },
+        // 14:1
+        reachingWithASingleSegment: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment = new Segment;
+                let _segment = new Segment;
 
 
-        //             _segment.width  = 100;
+                    _segment.width  = 100;
 
-        //             _segment.height = 20;
+                    _segment.height = 20;
 
 
-        //             _segment.x = _canvas.width  / 2;
+                    _segment.x = _canvas.width  / 2;
 
-        //             _segment.y = _canvas.height / 2;
+                    _segment.y = _canvas.height / 2;
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 let _distance = new Point;
+                        let _distance = new Point;
 
 
-        //                 _distance.x = _mouse.x - _segment.x;
+                        _distance.x = _mouse.x - _segment.x;
 
-        //                 _distance.y = _mouse.y - _segment.y;
+                        _distance.y = _mouse.y - _segment.y;
 
 
-        //                 _segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+                        _segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segment.draw ( );
-        //         }
+                        _segment.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 14:2
-        // draggingASingleSegment: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 14:2
+        draggingASingleSegment: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment = new Segment;
+                let _segment = new Segment;
 
-        //             _segment.width  = 100;
+                    _segment.width  = 100;
 
-        //             _segment.height = 20;
+                    _segment.height = 20;
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 let _distance = new Point;
+                        let _distance = new Point;
 
-        //                     _distance.x = _mouse.x - _segment.x;
+                            _distance.x = _mouse.x - _segment.x;
 
-        //                     _distance.y = _mouse.y - _segment.y;
+                            _distance.y = _mouse.y - _segment.y;
 
 
-        //                 _segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+                        _segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
 
 
-        //                 let _width  = _segment.pin.x - _segment.x;
+                        let _width  = _segment.pin.x - _segment.x;
 
-        //                 let _height = _segment.pin.y - _segment.y;
+                        let _height = _segment.pin.y - _segment.y;
 
 
-        //                 _segment.x = _mouse.x - _width;
+                        _segment.x = _mouse.x - _width;
 
-        //                 _segment.y = _mouse.y - _height;
+                        _segment.y = _mouse.y - _height;
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segment.draw ( );
-        //         }
+                        _segment.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 14:3
-        // draggingTwoSegments: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 14:3
+        draggingTwoSegments: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( 100, 20 );
+                let _segment0 = new Segment ( 100, 20 );
 
-        //             _segment0.width  = 100;
+                    _segment0.width  = 100;
 
-        //             _segment0.height = 20;
+                    _segment0.height = 20;
 
-        //         let _segment1 = new Segment ( 100, 20 );
+                let _segment1 = new Segment ( 100, 20 );
 
-        //             _segment1.width  = 100;
+                    _segment1.width  = 100;
 
-        //             _segment1.height = 20;
+                    _segment1.height = 20;
 
-        //     ////    FUNCTIONS    ///////////////////////////
+            ////    FUNCTIONS    ///////////////////////////
 
-        //         function _drag ( segment, x, y )
-        //         {
-        //             let _distance = new Point;
+                function _drag ( segment, x, y )
+                {
+                    let _distance = new Point;
 
-        //                 _distance.x = x - segment.x;
+                        _distance.x = x - segment.x;
 
-        //                 _distance.y = y - segment.y;
+                        _distance.y = y - segment.y;
 
 
-        //             segment.position.rotation = Math.atan2(_distance.y, _distance.x);
+                    segment.position.rotation = Math.atan2(_distance.y, _distance.x);
 
 
-        //             let _width  = segment.pin.x - segment.x;
+                    let _width  = segment.pin.x - segment.x;
 
-        //             let _height = segment.pin.y - segment.y;
+                    let _height = segment.pin.y - segment.y;
 
 
-        //             segment.x = x - _width;
+                    segment.x = x - _width;
 
-        //             segment.y = y - _height;
-        //         }
+                    segment.y = y - _height;
+                }
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _drag ( _segment0, _mouse.x, _mouse.y );
+                        _drag ( _segment0, _mouse.x, _mouse.y );
 
-        //                 _drag ( _segment1, _segment0.x, _segment0.y );
+                        _drag ( _segment1, _segment0.x, _segment0.y );
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segment0.draw ( );
+                        _segment0.draw ( );
 
-        //                 _segment1.draw ( );
-        //         }
+                        _segment1.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 14:4
-        // draggingManySegments: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 14:4
+        draggingManySegments: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segments = new Array;
+                let _segments = new Array;
 
-        //     ////    SET DEFAULTS    ////////////////////////
+            ////    SET DEFAULTS    ////////////////////////
 
-        //         let _amount = 5;
+                let _amount = 5;
 
-        //     ////    POPULATION    //////////////////////////
+            ////    POPULATION    //////////////////////////
 
-        //         while ( _amount-- )
-        //         {
-        //             let _segment = new Segment;
+                while ( _amount-- )
+                {
+                    let _segment = new Segment;
 
-        //                 _segment.width  = 50;
+                        _segment.width  = 50;
 
-        //                 _segment.height = 10;
+                        _segment.height = 10;
 
 
-        //             _segments.push ( _segment );
-        //         }
+                    _segments.push ( _segment );
+                }
 
-        //     ////    FUNCTIONS    ///////////////////////////
+            ////    FUNCTIONS    ///////////////////////////
 
-        //         function _drag ( segment, x, y )
-        //         {
-        //             let _distance = new Point;
+                function _drag ( segment, x, y )
+                {
+                    let _distance = new Point;
 
-        //                 _distance.x = x - segment.x;
+                        _distance.x = x - segment.x;
 
-        //                 _distance.y = y - segment.y;
+                        _distance.y = y - segment.y;
 
 
-        //             segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+                    segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
 
 
-        //             let _width  = segment.pin.x - segment.x;
+                    let _width  = segment.pin.x - segment.x;
 
-        //             let _height = segment.pin.y - segment.y;
+                    let _height = segment.pin.y - segment.y;
 
 
-        //             segment.x = x - _width;
+                    segment.x = x - _width;
 
-        //             segment.y = y - _height;
-        //         }
+                    segment.y = y - _height;
+                }
 
-        //         function _move ( segment, iter )
-        //         {
-        //             if ( iter !== 0 )
+                function _move ( segment, iter )
+                {
+                    if ( iter !== 0 )
 
-        //                 _drag ( segment, _segments [ iter - 1 ].x, _segments [ iter - 1 ].y );
-        //         }
+                        _drag ( segment, _segments [ iter - 1 ].x, _segments [ iter - 1 ].y );
+                }
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _draw ( segment )
-        //         {
-        //             segment.draw ( );
-        //         }
+                function _draw ( segment )
+                {
+                    segment.draw ( );
+                }
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _drag ( _segments [ 0 ], _mouse.x, _mouse.y );
+                        _drag ( _segments [ 0 ], _mouse.x, _mouse.y );
 
-        //                 _segments.forEach ( _move );
+                        _segments.forEach ( _move );
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segments.forEach ( _draw );
-        //         }
+                        _segments.forEach ( _draw );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 14:5
-        // reachingWithTwoSegments: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 14:5
+        reachingWithTwoSegments: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( undefined, { width: 100, height: 20 } );
+                let _segment0 = new Segment ( undefined, { width: 100, height: 20 } );
 
-        //         let _segment1 = new Segment ( undefined, { width: 100, height: 20 } );
+                let _segment1 = new Segment ( undefined, { width: 100, height: 20 } );
 
-        //             _segment1.x = _canvas.width  / 2;
+                    _segment1.x = _canvas.width  / 2;
 
-        //             _segment1.y = _canvas.height / 2;
+                    _segment1.y = _canvas.height / 2;
 
-        //     ////    FUNCTIONS    ///////////////////////////
+            ////    FUNCTIONS    ///////////////////////////
 
-        //         function _reach ( segment, x, y )
-        //         {
-        //             let _distance = new Point;
+                function _reach ( segment, x, y )
+                {
+                    let _distance = new Point;
 
-        //                 _distance.x = x - segment.x;
+                        _distance.x = x - segment.x;
 
-        //                 _distance.y = y - segment.y;
+                        _distance.y = y - segment.y;
 
 
-        //             segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+                    segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
 
 
-        //             let _width  = segment.pin.x - segment.x;
+                    let _width  = segment.pin.x - segment.x;
 
-        //             let _height = segment.pin.y - segment.y;
+                    let _height = segment.pin.y - segment.y;
 
 
-        //             return {
-        //                        x: x - _width,
-        //                        y: y - _height
-        //                    };
-        //         }
+                    return {
+                               x: x - _width,
+                               y: y - _height
+                           };
+                }
 
-        //         function _position ( segmentA, segmentB )
-        //         {
-        //             segmentA.x = segmentB.pin.x;
+                function _position ( segmentA, segmentB )
+                {
+                    segmentA.x = segmentB.pin.x;
 
-        //             segmentA.y = segmentB.pin.y;
-        //         }
+                    segmentA.y = segmentB.pin.y;
+                }
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //     function _drawFrame ( )
-        //     {
-        //         window.requestAnimationFrame ( _drawFrame, _canvas );
+            function _drawFrame ( )
+            {
+                window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //         ////    LOOP DATA    ///////////////////
+                ////    LOOP DATA    ///////////////////
 
-        //             _timeCurrent = LAB.getFps ( _timeCurrent );
+                    _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //         ////    CLEAR SCREEN    ////////////////
+                ////    CLEAR SCREEN    ////////////////
 
-        //             _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                    _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //         ////    TRANSITIONS    /////////////////
+                ////    TRANSITIONS    /////////////////
 
-        //             let _target = _reach ( _segment0, _mouse.x, _mouse.y );
+                    let _target = _reach ( _segment0, _mouse.x, _mouse.y );
 
 
-        //             _reach ( _segment1, _target.x, _target.y );
+                    _reach ( _segment1, _target.x, _target.y );
 
-        //             _position ( _segment0, _segment1 );
+                    _position ( _segment0, _segment1 );
 
-        //         ////    DRAW    ////////////////////////
+                ////    DRAW    ////////////////////////
 
-        //             _segment0.draw ( );
+                    _segment0.draw ( );
 
-        //             _segment1.draw ( );
-        //     }
+                    _segment1.draw ( );
+            }
 
 
-        //     _drawFrame  (  )
-        // },
-        // // 14:6
-        // reachingWithManySegments: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+            _drawFrame  (  )
+        },
+        // 14:6
+        reachingWithManySegments: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segments = new Array;
+                let _segments = new Array;
 
-        //     ////    SET DEFAULTS    ////////////////////////
+            ////    SET DEFAULTS    ////////////////////////
 
-        //         let _amount = 5;
+                let _amount = 5;
 
-        //         let _target = undefined;
+                let _target = undefined;
 
-        //     ////    POPULATION    //////////////////////////
+            ////    POPULATION    //////////////////////////
 
-        //         while ( _amount-- )
-        //         {
-        //             _segments.push ( new Segment ( undefined, { width: 50, height: 10 } ) );
-        //         }
+                while ( _amount-- )
+                {
+                    _segments.push ( new Segment ( undefined, { width: 50, height: 10 } ) );
+                }
 
 
-        //         // CENTER THE LAST ONE
-        //         _segments [ _segments.length - 1 ].x = _canvas.width  / 2;
+                // CENTER THE LAST ONE
+                _segments [ _segments.length - 1 ].x = _canvas.width  / 2;
 
-        //         _segments [ _segments.length - 1 ].y = _canvas.height / 2;
+                _segments [ _segments.length - 1 ].y = _canvas.height / 2;
 
-        //     ////    FUNCTIONS    /////////////////
+            ////    FUNCTIONS    /////////////////
 
-        //         function _reach ( segment, x, y )
-        //         {
-        //             let _distance = new Point;
+                function _reach ( segment, x, y )
+                {
+                    let _distance = new Point;
 
-        //                 _distance.x = x - segment.x;
+                        _distance.x = x - segment.x;
 
-        //                 _distance.y = y - segment.y;
+                        _distance.y = y - segment.y;
 
 
-        //             segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+                    segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
 
 
-        //             let _width  = segment.pin.x - segment.x;
+                    let _width  = segment.pin.x - segment.x;
 
-        //             let _height = segment.pin.y - segment.y;
+                    let _height = segment.pin.y - segment.y;
 
 
-        //             return {
-        //                        x: x - _width,
+                    return {
+                               x: x - _width,
 
-        //                        y: y - _height
-        //                    };
-        //         }
+                               y: y - _height
+                           };
+                }
 
-        //         function _position ( segmentA, segmentB )
-        //         {
-        //             segmentA.x = segmentB.pin.x;
+                function _position ( segmentA, segmentB )
+                {
+                    segmentA.x = segmentB.pin.x;
 
-        //             segmentA.y = segmentB.pin.y;
-        //         }
+                    segmentA.y = segmentB.pin.y;
+                }
 
-        //         function _move ( segment, iter )
-        //         {
-        //             if ( iter !== 0 )
-        //             {
-        //                 _target = _reach ( segment, _target.x, _target.y );
+                function _move ( segment, iter )
+                {
+                    if ( iter !== 0 )
+                    {
+                        _target = _reach ( segment, _target.x, _target.y );
 
-        //                 _position ( _segments [ iter - 1 ], segment );
-        //             }
-        //         }
+                        _position ( _segments [ iter - 1 ], segment );
+                    }
+                }
 
-        //     ////    DRAW    //////////////////////
+            ////    DRAW    //////////////////////
 
-        //         function _draw ( segment )
-        //         {
-        //             segment.draw ( );
-        //         }
+                function _draw ( segment )
+                {
+                    segment.draw ( );
+                }
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _target = _reach ( _segments [ 0 ], _mouse.x, _mouse.y );
+                        _target = _reach ( _segments [ 0 ], _mouse.x, _mouse.y );
 
-        //                 _segments.forEach ( _move );
+                        _segments.forEach ( _move );
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segments.forEach ( _draw );
-        //         }
+                        _segments.forEach ( _draw );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 14:7
-        // reachingForAnObject: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 14:7
+        reachingForAnObject: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _circle = new Circle;
+                let _circle = new Circle;
 
-        //             _circle.radius = 20;
+                    _circle.radius = 20;
 
-        //             _circle.velocity.x = 10;
+                    _circle.velocity.x = 10;
 
 
-        //         let _segments = new Array;
+                let _segments = new Array;
 
-        //     ////    SET DEFAULTS    ////////////////////////
+            ////    SET DEFAULTS    ////////////////////////
 
-        //         let _amount  = 5;
+                let _amount  = 5;
 
-        //         let _gravity = 0.5;
+                let _gravity = 0.5;
 
-        //         let _bounce = -0.9;
+                let _bounce = -0.9;
 
-        //         let _target = undefined;
+                let _target = undefined;
 
-        //     ////    POPULATION    //////////////////////////
+            ////    POPULATION    //////////////////////////
 
-        //         while ( _amount-- )
-        //         {
-        //             _segments.push ( new Segment ( undefined, { width: 20, height: 10 } ) );
-        //         }
+                while ( _amount-- )
+                {
+                    _segments.push ( new Segment ( undefined, { width: 20, height: 10 } ) );
+                }
 
 
-        //         // CENTER THE LAST ONE
-        //         _segments [ _segments.length - 1 ].x = _canvas.width  / 2;
+                // CENTER THE LAST ONE
+                _segments [ _segments.length - 1 ].x = _canvas.width  / 2;
 
-        //         _segments [ _segments.length - 1 ].y = _canvas.height / 2;
+                _segments [ _segments.length - 1 ].y = _canvas.height / 2;
 
-        //     ////    FUNCTIONS    ///////////////////////////
+            ////    FUNCTIONS    ///////////////////////////
 
-        //         function _moveBall ( )
-        //         {
-        //             _circle.velocity.y += _gravity;
+                function _moveBall ( )
+                {
+                    _circle.velocity.y += _gravity;
 
 
-        //             _circle.x += _circle.velocity.x;
+                    _circle.x += _circle.velocity.x;
 
-        //             _circle.y += _circle.velocity.y;
+                    _circle.y += _circle.velocity.y;
 
 
-        //             if ( _circle.x + _circle.radius > _canvas.width )
-        //             {
-        //                 _circle.x           = _canvas.width - _circle.radius;
-        //                 _circle.velocity.x *= _bounce;
-        //             }
+                    if ( _circle.x + _circle.radius > _canvas.width )
+                    {
+                        _circle.x           = _canvas.width - _circle.radius;
+                        _circle.velocity.x *= _bounce;
+                    }
 
 
-        //             if ( _circle.x - _circle.radius < 0 )
-        //             {
-        //                 _circle.x           = _circle.radius;
-        //                 _circle.velocity.x *= _bounce;
-        //             }
+                    if ( _circle.x - _circle.radius < 0 )
+                    {
+                        _circle.x           = _circle.radius;
+                        _circle.velocity.x *= _bounce;
+                    }
 
 
-        //             if ( _circle.y + _circle.radius > _canvas.height )
-        //             {
-        //                 _circle.y           = _canvas.height - _circle.radius;
-        //                 _circle.velocity.y *= _bounce;
-        //             }
+                    if ( _circle.y + _circle.radius > _canvas.height )
+                    {
+                        _circle.y           = _canvas.height - _circle.radius;
+                        _circle.velocity.y *= _bounce;
+                    }
 
 
-        //             if ( _circle.y - _circle.radius < 0 )
-        //             {
-        //                 _circle.y           = _circle.radius;
-        //                 _circle.velocity.y *= _bounce;
-        //             }
-        //         }
+                    if ( _circle.y - _circle.radius < 0 )
+                    {
+                        _circle.y           = _circle.radius;
+                        _circle.velocity.y *= _bounce;
+                    }
+                }
 
-        //         function _reach ( segment, x, y )
-        //         {
-        //             let _distance = new Point;
+                function _reach ( segment, x, y )
+                {
+                    let _distance = new Point;
 
-        //                 _distance.x = x - segment.x,
+                        _distance.x = x - segment.x,
 
-        //                 _distance.y = y - segment.y;
+                        _distance.y = y - segment.y;
 
 
-        //             segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
+                    segment.position.rotation = Math.atan2 ( _distance.y, _distance.x );
 
 
-        //             let _width  = segment.pin.x - segment.x;
+                    let _width  = segment.pin.x - segment.x;
 
-        //             let _height = segment.pin.y - segment.y;
+                    let _height = segment.pin.y - segment.y;
 
 
-        //             return {
-        //                        x: x - _width,
-        //                        y: y - _height
-        //                    };
-        //         }
+                    return {
+                               x: x - _width,
+                               y: y - _height
+                           };
+                }
 
-        //         function _position ( segmentA, segmentB )
-        //         {
-        //             segmentA.x = segmentB.pin.x;
+                function _position ( segmentA, segmentB )
+                {
+                    segmentA.x = segmentB.pin.x;
 
-        //             segmentA.y = segmentB.pin.y;
-        //         }
+                    segmentA.y = segmentB.pin.y;
+                }
 
-        //         function _checkHit ( )
-        //         {
-        //             let _segment  = _segments [ 0 ];
+                function _checkHit ( )
+                {
+                    let _segment  = _segments [ 0 ];
 
 
-        //             let _distance = new Point;
+                    let _distance = new Point;
 
 
-        //                 _distance.x = _segment.pin.x - _circle.x;
+                        _distance.x = _segment.pin.x - _circle.x;
 
-        //                 _distance.y = _segment.pin.y - _circle.y;
+                        _distance.y = _segment.pin.y - _circle.y;
 
 
-        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
 
 
-        //             if ( _distance.total < _circle.radius )
-        //             {
-        //                 _circle.velocity.x += Math.random (  ) * 2 - 1;
+                    if ( _distance.total < _circle.radius )
+                    {
+                        _circle.velocity.x += Math.random (  ) * 2 - 1;
 
-        //                 _circle.velocity.y -= 1;
-        //             }
-        //         }
+                        _circle.velocity.y -= 1;
+                    }
+                }
 
-        //         function _move ( segment, iter )
-        //         {
-        //             if  ( iter !== 0 )
-        //             {
-        //                 _target = _reach ( segment, _target.x, _target.y );
+                function _move ( segment, iter )
+                {
+                    if  ( iter !== 0 )
+                    {
+                        _target = _reach ( segment, _target.x, _target.y );
 
-        //                 _position ( _segments [ iter - 1 ], segment );
-        //             }
-        //         }
+                        _position ( _segments [ iter - 1 ], segment );
+                    }
+                }
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _draw ( segment )
-        //         {
-        //             segment.draw ( );
-        //         }
+                function _draw ( segment )
+                {
+                    segment.draw ( );
+                }
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 _moveBall ( );
+                        _moveBall ( );
 
-        //                 _target = _reach ( _segments [ 0 ], _circle.x, _circle.y );
+                        _target = _reach ( _segments [ 0 ], _circle.x, _circle.y );
 
-        //                 _segments.forEach ( _move );
+                        _segments.forEach ( _move );
 
-        //                 _checkHit (  );
+                        _checkHit (  );
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segments.forEach ( _draw );
+                        _segments.forEach ( _draw );
 
-        //                 _circle.draw ( );
-        //         }
+                        _circle.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 14:8
-        // reachingWithTheLawOfCosines: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 14:8
+        reachingWithTheLawOfCosines: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( undefined, { width: 100, height: 20 } );
+                let _segment0 = new Segment ( undefined, { width: 100, height: 20 } );
 
-        //         let _segment1 = new Segment ( undefined, { width: 100, height: 20 } );
+                let _segment1 = new Segment ( undefined, { width: 100, height: 20 } );
 
-        //             _segment1.x = _canvas.width  / 2;
+                    _segment1.x = _canvas.width  / 2;
 
-        //             _segment1.y = _canvas.height / 2;
+                    _segment1.y = _canvas.height / 2;
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 let _distance = new Point;
+                        let _distance = new Point;
 
-        //                     _distance.x = _mouse.x - _segment1.x;
+                            _distance.x = _mouse.x - _segment1.x;
 
-        //                     _distance.y = _mouse.y - _segment1.y;
+                            _distance.y = _mouse.y - _segment1.y;
 
 
-        //                     _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+                            _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
 
 
-        //                 let _a = 100;
+                        let _a = 100;
 
-        //                 let _b = 100;
+                        let _b = 100;
 
 
-        //                 let _c = Math.min ( _distance.total, _a + _b );
+                        let _c = Math.min ( _distance.total, _a + _b );
 
 
-        //                 let _B = Math.acos ( ( _b * _b - _a * _a - _c * _c ) / ( - 2 * _a * _c ) );
+                        let _B = Math.acos ( ( _b * _b - _a * _a - _c * _c ) / ( - 2 * _a * _c ) );
 
-        //                 let _C = Math.acos ( ( _c * _c - _a * _a - _b * _b ) / ( - 2 * _a * _b ) );
+                        let _C = Math.acos ( ( _c * _c - _a * _a - _b * _b ) / ( - 2 * _a * _b ) );
 
 
-        //                 let _D = Math.atan2 ( _distance.y, _distance.x );
+                        let _D = Math.atan2 ( _distance.y, _distance.x );
 
 
-        //                 let _E = _D + _B + Math.PI + _C;
+                        let _E = _D + _B + Math.PI + _C;
 
 
-        //                 _segment1.position.rotation = ( _D + _B );
+                        _segment1.position.rotation = ( _D + _B );
 
 
-        //                 _segment0.x = _segment1.pin.x;
+                        _segment0.x = _segment1.pin.x;
 
-        //                 _segment0.y = _segment1.pin.y;
+                        _segment0.y = _segment1.pin.y;
 
 
-        //                 _segment0.position.rotation = _E;
+                        _segment0.position.rotation = _E;
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segment0.draw ( );
+                        _segment0.draw ( );
 
-        //                 _segment1.draw ( );
-        //         }
+                        _segment1.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // },
-        // // 14:9
-        // reachingWithTheLawOfCosinesReverse: ( ) =>
-        // {
-        //     ////    CONTEXT    /////////////////////////////
+                _drawFrame ( );
+        },
+        // 14:9
+        reachingWithTheLawOfCosinesReverse: ( ) =>
+        {
+            ////    CONTEXT    /////////////////////////////
 
-        //         let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas  = document.getElementById ( 'canvas' );
 
-        //         let _context = _canvas.getContext ( '2d' );
+                let _context = _canvas.getContext ( '2d' );
 
-        //     ////    LOOP DATA    ///////////////////////////
+            ////    LOOP DATA    ///////////////////////////
 
-        //         let _timeCurrent = new Date ( );
+                let _timeCurrent = new Date ( );
 
-        //     ////    INPUT    ///////////////////////////////
+            ////    INPUT    ///////////////////////////////
 
-        //         let _mouse   = utils.captureMouse ( _canvas );
+                let _mouse   = utils.captureMouse ( _canvas );
 
-        //     ////    OBJECTS    /////////////////////////////
+            ////    OBJECTS    /////////////////////////////
 
-        //         let _segment0 = new Segment ( undefined, { width: 100, height: 20 } );
+                let _segment0 = new Segment ( undefined, { width: 100, height: 20 } );
 
-        //         let _segment1 = new Segment ( undefined, { width: 100, height: 20 } );
+                let _segment1 = new Segment ( undefined, { width: 100, height: 20 } );
 
-        //             _segment1.x = _canvas.width  / 2;
+                    _segment1.x = _canvas.width  / 2;
 
-        //             _segment1.y = _canvas.height / 2;
+                    _segment1.y = _canvas.height / 2;
 
-        //     ////    DRAW    ////////////////////////////////
+            ////    DRAW    ////////////////////////////////
 
-        //         function _drawFrame ( )
-        //         {
-        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
 
-        //             ////    LOOP DATA    ///////////////////
+                    ////    LOOP DATA    ///////////////////
 
-        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+                        _timeCurrent = LAB.getFps ( _timeCurrent );
 
-        //             ////    CLEAR SCREEN    ////////////////
+                    ////    CLEAR SCREEN    ////////////////
 
-        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
 
-        //             ////    TRANSITIONS    /////////////////
+                    ////    TRANSITIONS    /////////////////
 
-        //                 let _distance = new Point;
+                        let _distance = new Point;
 
-        //                     _distance.x = _mouse.x - _segment1.x;
+                            _distance.x = _mouse.x - _segment1.x;
 
-        //                     _distance.y = _mouse.y - _segment1.y;
+                            _distance.y = _mouse.y - _segment1.y;
 
-        //                     _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+                            _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
 
 
-        //                 let _a = 100;
+                        let _a = 100;
 
-        //                 let _b = 100;
+                        let _b = 100;
 
 
-        //                 let _c = Math.min ( _distance.total, _a + _b );
+                        let _c = Math.min ( _distance.total, _a + _b );
 
 
-        //                 let _B = Math.acos ( ( _b * _b - _a * _a - _c * _c ) / ( - 2 * _a * _c ) );
+                        let _B = Math.acos ( ( _b * _b - _a * _a - _c * _c ) / ( - 2 * _a * _c ) );
 
-        //                 let _C = Math.acos ( ( _c * _c - _a * _a - _b * _b ) / ( - 2 * _a * _b ) );
+                        let _C = Math.acos ( ( _c * _c - _a * _a - _b * _b ) / ( - 2 * _a * _b ) );
 
 
-        //                 let _D = Math.atan2 ( _distance.y, _distance.x );
+                        let _D = Math.atan2 ( _distance.y, _distance.x );
 
 
-        //                 let _E = _D - _B + Math.PI - _C;
+                        let _E = _D - _B + Math.PI - _C;
 
 
-        //                 _segment1.position.rotation = ( _D - _B );
+                        _segment1.position.rotation = ( _D - _B );
 
 
-        //                 _segment0.x = _segment1.pin.x;
+                        _segment0.x = _segment1.pin.x;
 
-        //                 _segment0.y = _segment1.pin.y;
+                        _segment0.y = _segment1.pin.y;
 
 
-        //                 _segment0.position.rotation = _E;
+                        _segment0.position.rotation = _E;
 
-        //             ////    DRAW    ////////////////////////
+                    ////    DRAW    ////////////////////////
 
-        //                 _segment0.draw ( );
+                        _segment0.draw ( );
 
-        //                 _segment1.draw ( );
-        //         }
+                        _segment1.draw ( );
+                }
 
 
-        //         _drawFrame ( );
-        // }
+                _drawFrame ( );
+        }
     }
 
     ////    SETTERS    /////////////////////////////////////////////////////////////////////////////
@@ -27624,6 +27652,13 @@ class Ui
         function _library ( )
         {
             let _lib = { }
+
+            ////    CONFIG    //////////////////////////////////////////////////
+
+            _lib.config =
+            {
+                boostrapOffcanvas: undefined,
+            }
 
             ////    FUNCTIONS    ///////////////////////////////////////////////
 

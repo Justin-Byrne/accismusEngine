@@ -470,7 +470,7 @@ class Ui
                     switch ( _element.tagName )
                     {
                         case 'DIV':
-                        case 'SPAN':                    this._cardPlus        ( _element );     break;
+                        case 'SPAN':        this._cardPlus ( _element );        break;
                     }
 
                 else
@@ -598,6 +598,7 @@ class Ui
 
                 LAB.setCanvasSize ( );
 
+
                 this._resetLabControl ( 'grid' );
 
                 this._resetLabControl ( 'coordinates' );
@@ -606,11 +607,30 @@ class Ui
 
                 this._resetLabControl ( 'fps' );
 
+
                 LAB.runCode ( );
 
                 ////    EVENT LISTENER    //////////////////////////////////////////
 
                 _open.addEventListener ( 'click', ( ) => this.fullscreen ( ) );
+            },
+
+            /**
+             * Toggles gamepad data
+             * @public
+             * @function
+             */
+            gamepad ( )
+            {
+                if ( ! devSuite.config.boostrapOffcanvas )
+                {
+                    let _offcanvas = document.querySelector ( '.offcanvas' );
+
+                    devSuite.config.boostrapOffcanvas = new bootstrap.Offcanvas ( _offcanvas );
+                }
+
+
+                devSuite.config.boostrapOffcanvas.toggle ( );
             },
 
             /**

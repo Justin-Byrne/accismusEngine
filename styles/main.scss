@@ -904,225 +904,13 @@ main
     {
         cursor: default;
 
-        width:  45%;
-
-        @media ( max-width: 1200px ) { width: 95%; }
+        width:  100%;
+        height: 320px;
 
         .offcanvas-body
         {
             background-color:   rgb(80, 95, 115);
             color:              white;
-            border-left:        1px solid rgb(66, 69, 81);
-
-            h2:nth-child(2) { padding-left: 10px; }
-
-            h2, h3, h4
-            {
-                &::before
-                {
-                    position:      relative;
-                    top:           2px;
-                    padding-right: 6px;
-                    padding-left:  0px;
-
-                    content:       url('../images/svg/General/c-circle-fill.svg');
-                }
-
-                & + p
-                {
-                    padding:            7px 7px 7px 9px;
-                    margin-bottom:      13px;
-
-                    background-color:   black;
-                    border-radius:      3px;
-
-                    font-family:        'CascadiaCode';
-                }
-            }
-
-            h3, h4
-            {
-                color:          black;
-
-                letter-spacing: 1px;
-
-                &::before
-                {
-                    content:        url('../images/svg/General/function-black.svg');
-
-                    position:       relative;
-                    top:            10px;
-                    padding-right:  6px;
-                }
-            }
-
-            p
-            {
-                margin-left:  10px;
-                margin-bottom: 6px;
-
-                strong:nth-child(1)
-                {
-                    color: rgb(140, 215, 205);
-
-                    &::before                 // Kind
-                    {
-                        position:       relative;
-                        display:        inline-block;
-                        bottom:         -2px;
-                        padding-right:  5px;
-
-                        color: red;
-
-                        content:        url('../images/svg/General/box-green.svg');
-                    }
-                }
-
-                strong:nth-child(4)::before                 // Return
-                {
-                    display:        inline-block;
-                    position:       relative;
-                    top:            3px;
-                    padding-right:  3px;
-
-                    content:        url('../images/svg/General/return-left.svg');
-                }
-
-                &:nth-child(4)
-                {
-                    strong:nth-child(3)
-                    {
-                        display:        block;
-                        padding-top:    10px;
-                    }
-                }
-
-                a
-                {
-                    color:           rgb(151, 200, 255);
-                    text-decoration: none;
-                }
-
-                &:nth-child(3) { margin-left: 10px; }
-            }
-
-            ul
-            {
-                list-style-type:    none;
-                padding-left:       10px;
-                margin-bottom:      0;
-
-                li
-                {
-                    a
-                    {
-                        text-decoration: none;
-
-                        color:           white;
-
-                        &::before                           // Object
-                        {
-                            position:       relative;
-                            display:        inline-block;
-                            top:            2px;
-                            padding-right:  6px;
-
-                            content:        url('../images/svg/General/box.svg');
-                        }
-
-                        b
-                        {
-                            color: rgb(214, 51, 132);
-                        }
-                    }
-
-                    ul
-                    {
-                        position:     relative;
-                        padding-left: 10px;
-
-                        li
-                        {
-                            a
-                            {
-                                color: rgb(151, 200, 255);
-
-                                cursor: pointer;
-                            }
-
-                            &:nth-child(n - 1) > a::before     // Function
-                            {
-                                position:       relative;
-                                top:            6px;
-                                padding-right:  6px;
-
-                                content:        url('../images/svg/General/function.svg');
-                            }
-                        }
-                    }
-                }
-            }
-
-            table
-            {
-                outline:        1px solid black;
-
-                margin-top:     10px;
-                margin-bottom:  12px;
-                margin-left:    10px;
-
-                border-radius:  2px;
-
-                color:          white;
-
-                thead { background-color: rgb(42, 80, 97); }
-
-                tbody
-                {
-                    tr
-                    {
-                        border: 1px solid black;
-
-                        &:nth-child(odd)  { background-color: rgb(99, 112, 128); }
-
-                        &:nth-child(even) { background-color: rgb(80, 95, 115); }
-                    }
-
-                    td
-                    {
-                        border: 1px solid black;
-
-                        color:  rgb(200, 200, 200);
-
-                        &:last-of-type { border-right: none; }
-                    }
-                }
-
-                th, td
-                {
-                    padding:            5px 10px;
-
-                    border:             1px solid black;
-                    border-collapse:    separate;
-                    border-spacing:     8px;
-
-
-                }
-            }
-        }
-
-        #offcanvas-reset
-        {
-            position:       fixed;
-            right:          30px;
-            padding:        15px 10px;
-            border-top:     none;
-
-            transition:     opacity 1s;
-
-            opacity:        0;
-
-            &:hover { cursor: pointer; }
         }
     }
 
@@ -1256,7 +1044,7 @@ main
                 position:   absolute;
                 z-index:    1;
 
-                background-color: rgba(0, 0, 0, 0.75);
+                background-color: rgba(0, 0, 0, 0.85);
                 transform:        rotate(180deg);
                 opacity:          0;
 
@@ -1463,13 +1251,15 @@ main
 
                                 .clear        { content: url('../images/svg/General/clear.svg');          }
 
-                                .boolean      { content: url('../images/svg/General/boolean.svg');        }
-
                                 .timing       { content: url('../images/svg/General/timing.svg');         }
 
                                 .fps          { content: url('../images/svg/General/fps.svg');            }
 
+                                .gamepad      { content: url('../images/svg/General/gamepad.svg');        }
+
                                 ////    COLUMN 2    ////////////////////////////////////////////////
+
+                                .boolean      { content: url('../images/svg/General/boolean.svg');        }
 
                                 .value-plus   { content: url('../images/svg/General/plus.svg');           }
 

@@ -441,12 +441,6 @@ class Lab
 
                             _clear.addEventListener ( 'click', ( ) => UI.toggle.labButton ( _clear ) );
 
-                    case 'boolean':
-
-                        let _boolean = document.querySelector ( '#input-boolean' );
-
-                            _boolean.addEventListener ( 'click', ( ) => UI.toggle.boolean ( ) );
-
                     case 'timing':
 
                         this._setTimingPopup ( );
@@ -469,6 +463,18 @@ class Lab
                         let _fps = document.getElementById ( 'input-fps' );
 
                             _fps.addEventListener ( 'click', ( ) => UI.toggle.fps ( ) );
+
+                    case 'gamepad':
+
+                        let _gamepad = document.querySelector ( '#input-gamepad' );
+
+                            _gamepad.addEventListener ( 'click', ( ) => UI.toggle.gamepad ( ) );
+
+                    case 'boolean':
+
+                        let _boolean = document.querySelector ( '#input-boolean' );
+
+                            _boolean.addEventListener ( 'click', ( ) => UI.toggle.boolean ( ) );
 
                     case 'valuePlus':
 
@@ -641,17 +647,21 @@ class Lab
 
                         Mousetrap.bind ( 'space',     ( ) => this.runCode ( )          );
 
-                        // Mousetrap.bind ( 'n',         ( ) => UI.toggle.navigation  ( ) );
+                        // Mousetrap.bind ( 'n',         ( ) => UI.toggle.navigation ( ) );
 
-                        Mousetrap.bind ( 'f',         ( ) => UI.toggle.fullscreen  ( ) );
+                        Mousetrap.bind ( ']',         ( ) => UI.toggle.fullscreen  ( ) );
 
-                        Mousetrap.bind ( 'g',         ( ) => UI.toggle.grid        ( ) );
+                        Mousetrap.bind ( 'g',         ( ) => UI.toggle.grid ( ) );
 
-                        // Mousetrap.bind ( 'd',         ( ) => UI.toggle.download    ( ) );
+                        Mousetrap.bind ( 'f',         ( ) => UI.toggle.fps ( ))
+
+                        // Mousetrap.bind ( 'd',         ( ) => UI.toggle.download ( ) );
 
                         Mousetrap.bind ( 'c',         ( ) => UI.toggle.coordinates ( ) );
 
-                        Mousetrap.bind ( 'n',         ( ) => UI.toggle.angle       ( ) );
+                        Mousetrap.bind ( 'n',         ( ) => UI.toggle.angle ( ) );
+
+                        Mousetrap.bind ( 'g',         ( ) => UI.toggle.gamepad ( ) );
                 }
             }
 
@@ -959,9 +969,11 @@ class Lab
 
                 ////    EDITOR ELEMENT    //////////////////////////////////////////
 
-                    let _editorElement              = document.getElementById ( _id );
+                    let _padding       = 23;
 
-                        _editorElement.style.height = `${window.innerHeight - _controlPanelHeight}px`;
+                    let _editorElement = document.getElementById ( _id );
+
+                        _editorElement.style.height = `${window.innerHeight - _controlPanelHeight + _padding}px`;
 
                 ////    EDITOR    //////////////////////////////////////////////////
 

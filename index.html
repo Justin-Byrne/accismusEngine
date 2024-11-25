@@ -41,6 +41,9 @@
     <!-- highlight.js CSS @11.7.0 -->
     <link rel="stylesheet" href="styles/highlightJs/an-old-hope.min.css">
 
+    <!-- JS-Gamepad -->
+    <link rel="stylesheet" href="styles/jsgamepad/gpcon.css">
+
     <!-- Developer Styles -->
     <link rel="stylesheet" href="styles/main.css">
 
@@ -54,7 +57,7 @@
     <script src="scripts/libs/highlightJs/highlight.min.js"></script>
 
     <!-- shadowdown.js   @2.1.0 -->
-    <script src="scripts/libs/showdownJs/showdown.min.js"></script>
+    <!-- <script src="scripts/libs/showdownJs/showdown.min.js"></script> -->
 
     <!-- Ace.js          @11.12.23 -->
     <script src="scripts/libs/ace/ace.js"></script>
@@ -66,7 +69,14 @@
     <script src="scripts/libs/mousetrap/mousetrap.min.js"></script>
 
     <!-- JSDoc Markdown2Json -->
-    <script src="scripts/libs/md2json/md2json.js"></script>
+    <!-- <script src="scripts/libs/md2json/md2json.js"></script> -->
+
+    <!-- JS-Gamepad -->
+    <script src="scripts/libs/jsgamepad/libhtml.js"></script>
+
+    <script src="scripts/libs/jsgamepad/libgp.js"></script>
+
+    <script src="scripts/libs/jsgamepad/gpcon.js"></script>
 
     <!-- canvasLab -->
     <script src="../script/distro/canvasLab.min.js"></script>
@@ -308,15 +318,103 @@
 
         </div>  <!-- #modal-code -->
 
-        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas offcanvas-top" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
 
             <div class="offcanvas-body">
 
-            </div>
+                <div id="sol" class="nodisp">Gamepads don't appear to be supported on this browser.  Bummer.</div>
 
-            <div id="offcanvas-reset">
+                <div id="prompt" class="nodisp">Attach a gamepad or press a gamepad button</div>
 
-                <img src="images/svg/General/arrow-bar-up.svg">
+                <div id="main" class="nodisp">
+
+                    <div id="button-bar">
+
+                        <span class="button-bar-title">Gamepad: </span>
+
+                        <span id="button-bar-box"></span>
+
+                    </div>
+
+                    <div id="mode-select-box">
+
+                        Mode
+
+                        <select id="mode-select">
+
+                            <option selected="selected" value="raw">Raw</option>
+
+                            <option value="clamp">Clamped</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div id="deadzone-box">
+
+                        Deadzone
+
+                        <input type="checkbox" id="deadzone">
+
+                    </div>
+
+                    <hr>
+
+                    <div id="gamepad-container"></div>
+
+                </div>
+
+                <!-- Templates are copied for use when needed -->
+                <div id="templates">
+
+                    <input id="template-button" type="button" class="selector-button">
+
+                    <div id="template-gamepad" class="gamepad nodisp">
+                        <div class="gamepad-title"></div>
+                        (<div class="gamepad-mapping"></div>)
+                        <div class="gamepad-id"></div>
+                        <div class="gamepad-controls-center">
+                            <div class="gamepad-controls">
+                                <div class="gamepad-buttons-box"></div>
+                                <div class="gamepad-axes-box"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="template-gamepad-button-container" class="gamepad-button-container">
+
+                        <div class="gamepad-button"></div>
+
+                        <div class="gamepad-button-label"></div>
+
+                    </div>
+
+                    <div id="template-gamepad-axis-pair-container" class="gamepad-axis-pair-container">
+
+                        <div class="gamepad-axis-pair">
+
+                            <div class="gamepad-circle nodisp"></div>
+
+                            <div class="gamepad-axis-pip"></div>
+
+                            <div class="gamepad-axis-crosshair">
+
+                                <div class="gamepad-axis-crosshair-v"></div>
+
+                                <div class="gamepad-axis-crosshair-h"></div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="gamepad-axis-pair-label"></div>
+
+                        <div class="gamepad-axis-pair-value"></div>
+
+                    </div>
+
+                </div> <!-- #templates -->
 
             </div>
 
@@ -329,14 +427,6 @@
                 <div id="lab" class="row row-cols-2 g-3">
 
                     <div class="col lab-view">
-
-                        <!-- <div id="frame-per-second">
-
-                            <div>FPS</div>
-
-                            <span class="display">0</span>
-
-                        </div> -->
 
                         <div id="mouse-coordinates">
 
@@ -468,12 +558,6 @@
 
                                         </span>
 
-                                        <!-- <span class="button" id="input-ruler" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-active="false" title="Toggle Ruler">
-
-                                            <span class="icon ruler"></span>
-
-                                        </span> -->
-
                                         <span class="button" id="input-sidebar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-active="false" title="Toggle Sidebar">
 
                                             <span class="icon sidebar"></span>
@@ -492,12 +576,6 @@
 
                                         </span>
 
-                                        <span class="button" id="input-boolean" data-bs-toggle="tooltip" data-bs-placement="top" title="Toggle Boolean">
-
-                                            <span class="icon boolean"></span>
-
-                                        </span>
-
                                         <ul class="timing_popup" style="display: none;"></ul>
 
                                         <span class="button" id="input-timing" data-bs-toggle="tooltip" data-bs-placement="top" title="Timing Options">
@@ -512,9 +590,21 @@
 
                                         </span>
 
+                                        <span class="button" id="input-gamepad" data-bs-toggle="tooltip" data-bs-placement="top" title="Gamepad Data">
+
+                                            <span class="icon gamepad"></span>
+
+                                        </span>
+
                                     </div> <!-- .col -->
 
                                     <div class="col">
+
+                                        <span class="button" id="input-boolean" data-bs-toggle="tooltip" data-bs-placement="top" title="Toggle Boolean">
+
+                                            <span class="icon boolean"></span>
+
+                                        </span>
 
                                         <span class="button" id="input-value-minus" data-bs-toggle="tooltip" data-bs-placement="top" title="Increment -">
 
@@ -564,12 +654,6 @@
 
                                         </span>
 
-                                        <span class="button" id="input-blank" data-bs-toggle="tooltip" data-bs-placement="top" title="Blank">
-
-                                            <span class="icon blank"></span>
-
-                                        </span>
-
                                     </div> <!-- .col -->
 
                                 </div> <!-- .row -->
@@ -584,7 +668,7 @@
 
             </div>  <!-- .container -->
 
-        </div> <!-- #lab-station -->
+        </div> <!-- .lab-station -->
 
         <a id="lab-open" style="display: none;"></a>
 
