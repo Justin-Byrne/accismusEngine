@@ -1051,6 +1051,58 @@ main
                 transition: opacity 2s ease;
             }
 
+            #debug
+            {
+                outline: 1px solid red;
+
+                position:   absolute;
+                bottom:     0px;
+                padding:    10px;
+                z-index:    1;
+
+                line-height: 1.5rem;
+
+                color: white;
+
+                .value
+                {
+
+                }
+            }
+
+            #pip-bounds
+            {
+                outline: 1px solid red;
+                z-index: 1;
+                position-area: center;
+
+                #pip-left
+                {
+                    position:   absolute;
+                    width:      10px;
+                    height:     10px;
+                    top:        50%;
+                    left:       50%;
+                    z-index:    1;
+
+                    border-radius:    5px;
+                    background-color: red;
+                }
+
+                #pip-right
+                {
+                    position:   absolute;
+                    width:      10px;
+                    height:     10px;
+                    top:        50%;
+                    left:       50%;
+                    z-index:    1;
+
+                    border-radius:    5px;
+                    background-color: blue;
+                }
+            }
+
             canvas
             {
                 position: absolute;

@@ -1395,7 +1395,7 @@ class Ui
 
                                 _labStation.style.display = 'block';
 
-                                _main.style.overflowY     = 'hidden';
+                                _main.style.overflow      = 'hidden';
 
 
                                 LAB.setCanvasSize ( );
@@ -1501,7 +1501,7 @@ class Ui
 
                 if ( setLab )
 
-                    [ _main.style.overflowY, _lab.style.display ] = [ 'hidden', 'block' ];
+                    [ _main.style.overflow, _lab.style.display ] = [ 'hidden', 'block' ];
             }
 
             /**

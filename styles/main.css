@@ -585,6 +585,36 @@ main {
         transform: rotate(180deg);
         opacity: 0;
         transition: opacity 2s ease; }
+      main .lab-station #lab #debug {
+        outline: 1px solid red;
+        position: absolute;
+        bottom: 0px;
+        padding: 10px;
+        z-index: 1;
+        line-height: 1.5rem;
+        color: white; }
+      main .lab-station #lab #pip-bounds {
+        outline: 1px solid red;
+        z-index: 1;
+        position-area: center; }
+        main .lab-station #lab #pip-bounds #pip-left {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          top: 50%;
+          left: 50%;
+          z-index: 1;
+          border-radius: 5px;
+          background-color: red; }
+        main .lab-station #lab #pip-bounds #pip-right {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          top: 50%;
+          left: 50%;
+          z-index: 1;
+          border-radius: 5px;
+          background-color: blue; }
       main .lab-station #lab canvas {
         position: absolute;
         background-color: black; }

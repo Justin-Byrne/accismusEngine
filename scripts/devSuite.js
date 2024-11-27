@@ -4116,7 +4116,7 @@ class Ui
 
                                 _labStation.style.display = 'block';
 
-                                _main.style.overflowY     = 'hidden';
+                                _main.style.overflow      = 'hidden';
 
 
                                 LAB.setCanvasSize ( );
@@ -4222,7 +4222,7 @@ class Ui
 
                 if ( setLab )
 
-                    [ _main.style.overflowY, _lab.style.display ] = [ 'hidden', 'block' ];
+                    [ _main.style.overflow, _lab.style.display ] = [ 'hidden', 'block' ];
             }
 
             /**
@@ -20987,15 +20987,2392 @@ class Ui
 
                 _drawFrame ( );
         },
-        draggingAndEasingDemo: ( ) =>
+        // draggingAndEasingDemo: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _center  = canvaslab.center;
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case KEYCODE.D:   _easing   += 0.0005;   break;
+        //                 case KEYCODE.A:   _easing   -= 0.0005;   break;
+        //                 case KEYCODE.W:   _isInward  = false;    break;
+        //                 case KEYCODE.S:   _isInward  = true;     break;
+        //                 case KEYCODE.Q:   _easing    = 0;        break;
+        //             }
+        //         } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _circle = new Circle;
+
+
+        //         let _group  = new Group;
+
+        //             _group.template = new SacredCircles ( _center, 75, 10, new Rgb ( 0, 0, 0, 0.5 ), new Rgb ( 0, 0, 0, 0 ) );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _easing = 0.0005;
+
+
+        //         let _isMouseDown = false;
+
+        //         let _isInward    = true;
+
+
+        //         let _target      = _center;
+
+        //         let _velocity    = new Point;
+
+
+        //         let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _move ( circle )
+        //         {
+        //             if ( _lastCircle.y > _center.y - 1 )
+
+        //                 _isInward = false;
+
+
+        //             if ( ! _isMouseDown )
+        //             {
+        //                 _velocity.x = ( _target.x - circle.x ) * _easing;
+
+        //                 _velocity.y = ( _target.y - circle.y ) * _easing;
+
+
+        //                 if ( _isInward )
+        //                 {
+        //                     circle.x += _velocity.x;
+
+        //                     circle.y += _velocity.y;
+        //                 }
+        //                 else
+        //                 {
+        //                     circle.x -= _velocity.x;
+
+        //                     circle.y -= _velocity.y;
+        //                 }
+        //             }
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 _group.circles.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _group.circles.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // draggingAndEasingDemo2: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _center  = canvaslab.center;
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse = utils.captureMouse ( _canvas );
+
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case KEYCODE.D:         _easing   += 0.0005;        break;
+        //                 case KEYCODE.A:         _easing   -= 0.0005;        break;
+        //                 case KEYCODE.W:         _isInward  = false;         break;
+        //                 case KEYCODE.S:         _isInward  = true;          break;
+        //                 case KEYCODE.Q:         _easing    = 0;             break;
+        //                 case KEYCODE.RIGHT:     _angle    += 1;             break;
+        //                 case KEYCODE.LEFT:      _angle    -= 1;             break;
+        //             }
+        //         } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _circle = new Circle;
+
+
+        //         let _group  = new Group;
+
+        //             _group.template = new SacredCircles ( _center, 75, 10, new Rgb ( 0, 0, 0, 0.5 ), new Rgb ( 0, 0, 0, 0 ) );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _easing = 0.0005;
+
+        //         let _angle  = 0;
+
+
+        //         let _isMouseDown = false;
+
+        //         let _isInward    = true;
+
+
+        //         let _target      = _center;
+
+        //         let _velocity    = new Point;
+
+
+        //         let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
+
+
+        //         let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //         let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _move ( circle )
+        //         {
+        //             if ( _lastCircle.y > _center.y - 1 )
+
+        //                 _isInward = false;
+
+        //             ////    INWARD & OUTWORD    ////////
+
+        //                 _velocity.x = ( _target.x - circle.x ) * _easing;
+
+        //                 _velocity.y = ( _target.y - circle.y ) * _easing;
+
+
+        //                 if ( _isInward )
+        //                 {
+        //                     circle.x += _velocity.x;
+
+        //                     circle.y += _velocity.y;
+        //                 }
+        //                 else
+        //                 {
+        //                     circle.x -= _velocity.x;
+
+        //                     circle.y -= _velocity.y;
+        //                 }
+
+        //             ////    ROTATION    ////////////////
+
+        //                 let _pointA = new Point ( circle.x - _center.x, circle.y - _center.y );
+
+        //                 let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
+
+
+        //                 circle.x = _center.x + _pointB.x;
+
+        //                 circle.y = _center.y + _pointB.y;
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _angleFinal = _angle * 0.0005;
+
+
+        //                 _cos = Math.cos ( _angleFinal );
+
+        //                 _sin = Math.sin ( _angleFinal );
+
+
+        //                 _group.circles.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _group.circles.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // draggingAndEasingDemo3: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _center  = canvaslab.center;
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse = utils.captureMouse ( _canvas );
+
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case KEYCODE.D:         _easing   += 0.0005;        break;
+        //                 case KEYCODE.A:         _easing   -= 0.0005;        break;
+        //                 case KEYCODE.W:         _isInward  = false;         break;
+        //                 case KEYCODE.S:         _isInward  = true;          break;
+        //                 case KEYCODE.Q:         _easing    = 0;             break;
+        //                 case KEYCODE.RIGHT:     _angle    += 1;             break;
+        //                 case KEYCODE.LEFT:      _angle    -= 1;             break;
+        //             }
+        //         } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _circle = new Circle;
+
+
+        //         let _group  = new Group;
+
+        //             _group.template = new SacredCircles ( _center, 75, 10, new Rgb ( 0, 0, 0, 0.5 ), new Rgb ( 0, 0, 0, 0 ) );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _easing = 0;
+
+        //         let _angle  = 0;
+
+
+        //         let _isMouseDown = false;
+
+        //         let _isInward    = true;
+
+
+        //         let _target      = _center;
+
+        //         let _velocity    = new Point;
+
+
+        //         let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
+
+
+        //         let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //         let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _move ( circle )
+        //         {
+        //             if ( _lastCircle.y > _center.y - 1 )
+
+        //                 _isInward = false;
+
+        //             ////    INWARD & OUTWORD    ////////
+
+        //                 _velocity.x = ( _target.x - circle.x ) * _easing;
+
+        //                 _velocity.y = ( _target.y - circle.y ) * _easing;
+
+
+        //                 if ( _isInward )
+        //                 {
+        //                     circle.x += _velocity.x;
+
+        //                     circle.y += _velocity.y;
+        //                 }
+        //                 else
+        //                 {
+        //                     circle.x -= _velocity.x;
+
+        //                     circle.y -= _velocity.y;
+        //                 }
+
+        //             ////    ROTATION    ////////////////
+
+        //                 let _pointA = new Point ( circle.x - _center.x, circle.y - _center.y );
+
+        //                 let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
+
+
+        //                 circle.x = _center.x + _pointB.x;
+
+        //                 circle.y = _center.y + _pointB.y;
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _angleFinal = _angle * 0.0005;
+
+
+        //                 _cos = Math.cos ( _angleFinal );
+
+        //                 _sin = Math.sin ( _angleFinal );
+
+
+        //                 _group.circles.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _group.circles.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // draggingAndEasingDemo4: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _center  = canvaslab.center;
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse = utils.captureMouse ( _canvas );
+
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case KEYCODE.D:         _easing   += 0.0005;        break;
+        //                 case KEYCODE.A:         _easing   -= 0.0005;        break;
+        //                 case KEYCODE.W:         _isInward  = false;         break;
+        //                 case KEYCODE.S:         _isInward  = true;          break;
+        //                 case KEYCODE.Q:         _easing    = 0;             break;
+        //                 case KEYCODE.RIGHT:     _angle    += 1;             break;
+        //                 case KEYCODE.LEFT:      _angle    -= 1;             break;
+        //             }
+        //         } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _circle = new Circle;
+
+
+        //         let _group  = new Group;
+
+        //             _group.template = new SacredCircles ( _center, 75, 5, new Rgb ( 0, 0, 0, 0.5 ), new Rgb ( 0, 0, 0, 0 ) );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _easing = 0;
+
+        //         let _angle  = 0;
+
+
+        //         let _isMouseDown = false;
+
+        //         let _isInward    = true;
+
+
+        //         let _target      = _center;
+
+        //         let _velocity    = new Point;
+
+
+        //         let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
+
+
+        //         let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //         let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+
+        //         let _lines = new Lines;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _setLines ( collection )
+        //         {
+        //             for ( let _i = 0; _i < collection.length; _i++ )
+
+        //                 for ( let _j = 0; _j < collection.length; _j++ )
+        //                 {
+        //                     if ( true )
+        //                     {
+        //                         if ( _i === _j ) continue;
+
+        //                         if (  _i > _j  ) continue;
+        //                     }
+
+
+        //                     let _line = new Line;
+
+        //                         _line.start  = collection [ _i ].point;
+
+        //                         _line.end    = collection [ _j ].point;
+
+        //                         _line.stroke.color = new Rgb ( 255, 255, 255, 0.15 );
+
+
+        //                     _lines.push ( _line );
+        //                 }
+        //         }
+
+        //         _setLines ( _group.circles );
+
+        //         function _move ( circle )
+        //         {
+        //             if ( _lastCircle.y > _center.y - 1 )
+
+        //                 _isInward = false;
+
+        //             ////    INWARD & OUTWORD    ////////
+
+        //                 _velocity.x = ( _target.x - circle.x ) * _easing;
+
+        //                 _velocity.y = ( _target.y - circle.y ) * _easing;
+
+
+        //                 if ( _isInward )
+        //                 {
+        //                     circle.x += _velocity.x;
+
+        //                     circle.y += _velocity.y;
+        //                 }
+        //                 else
+        //                 {
+        //                     circle.x -= _velocity.x;
+
+        //                     circle.y -= _velocity.y;
+        //                 }
+
+        //             ////    ROTATION    ////////////////
+
+        //                 let _pointA = new Point ( circle.x - _center.x, circle.y - _center.y );
+
+        //                 let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
+
+
+        //                 circle.x = _center.x + _pointB.x;
+
+        //                 circle.y = _center.y + _pointB.y;
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _angleFinal = _angle * 0.0005;
+
+
+        //                 _cos = Math.cos ( _angleFinal );
+
+        //                 _sin = Math.sin ( _angleFinal );
+
+
+        //                 _group.circles.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _group.circles.draw ( );
+
+        //                 _lines.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // draggingAndEasingDemo5: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _center  = canvaslab.center;
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse = utils.captureMouse ( _canvas );
+
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case KEYCODE.D:         _easing   += 0.0005;        break;
+        //                 case KEYCODE.A:         _easing   -= 0.0005;        break;
+        //                 case KEYCODE.W:         _isInward  = false;         break;
+        //                 case KEYCODE.S:         _isInward  = true;          break;
+        //                 case KEYCODE.Q:         _easing    = 0;             break;
+        //                 case KEYCODE.RIGHT:     _angle    += 1;             break;
+        //                 case KEYCODE.LEFT:      _angle    -= 1;             break;
+        //             }
+        //         } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _iterations = 5;
+
+        //         let _radius     = 180;
+
+        //         let _group      = new Group;
+
+        //             _group.template = new SacredCircles ( _center, _radius, _iterations, new Rgb ( 255, 255, 255, 0.5 ), new Rgb ( 255, 255, 255, 0 ) );
+
+        //             _group.circles.forEach ( _setShadows );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _minDistance = _radius;
+
+
+        //         let _easing = 0;
+
+        //         let _angle  = 0;
+
+
+        //         let _isMouseDown = false;
+
+        //         let _isInward    = true;
+
+
+        //         let _target      = _center;
+
+        //         let _velocity    = new Point;
+
+
+        //         let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
+
+
+        //         let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //         let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+
+        //         let _lines = new Lines;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _setShadows ( circle )
+        //         {
+        //             circle.options.shadow = true;
+
+        //             circle.shadow.color = new Rgb ( 255, 255, 255 );
+
+        //             circle.shadow.blur = 3;
+        //         }
+
+        //         function _drawLine ( objectA, objectB )
+        //         {
+        //             let _distance     = new Point;
+
+        //             let _acceleration = new Point;
+
+
+        //                 _distance.x = objectB.x - objectA.x;
+
+        //                 _distance.y = objectB.y - objectA.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < _minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / _minDistance;
+
+
+        //                 _context.strokeStyle = utils.colorToRGB ( "#FFFFFF", _alpha );
+
+        //                 _context.beginPath ( );
+
+
+        //                 _context.moveTo ( objectA.x, objectA.y );
+
+        //                 _context.lineTo ( objectB.x, objectB.y );
+
+
+        //                 _context.stroke ( );
+
+
+        //                 _acceleration.x = _distance.x * _easing;
+
+        //                 _acceleration.y = _distance.y * _easing;
+
+
+        //                 objectA.velocity.x += _acceleration.x / objectA.mass;
+
+        //                 objectA.velocity.y += _acceleration.y / objectA.mass;
+
+
+        //                 objectB.velocity.x -= _acceleration.x / objectB.mass;
+
+        //                 objectB.velocity.y -= _acceleration.y / objectB.mass;
+        //             }
+        //         }
+
+        //         function _move ( objectA, iter )
+        //         {
+        //             ////    INWARD & OUTWORD    ////////
+
+        //                 _velocity.x = ( _target.x - objectA.x ) * _easing;
+
+        //                 _velocity.y = ( _target.y - objectA.y ) * _easing;
+
+
+        //                 objectA.x += _velocity.x;
+
+        //                 objectA.y += _velocity.y;
+
+        //             ////    ROTATION    ////////////////
+
+        //                 let _pointA = new Point ( objectA.x - _center.x, objectA.y - _center.y );
+
+        //                 let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
+
+
+        //                 objectA.x = _center.x + _pointB.x;
+
+        //                 objectA.y = _center.y + _pointB.y;
+
+        //             ////    DRAW LINES    //////////////
+
+        //                 for ( let _objectB, _j = iter + 1; _j < _group.circles.length; _j++ )
+        //                 {
+        //                     ////    SKIP REDUNDANT LINES    ////
+
+        //                     if ( iter === _j ) continue;
+
+        //                     if (  iter > _j  ) continue;
+
+
+        //                     _objectB = _group.circles [ _j ];
+
+        //                     _drawLine ( objectA, _objectB );
+        //                 }
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _angleFinal = _angle * 0.0005;
+
+
+        //                 _cos = Math.cos ( _angleFinal );
+
+        //                 _sin = Math.sin ( _angleFinal );
+
+
+        //                 _group.circles.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _group.circles.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // draggingAndEasingDemo6: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _center  = canvaslab.center;
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse = utils.captureMouse ( _canvas );
+
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case KEYCODE.D:         _easing   += 0.0005;        break;
+        //                 case KEYCODE.A:         _easing   -= 0.0005;        break;
+        //                 case KEYCODE.W:         _isInward  = false;         break;
+        //                 case KEYCODE.S:         _isInward  = true;          break;
+        //                 case KEYCODE.Q:         _easing    = 0;             break;
+        //                 case KEYCODE.RIGHT:     _angle    += 1;             break;
+        //                 case KEYCODE.LEFT:      _angle    -= 1;             break;
+        //             }
+        //         } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _iterations = 5;
+
+        //         let _radius     = 75;
+
+        //         let _group      = new Group;
+
+        //             _group.template = new SacredCircles ( _center, _radius, _iterations, new Rgb ( 255, 255, 255, 0.5 ), new Rgb ( 255, 255, 255, 0 ) );
+
+        //             _group.circles.forEach ( _setShadows );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _minDistance = _radius * 2;
+
+
+        //         let _easing = 0;
+
+        //         let _angle  = 0;
+
+
+        //         let _isMouseDown = false;
+
+        //         let _isInward    = true;
+
+
+        //         let _target      = _center;
+
+        //         let _velocity    = new Point;
+
+
+        //         let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
+
+
+        //         let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //         let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+
+        //         let _lines = new Lines;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _setShadows ( circle )
+        //         {
+        //             circle.options.shadow = true;
+
+        //             circle.shadow.color   = new Rgb ( 255, 255, 255 );
+
+        //             circle.shadow.blur    = 3;
+        //         }
+
+        //         function _drawLine ( objectA, objectB )
+        //         {
+        //             let _distance     = new Point;
+
+        //             let _acceleration = new Point;
+
+
+        //                 _distance.x = objectB.x - objectA.x;
+
+        //                 _distance.y = objectB.y - objectA.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < _minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / _minDistance;
+
+
+        //                 _context.strokeStyle = utils.colorToRGB ( "#FFFFFF", _alpha );
+
+        //                 _context.beginPath ( );
+
+
+        //                 _context.moveTo ( objectA.x, objectA.y );
+
+        //                 _context.lineTo ( objectB.x, objectB.y );
+
+
+        //                 _context.stroke ( );
+
+
+        //                 if ( true )
+        //                 {
+        //                     _context.beginPath ( );
+
+
+        //                     _context.moveTo ( objectA.x, objectA.y );
+
+        //                     _context.lineTo ( _mouse.x, _mouse.y );
+
+
+        //                     _context.stroke ( );
+
+
+        //                     _acceleration.x = _distance.x * _easing;
+
+        //                     _acceleration.y = _distance.y * _easing;
+        //                 }
+
+
+        //                 objectA.velocity.x += _acceleration.x / objectA.mass;
+
+        //                 objectA.velocity.y += _acceleration.y / objectA.mass;
+
+
+        //                 objectB.velocity.x -= _acceleration.x / objectB.mass;
+
+        //                 objectB.velocity.y -= _acceleration.y / objectB.mass;
+        //             }
+        //         }
+
+        //         function _getDistance ( objectA, input )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = input.x - objectA.x;
+
+        //                 _distance.y = input.y - objectA.y;
+
+
+        //             return Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+        //         }
+
+        //         function _move ( objectA, iter )
+        //         {;
+        //             ////    INWARD & OUTWORD    ////////
+
+        //                 _velocity.x = ( _target.x - objectA.x ) * _easing;
+
+        //                 _velocity.y = ( _target.y - objectA.y ) * _easing;
+
+
+        //                 objectA.x += _velocity.x;
+
+        //                 objectA.y += _velocity.y;
+
+        //             ////    ROTATION    ////////////////
+
+        //                 let _pointA = new Point ( objectA.x - _center.x, objectA.y - _center.y );
+
+        //                 let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
+
+
+        //                 objectA.x = _center.x + _pointB.x;
+
+        //                 objectA.y = _center.y + _pointB.y;
+
+        //             ////    DRAW LINES    //////////////
+
+        //                 for ( let _objectB, _j = iter + 1; _j < _group.circles.length; _j++ )
+        //                 {
+        //                     ////    SKIP REDUNDANT LINES    ////
+
+        //                     if ( iter === _j ) continue;
+
+        //                     if (  iter > _j  ) continue;
+
+
+        //                     _objectB = _group.circles [ _j ];
+
+        //                     _drawLine ( objectA, _objectB );
+        //                 }
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _angleFinal = _angle * 0.0005;
+
+
+        //                 _cos = Math.cos ( _angleFinal );
+
+        //                 _sin = Math.sin ( _angleFinal );
+
+
+        //                 _group.circles.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _group.circles.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // draggingAndEasingDemo7: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _center  = canvaslab.center;
+
+        //         document.body.style.cursor = 'none';
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse = utils.captureMouse ( _canvas );
+
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case KEYCODE.D:         _easing   += 0.0005;        break;
+        //                 case KEYCODE.A:         _easing   -= 0.0005;        break;
+        //                 case KEYCODE.W:         _isInward  = false;         break;
+        //                 case KEYCODE.S:         _isInward  = true;          break;
+        //                 case KEYCODE.Q:         _easing    = 0;             break;
+        //                 case KEYCODE.RIGHT:     _angle    += 1;             break;
+        //                 case KEYCODE.LEFT:      _angle    -= 1;             break;
+        //             }
+        //         } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _iterations = 5;
+
+        //         let _radius     = 75;
+
+        //         let _group      = new Group;
+
+        //             _group.template = new SacredCircles ( _center, _radius, _iterations, new Rgb ( 255, 255, 255, 0.5 ), new Rgb ( 255, 255, 255, 0 ) );
+
+        //             _group.circles.forEach ( _setShadows );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _minDistance = _radius * 2;
+
+
+        //         let _easing = 0;
+
+        //         let _angle  = 0;
+
+
+        //         let _isMouseDown = false;
+
+        //         let _isInward    = true;
+
+
+        //         let _target      = _center;
+
+        //         let _velocity    = new Point;
+
+
+        //         let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
+
+
+        //         let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //         let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+
+        //         let _lines = new Lines;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _setShadows ( circle )
+        //         {
+        //             circle.options.shadow = true;
+
+        //             circle.shadow.color   = new Rgb ( 255, 255, 255 );
+
+        //             circle.shadow.blur    = 3;
+        //         }
+
+        //         function _drawLineToMouse ( objectA, mouse )
+        //         {
+        //             let _mouseDistance    = new Point;
+
+        //             let _minMouseDistance = _radius * 6;
+
+
+        //                 _mouseDistance.x = objectA.x - _mouse.x;
+
+        //                 _mouseDistance.y = objectA.y - _mouse.y;
+
+
+        //                 _mouseDistance.total = Math.sqrt ( _mouseDistance.x * _mouseDistance.x + _mouseDistance.y * _mouseDistance.y );
+
+
+        //             if ( _mouseDistance.total < _minMouseDistance )
+        //             {
+        //                 let _alpha = 1 - _mouseDistance.total / _minMouseDistance;
+
+
+        //                 _context.strokeStyle = utils.colorToRGB ( "#FFFFFF", _alpha );
+
+        //                 _context.beginPath ( );
+
+
+        //                 _context.moveTo ( objectA.x, objectA.y );
+
+        //                 _context.lineTo ( _mouse.x, _mouse.y );
+
+
+        //                 _context.stroke ( );
+        //             }
+        //         }
+
+        //         function _drawLine ( objectA, objectB )
+        //         {
+        //             let _distance     = new Point;
+
+        //             let _acceleration = new Point;
+
+
+        //                 _distance.x = objectB.x - objectA.x;
+
+        //                 _distance.y = objectB.y - objectA.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < _minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / _minDistance;
+
+
+        //                 _context.strokeStyle = utils.colorToRGB ( "#FFFFFF", _alpha );
+
+        //                 _context.beginPath ( );
+
+
+        //                 _context.moveTo ( objectA.x, objectA.y );
+
+        //                 _context.lineTo ( objectB.x, objectB.y );
+
+
+        //                 _context.stroke ( );
+
+
+        //                 _acceleration.x = _distance.x * _easing;
+
+        //                 _acceleration.y = _distance.y * _easing;
+
+
+        //                 objectA.velocity.x += _acceleration.x / objectA.mass;
+
+        //                 objectA.velocity.y += _acceleration.y / objectA.mass;
+
+
+        //                 objectB.velocity.x -= _acceleration.x / objectB.mass;
+
+        //                 objectB.velocity.y -= _acceleration.y / objectB.mass;
+        //             }
+        //         }
+
+        //         function _getDistance ( objectA, input )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = input.x - objectA.x;
+
+        //                 _distance.y = input.y - objectA.y;
+
+
+        //             return Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+        //         }
+
+        //         function _move ( objectA, iter )
+        //         {
+        //             ////    INWARD & OUTWORD    ////////
+
+        //                 _velocity.x = ( _target.x - objectA.x ) * _easing;
+
+        //                 _velocity.y = ( _target.y - objectA.y ) * _easing;
+
+
+        //                 objectA.x += _velocity.x;
+
+        //                 objectA.y += _velocity.y;
+
+        //             ////    ROTATION    ////////////////
+
+        //                 let _pointA = new Point ( objectA.x - _center.x, objectA.y - _center.y );
+
+        //                 let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
+
+
+        //                 objectA.x = _center.x + _pointB.x;
+
+        //                 objectA.y = _center.y + _pointB.y;
+
+        //             ////    DRAW LINES    //////////////
+
+        //                 for ( let _objectB, _j = iter + 1; _j < _group.circles.length; _j++ )
+        //                 {
+        //                     ////    SKIP REDUNDANT LINES    ////
+
+        //                     if ( iter === _j ) continue;
+
+        //                     if (  iter > _j  ) continue;
+
+
+        //                     _objectB = _group.circles [ _j ];
+
+        //                     _drawLine ( objectA, _objectB );
+
+        //                     _drawLineToMouse ( objectA, _mouse );
+        //                 }
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _angleFinal = _angle * 0.0005;
+
+
+        //                 _cos = Math.cos ( _angleFinal );
+
+        //                 _sin = Math.sin ( _angleFinal );
+
+
+        //                 _group.circles.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _group.circles.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // draggingAndEasingDemo8: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _center  = canvaslab.center;
+
+        //         document.body.style.cursor = 'none';
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse = utils.captureMouse ( _canvas );
+
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case KEYCODE.D:         _easing   += 0.0005;        break;
+        //                 case KEYCODE.A:         _easing   -= 0.0005;        break;
+        //                 case KEYCODE.W:         _isInward  = false;         break;
+        //                 case KEYCODE.S:         _isInward  = true;          break;
+        //                 case KEYCODE.Q:         _easing    = 0;             break;
+        //                 case KEYCODE.RIGHT:     _angle    += 1;             break;
+        //                 case KEYCODE.LEFT:      _angle    -= 1;             break;
+        //             }
+        //         } );
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _iterations = 5;
+
+        //         let _radius     = 75;
+
+        //         let _group      = new Group;
+
+        //             _group.template = new SacredCircles ( _center, _radius, _iterations, new Rgb ( 255, 255, 255, 0 ), new Rgb ( 255, 255, 255, 0 ) );
+
+        //             _group.circles.forEach ( _setShadows );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _minDistance = _radius * 2;
+
+
+        //         let _easing = 0;
+
+        //         let _angle  = 0;
+
+
+        //         let _isMouseDown = false;
+
+        //         let _isInward    = true;
+
+
+        //         let _target      = _center;
+
+        //         let _velocity    = new Point;
+
+
+        //         let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
+
+
+        //         let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //         let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+
+        //         let _lines = new Lines;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _setShadows ( circle )
+        //         {
+        //             circle.options.shadow = true;
+
+        //             circle.shadow.color   = new Rgb ( 255, 255, 255 );
+
+        //             circle.shadow.blur    = 3;
+        //         }
+
+        //         function _strokeObjectBetween ( objectA, objectB, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectB.x;
+
+        //                 _distance.y = objectA.y - objectB.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 objectA.stroke.color = new Rgb ( 255, 255, 255, _alpha / 8 );
+        //                 // object.stroke.color.alpha = 1;
+
+
+        //                 _context.stroke ( );
+        //             }
+        //         }
+
+        //         function _fillObjectBetween ( objectA, objectB, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectB.x;
+
+        //                 _distance.y = objectA.y - objectB.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 objectA.fill.color = new Rgb ( 255, 255, 255, _alpha / 6 );
+
+
+        //                 _context.fill ( );
+        //             }
+        //         }
+
+        //         function _drawLineBetween ( objectA, objectB, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectB.x;
+
+        //                 _distance.y = objectA.y - objectB.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 let _color = new Rgb ( 255, 255, 255, _alpha / 8 );
+
+
+        //                 _context.strokeStyle = _color.toCss ( );
+
+        //                 _context.beginPath ( );
+
+
+        //                 _context.moveTo ( objectA.x, objectA.y );
+
+        //                 _context.lineTo ( objectB.x, objectB.y );
+
+
+        //                 _context.stroke ( );
+        //             }
+        //         }
+
+        //         function _getDistance ( objectA, input )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = input.x - objectA.x;
+
+        //                 _distance.y = input.y - objectA.y;
+
+
+        //             return Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+        //         }
+
+        //         function _move ( objectA, iter )
+        //         {
+        //             ////    INWARD & OUTWORD    ////////
+
+        //                 _velocity.x = ( _target.x - objectA.x ) * _easing;
+
+        //                 _velocity.y = ( _target.y - objectA.y ) * _easing;
+
+
+        //                 objectA.x += _velocity.x;
+
+        //                 objectA.y += _velocity.y;
+
+        //             ////    ROTATION    ////////////////
+
+        //                 let _pointA = new Point ( objectA.x - _center.x, objectA.y - _center.y );
+
+        //                 let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
+
+
+        //                 objectA.x = _center.x + _pointB.x;
+
+        //                 objectA.y = _center.y + _pointB.y;
+
+        //             ////    DRAW LINES    //////////////
+
+        //                 for ( let _objectB, _j = iter + 1; _j < _group.circles.length; _j++ )
+        //                 {
+        //                     ////    SKIP REDUNDANT LINES    ////
+
+        //                     if ( iter === _j ) continue;
+
+        //                     if (  iter > _j  ) continue;
+
+
+        //                     _objectB = _group.circles [ _j ];
+
+
+        //                     // _drawLineBetween ( objectA, _objectB, _radius * 3 );
+
+        //                     // _drawLineBetween ( objectA, _mouse, _radius * 6 );
+
+        //                     _strokeObjectBetween ( objectA, _mouse, _radius * 3 );
+
+        //                     // _fillObjectBetween ( objectA, _mouse,   _radius * 6 );
+        //                 }
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _angleFinal = _angle * 0.0005;
+
+
+        //                 _cos = Math.cos ( _angleFinal );
+
+        //                 _sin = Math.sin ( _angleFinal );
+
+
+        //                 _group.circles.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _group.circles.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // draggingAndEasingDemo9: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _center  = canvaslab.center;
+
+        //         document.body.style.cursor = 'none';
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse = utils.captureMouse ( _canvas );
+
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case KEYCODE.D:         _easing   += 0.0005;        break;
+        //                 case KEYCODE.A:         _easing   -= 0.0005;        break;
+        //                 case KEYCODE.W:         _isInward  = false;         break;
+        //                 case KEYCODE.S:         _isInward  = true;          break;
+        //                 case KEYCODE.Q:         _easing    = 0;             break;
+        //                 case KEYCODE.RIGHT:     _angle    += 1;             break;
+        //                 case KEYCODE.LEFT:      _angle    -= 1;             break;
+        //             }
+        //         } );
+
+        //         /**
+        //          * This function returns a positive number of connections,
+        //          * a negative number of disconnections, or zero for no change.
+        //          */
+        //         let _testForConnections = ( function( )
+        //         {
+        //             let _connectionCount = 0;                // Keep track of the connection count
+
+        //             // Return a function that does the actual tracking
+        //             return function ( )
+        //             {
+        //                 let _gamepads = navigator.getGamepads ( );
+
+        //                 let _count    = 0;
+
+
+        //                 for ( let _i = _gamepads.length - 1; _i >= 0; _i-- )
+        //                 {
+        //                     let _gamepad = _gamepads [ _i ];
+
+
+        //                     if ( _gamepad && _gamepad.connected )               // Make sure they're not null and connected
+
+        //                         _count++;
+        //                 }
+
+
+        //                 let _diff = _count - _connectionCount;                  // Return any changes
+
+        //                 _connectionCount = _count;
+
+
+        //                 return _diff;
+        //             }
+        //         } ( ) );
+
+
+        //         function _isGamepad ( )
+        //         {
+        //             let _testConnections = _testForConnections ( );
+
+
+        //             if ( _testConnections > 0 || _testConnections < 0 )
+
+        //                 return true;
+
+
+        //             return false;
+        //         }
+
+        //         function _gamepad ( )
+        //         {
+        //             let _gamepads = navigator.getGamepads ( );
+
+        //             let _gamepad  = _gamepads [ 0 ];        // Blindly assuming this is connected
+
+        //             let _pip      = document.querySelector ( '#pip' );
+
+        //             let _stick    =
+        //             {
+        //                 left:  new Point,
+        //                 right: new Point
+        //             }
+
+
+        //                 _stick.left.x  = _gamepad.axes [ 0 ];
+
+        //                 _stick.left.y  = _gamepad.axes [ 1 ];
+
+
+        //                 _stick.right.x = _gamepad.axes [ 2 ];
+
+        //                 _stick.right.y = _gamepad.axes [ 3 ];
+
+
+        //             if ( true )                   // DEADZONE
+        //             {
+        //                 [ _stick.left.x,  _stick.left.y  ] = gpLib.deadzone ( _stick.left.x,  _stick.left.y  );
+
+        //                 [ _stick.right.x, _stick.right.y ] = gpLib.deadzone ( _stick.right.x, _stick.right.y );
+        //             }
+
+
+        //             let _distance = _radius;
+
+        //             let _clamp = new Point;
+
+
+        //             if ( true )                   // CLAMP
+        //             {
+        //                 [ _stick.left.x,  _stick.left.y  ] = gpLib.clamp ( _stick.left.x,  _stick.left.y, 'clamp'  );
+
+        //                 [ _stick.right.x, _stick.right.y ] = gpLib.clamp ( _stick.right.x, _stick.right.y, 'clamp' );
+        //             }
+
+
+        //                 _pip.style.left = ( _stick.left.x + 1 ) / 2 * 100 + '%';
+
+        //                 _pip.style.top  = ( _stick.left.y + 1 ) / 2 * 100 + '%';
+        //         }
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _iterations = 5;
+
+        //         let _radius     = 75;
+
+        //         let _group      = new Group;
+
+        //             _group.template = new SacredCircles ( _center, _radius, _iterations, new Rgb ( 255, 255, 255, 0 ), new Rgb ( 255, 255, 255, 0 ) );
+
+        //             _group.circles.forEach ( _setShadows );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _minDistance = _radius * 2;
+
+
+        //         let _easing = 0;
+
+        //         let _angle  = 0;
+
+
+        //         let _isMouseDown = false;
+
+        //         let _isInward    = true;
+
+
+        //         let _target      = _center;
+
+        //         let _velocity    = new Point;
+
+
+        //         let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
+
+
+        //         let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //         let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+
+        //         let _lines = new Lines;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _setShadows ( circle )
+        //         {
+        //             circle.options.shadow = true;
+
+        //             circle.shadow.color   = new Rgb ( 255, 255, 255 );
+
+        //             circle.shadow.blur    = 3;
+        //         }
+
+        //         function _strokeObjectBetween ( objectA, objectB, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectB.x;
+
+        //                 _distance.y = objectA.y - objectB.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 objectA.stroke.color = new Rgb ( 255, 255, 255, _alpha / 3 );
+        //             }
+        //         }
+
+        //         function _fillObjectBetween ( objectA, objectB, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectB.x;
+
+        //                 _distance.y = objectA.y - objectB.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 objectA.fill.color = new Rgb ( 255, 255, 255, _alpha / 6 );
+        //             }
+        //         }
+
+        //         function _drawLineBetween ( objectA, objectB, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectB.x;
+
+        //                 _distance.y = objectA.y - objectB.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 _context.strokeStyle = utils.colorToRGB ( "#FFFFFF", _alpha );
+
+        //                 _context.beginPath ( );
+
+
+        //                 _context.moveTo ( objectA.x, objectA.y );
+
+        //                 _context.lineTo ( objectB.x, objectB.y );
+
+
+        //                 _context.stroke ( );
+        //             }
+        //         }
+
+        //         function _drawLineBetweenThings ( objectA, objectB, objectC, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectC.x;
+
+        //                 _distance.y = objectA.y - objectC.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 _context.strokeStyle = utils.colorToRGB ( "#FFFFFF", _alpha );
+
+        //                 _context.beginPath ( );
+
+
+        //                 _context.moveTo ( objectA.x, objectA.y );
+
+        //                 _context.lineTo ( objectB.x, objectB.y );
+
+
+        //                 _context.stroke ( );
+        //             }
+        //         }
+
+        //         function _getDistance ( objectA, input )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = input.x - objectA.x;
+
+        //                 _distance.y = input.y - objectA.y;
+
+
+        //             return Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+        //         }
+
+        //         function _move ( objectA, iter )
+        //         {
+        //             ////    INWARD & OUTWORD    ////////
+
+        //                 _velocity.x = ( _target.x - objectA.x ) * _easing;
+
+        //                 _velocity.y = ( _target.y - objectA.y ) * _easing;
+
+
+        //                 objectA.x += _velocity.x;
+
+        //                 objectA.y += _velocity.y;
+
+        //             ////    ROTATION    ////////////////
+
+        //                 let _pointA = new Point ( objectA.x - _center.x, objectA.y - _center.y );
+
+        //                 let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
+
+
+        //                 objectA.x = _center.x + _pointB.x;
+
+        //                 objectA.y = _center.y + _pointB.y;
+
+        //             ////    DRAW LINES    //////////////
+
+        //                 for ( let _objectB, _j = iter + 1; _j < _group.circles.length; _j++ )
+        //                 {
+        //                     ////    SKIP REDUNDANT LINES    ////
+
+        //                     if ( iter === _j ) continue;
+
+        //                     if (  iter > _j  ) continue;
+
+
+        //                     _objectB = _group.circles [ _j ];
+
+
+        //                     // _drawLineBetween ( objectA, _objectB, _radius * 3 );
+
+        //                     // _drawLineBetweenThings ( objectA, _objectB, _mouse, _radius * 3 );
+
+        //                     // _drawLineBetween ( _objectB, _mouse, _radius * 6 );
+
+        //                     _strokeObjectBetween ( _objectB, _mouse, _radius * 6 );
+
+        //                     _fillObjectBetween ( _objectB, _mouse, _radius * 6 );
+        //                 }
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    INPUTS    //////////////////////
+
+        //                 _gamepad ( );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _angleFinal = _angle * 0.0005;
+
+
+        //                 _cos = Math.cos ( _angleFinal );
+
+        //                 _sin = Math.sin ( _angleFinal );
+
+
+        //                 _group.circles.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _group.circles.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        // draggingAndEasingDemo10: ( ) =>
+        // {
+        //     ////    CONTEXT    /////////////////////////////
+
+        //         let _canvas  = document.getElementById ( 'canvas' );
+
+        //         let _context = _canvas.getContext ( '2d' );
+
+        //         let _center  = canvaslab.center;
+
+        //         document.body.style.cursor = 'none';
+
+        //     ////    LOOP DATA    ///////////////////////////
+
+        //         let _timeCurrent = new Date ( );
+
+        //     ////    INPUT    ///////////////////////////////
+
+        //         let _mouse   = utils.captureMouse ( _canvas );
+
+        //         let _gamepad = undefined;
+
+
+        //         window.addEventListener ( 'keydown', function ( event )
+        //         {
+        //             switch ( event.keyCode )
+        //             {
+        //                 case KEYCODE.D:         _easing   += 0.0005;        break;
+        //                 case KEYCODE.A:         _easing   -= 0.0005;        break;
+        //                 case KEYCODE.W:         _isInward  = false;         break;
+        //                 case KEYCODE.S:         _isInward  = true;          break;
+        //                 case KEYCODE.Q:         _easing    = 0;             break;
+        //                 case KEYCODE.RIGHT:     _angle    += 1;             break;
+        //                 case KEYCODE.LEFT:      _angle    -= 1;             break;
+        //             }
+        //         } );
+
+        //         /**
+        //          * This function returns a positive number of connections,
+        //          * a negative number of disconnections, or zero for no change.
+        //          */
+        //         // let _testForConnections = ( function( )
+        //         // {
+        //         //     let _connectionCount = 0;                // Keep track of the connection count
+
+        //         //     // Return a function that does the actual tracking
+        //         //     return function ( )
+        //         //     {
+        //         //         let _gamepads = navigator.getGamepads ( );
+
+        //         //         let _count    = 0;
+
+
+        //         //         for ( let _i = _gamepads.length - 1; _i >= 0; _i-- )
+        //         //         {
+        //         //             let _gamepad = _gamepads [ _i ];
+
+
+        //         //             if ( _gamepad && _gamepad.connected )               // Make sure they're not null and connected
+
+        //         //                 _count++;
+        //         //         }
+
+
+        //         //         let _diff = _count - _connectionCount;                  // Return any changes
+
+        //         //         _connectionCount = _count;
+
+
+        //         //         return _diff;
+        //         //     }
+        //         // } ( ) );
+
+
+        //         function _isGamepad ( )
+        //         {
+        //             let _testConnections = _testForConnections ( );
+
+
+        //             if ( _testConnections > 0 || _testConnections < 0 )
+
+        //                 return true;
+
+
+        //             return false;
+        //         }
+
+        //         // function _gamepad ( )
+        //         // {
+        //         //     let _gamepads = navigator.getGamepads ( );
+
+        //         //     let _gamepad  = _gamepads [ 0 ];        // Blindly assuming this is connected
+
+        //         //     let _pip      = document.querySelector ( '#pip' );
+
+        //         //     let _stick    =
+        //         //     {
+        //         //         left:  new Point,
+        //         //         right: new Point
+        //         //     }
+
+
+        //         //         _stick.left.x  = _gamepad.axes [ 0 ];
+
+        //         //         _stick.left.y  = _gamepad.axes [ 1 ];
+
+
+        //         //         _stick.right.x = _gamepad.axes [ 2 ];
+
+        //         //         _stick.right.y = _gamepad.axes [ 3 ];
+
+
+        //         //     if ( true )                   // DEADZONE
+        //         //     {
+        //         //         [ _stick.left.x,  _stick.left.y  ] = gpLib.deadzone ( _stick.left.x,  _stick.left.y  );
+
+        //         //         [ _stick.right.x, _stick.right.y ] = gpLib.deadzone ( _stick.right.x, _stick.right.y );
+        //         //     }
+
+
+        //         //     let _distance = _radius;
+
+        //         //     let _clamp = new Point;
+
+
+        //         //     if ( true )                   // CLAMP
+        //         //     {
+        //         //         [ _stick.left.x,  _stick.left.y  ] = gpLib.clamp ( _stick.left.x,  _stick.left.y, 'clamp'  );
+
+        //         //         [ _stick.right.x, _stick.right.y ] = gpLib.clamp ( _stick.right.x, _stick.right.y, 'clamp' );
+        //         //     }
+
+
+        //         //         _pip.style.left = ( _stick.left.x + 1 ) / 2 * 100 + '%';
+
+        //         //         _pip.style.top  = ( _stick.left.y + 1 ) / 2 * 100 + '%';
+        //         // }
+
+        //     ////    OBJECTS    /////////////////////////////
+
+        //         let _iterations = 5;
+
+        //         let _radius     = 75;
+
+        //         let _group      = new Group;
+
+        //             _group.template = new SacredCircles ( _center, _radius, _iterations, new Rgb ( 255, 255, 255, 0 ), new Rgb ( 255, 255, 255, 0 ) );
+
+        //             _group.circles.forEach ( _setShadows );
+
+        //     ////    SET DEFAULTS    ////////////////////////
+
+        //         let _minDistance = _radius * 2;
+
+
+        //         let _easing = 0;
+
+        //         let _angle  = 0;
+
+
+        //         let _isMouseDown = false;
+
+        //         let _isInward    = true;
+
+
+        //         let _target      = _center;
+
+        //         let _velocity    = new Point;
+
+
+        //         let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
+
+
+        //         let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+        //         let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
+
+
+        //         let _lines = new Lines;
+
+        //     ////    FUNCTIONS    ///////////////////////////
+
+        //         function _setShadows ( circle )
+        //         {
+        //             circle.options.shadow = true;
+
+        //             circle.shadow.color   = new Rgb ( 255, 255, 255 );
+
+        //             circle.shadow.blur    = 3;
+        //         }
+
+        //         function _strokeObjectBetween ( objectA, objectB, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectB.x;
+
+        //                 _distance.y = objectA.y - objectB.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 objectA.stroke.color = new Rgb ( 255, 255, 255, _alpha / 3 );
+        //             }
+        //         }
+
+        //         function _fillObjectBetween ( objectA, objectB, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectB.x;
+
+        //                 _distance.y = objectA.y - objectB.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 objectA.fill.color = new Rgb ( 255, 255, 255, _alpha / 6 );
+        //             }
+        //         }
+
+        //         function _drawLineBetween ( objectA, objectB, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectB.x;
+
+        //                 _distance.y = objectA.y - objectB.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 _context.strokeStyle = utils.colorToRGB ( "#FFFFFF", _alpha );
+
+        //                 _context.beginPath ( );
+
+
+        //                 _context.moveTo ( objectA.x, objectA.y );
+
+        //                 _context.lineTo ( objectB.x, objectB.y );
+
+
+        //                 _context.stroke ( );
+        //             }
+        //         }
+
+        //         function _drawLineBetweenThings ( objectA, objectB, objectC, minDistance )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = objectA.x - objectC.x;
+
+        //                 _distance.y = objectA.y - objectC.y;
+
+
+        //                 _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+        //             if ( _distance.total < minDistance )
+        //             {
+        //                 let _alpha = 1 - _distance.total / minDistance;
+
+
+        //                 _context.strokeStyle = utils.colorToRGB ( "#FFFFFF", _alpha );
+
+        //                 _context.beginPath ( );
+
+
+        //                 _context.moveTo ( objectA.x, objectA.y );
+
+        //                 _context.lineTo ( objectB.x, objectB.y );
+
+
+        //                 _context.stroke ( );
+        //             }
+        //         }
+
+        //         function _getDistance ( objectA, input )
+        //         {
+        //             let _distance = new Point;
+
+
+        //                 _distance.x = input.x - objectA.x;
+
+        //                 _distance.y = input.y - objectA.y;
+
+
+        //             return Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+        //         }
+
+        //         let _pip = document.querySelector ( '#pip' );
+
+        //         function _movePip ( )
+        //         {
+        //             _pip.style.left = ( _gamepad.stick.left.x + 1 ) / 2 * 100 + '%';
+
+        //             _pip.style.top  = ( _gamepad.stick.left.y + 1 ) / 2 * 100 + '%';
+        //         }
+
+        //         function _move ( objectA, iter )
+        //         {
+        //             ////    INWARD & OUTWORD    ////////
+
+        //                 _velocity.x = ( _target.x - objectA.x ) * _easing;
+
+        //                 _velocity.y = ( _target.y - objectA.y ) * _easing;
+
+
+        //                 objectA.x += _velocity.x;
+
+        //                 objectA.y += _velocity.y;
+
+        //             ////    ROTATION    ////////////////
+
+        //                 let _pointA = new Point ( objectA.x - _center.x, objectA.y - _center.y );
+
+        //                 let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
+
+
+        //                 objectA.x = _center.x + _pointB.x;
+
+        //                 objectA.y = _center.y + _pointB.y;
+
+        //             ////    DRAW LINES    //////////////
+
+        //                 for ( let _objectB, _j = iter + 1; _j < _group.circles.length; _j++ )
+        //                 {
+        //                     ////    SKIP REDUNDANT LINES    ////
+
+        //                     if ( iter === _j ) continue;
+
+        //                     if (  iter > _j  ) continue;
+
+
+        //                     _objectB = _group.circles [ _j ];
+
+
+        //                     _movePip ( );
+
+        //                     // _drawLineBetween ( objectA, _objectB, _radius * 3 );
+
+        //                     // _drawLineBetweenThings ( objectA, _objectB, _mouse, _radius * 3 );
+
+        //                     // _drawLineBetween ( _objectB, _mouse, _radius * 6 );
+
+        //                     let _pointer = new Point;
+
+        //                         _pointer.x = _pip.offsetLeft;
+
+        //                         _pointer.y = _pip.offsetTop;
+
+        //                     _strokeObjectBetween ( _objectB, _mouse, _radius * 6 );
+
+        //                     _fillObjectBetween ( _objectB, _pointer, _radius * 6 );
+        //                 }
+        //         }
+
+        //     ////    DRAW    ////////////////////////////////
+
+        //         function _drawFrame ( )
+        //         {
+        //             window.requestAnimationFrame ( _drawFrame, _canvas );
+
+        //             ////    LOOP DATA    ///////////////////
+
+        //                 _timeCurrent = LAB.getFps ( _timeCurrent );
+
+        //             ////    CLEAR SCREEN    ////////////////
+
+        //                 _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+        //             ////    INPUTS    //////////////////////
+
+        //                 _gamepad = utils.captureGamepad ( );
+
+        //             ////    TRANSITIONS    /////////////////
+
+        //                 let _angleFinal = _angle * 0.0005;
+
+
+        //                 _cos = Math.cos ( _angleFinal );
+
+        //                 _sin = Math.sin ( _angleFinal );
+
+
+        //                 _group.circles.forEach ( _move );
+
+        //             ////    DRAW    ////////////////////////
+
+        //                 _group.circles.draw ( );
+        //         }
+
+
+        //         _drawFrame ( );
+        // },
+        draggingAndEasingDemo11: ( ) =>
         {
             ////    CONTEXT    /////////////////////////////
 
-                let _canvas  = document.getElementById ( 'canvas' );
+                let _canvas   = document.getElementById ( 'canvas' );
 
-                let _context = _canvas.getContext ( '2d' );
+                let _context  = _canvas.getContext ( '2d' );
 
-                let _center  = canvaslab.center;
+                let _center   = canvaslab.center;
+
+
+                let _pipLeft  = document.querySelector ( '#pip-left' );
+
+                let _pipRight = document.querySelector ( '#pip-right' );
+
+
+                let _easingOutput = document.querySelector ( '#debug > div.easing > span' );
+
+                let _angleOutput  = document.querySelector ( '#debug > div.angle > span' );
+
+
+                let _stick    =
+                {
+                    left:  new Point,
+                    right: new Point
+                }
 
             ////    LOOP DATA    ///////////////////////////
 
@@ -21005,119 +23382,7 @@ class Ui
 
                 let _mouse   = utils.captureMouse ( _canvas );
 
-
-                window.addEventListener ( 'keydown', function ( event )
-                {
-                    switch ( event.keyCode )
-                    {
-                        case KEYCODE.D:   _easing   += 0.0005;   break;
-                        case KEYCODE.A:   _easing   -= 0.0005;   break;
-                        case KEYCODE.W:   _isInward  = false;    break;
-                        case KEYCODE.S:   _isInward  = true;     break;
-                        case KEYCODE.Q:   _easing    = 0;        break;
-                    }
-                } );
-
-            ////    OBJECTS    /////////////////////////////
-
-                let _circle = new Circle;
-
-
-                let _group  = new Group;
-
-                    _group.template = new SacredCircles ( _center, 75, 10, new Rgb ( 0, 0, 0, 0.5 ), new Rgb ( 0, 0, 0, 0 ) );
-
-            ////    SET DEFAULTS    ////////////////////////
-
-                let _easing = 0.0005;
-
-
-                let _isMouseDown = false;
-
-                let _isInward    = true;
-
-
-                let _target      = _center;
-
-                let _velocity    = new Point;
-
-
-                let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
-
-            ////    FUNCTIONS    ///////////////////////////
-
-                function _move ( circle )
-                {
-                    if ( _lastCircle.y > _center.y - 1 )
-
-                        _isInward = false;
-
-
-                    if ( ! _isMouseDown )
-                    {
-                        _velocity.x = ( _target.x - circle.x ) * _easing;
-
-                        _velocity.y = ( _target.y - circle.y ) * _easing;
-
-
-                        if ( _isInward )
-                        {
-                            circle.x += _velocity.x;
-
-                            circle.y += _velocity.y;
-                        }
-                        else
-                        {
-                            circle.x -= _velocity.x;
-
-                            circle.y -= _velocity.y;
-                        }
-                    }
-                }
-
-            ////    DRAW    ////////////////////////////////
-
-                function _drawFrame ( )
-                {
-                    window.requestAnimationFrame ( _drawFrame, _canvas );
-
-                    ////    LOOP DATA    ///////////////////
-
-                        _timeCurrent = LAB.getFps ( _timeCurrent );
-
-                    ////    CLEAR SCREEN    ////////////////
-
-                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
-
-                    ////    TRANSITIONS    /////////////////
-
-                        _group.circles.forEach ( _move );
-
-                    ////    DRAW    ////////////////////////
-
-                        _group.circles.draw ( );
-                }
-
-
-                _drawFrame ( );
-        },
-        draggingAndEasingDemo2: ( ) =>
-        {
-            ////    CONTEXT    /////////////////////////////
-
-                let _canvas  = document.getElementById ( 'canvas' );
-
-                let _context = _canvas.getContext ( '2d' );
-
-                let _center  = canvaslab.center;
-
-            ////    LOOP DATA    ///////////////////////////
-
-                let _timeCurrent = new Date ( );
-
-            ////    INPUT    ///////////////////////////////
-
-                let _mouse = utils.captureMouse ( _canvas );
+                let _gamepad = undefined;
 
 
                 window.addEventListener ( 'keydown', function ( event )
@@ -21134,475 +23399,34 @@ class Ui
                     }
                 } );
 
-            ////    OBJECTS    /////////////////////////////
-
-                let _circle = new Circle;
-
-
-                let _group  = new Group;
-
-                    _group.template = new SacredCircles ( _center, 75, 10, new Rgb ( 0, 0, 0, 0.5 ), new Rgb ( 0, 0, 0, 0 ) );
-
-            ////    SET DEFAULTS    ////////////////////////
-
-                let _easing = 0.0005;
-
-                let _angle  = 0;
-
-
-                let _isMouseDown = false;
-
-                let _isInward    = true;
-
-
-                let _target      = _center;
-
-                let _velocity    = new Point;
-
-
-                let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
-
-
-                let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
-
-                let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
-
-            ////    FUNCTIONS    ///////////////////////////
-
-                function _move ( circle )
+                function _isGamepad ( )
                 {
-                    if ( _lastCircle.y > _center.y - 1 )
-
-                        _isInward = false;
-
-                    ////    INWARD & OUTWORD    ////////
-
-                        _velocity.x = ( _target.x - circle.x ) * _easing;
-
-                        _velocity.y = ( _target.y - circle.y ) * _easing;
+                    let _testConnections = _testForConnections ( );
 
 
-                        if ( _isInward )
-                        {
-                            circle.x += _velocity.x;
+                    if ( _testConnections > 0 || _testConnections < 0 )
 
-                            circle.y += _velocity.y;
-                        }
-                        else
-                        {
-                            circle.x -= _velocity.x;
-
-                            circle.y -= _velocity.y;
-                        }
-
-                    ////    ROTATION    ////////////////
-
-                        let _pointA = new Point ( circle.x - _center.x, circle.y - _center.y );
-
-                        let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
+                        return true;
 
 
-                        circle.x = _center.x + _pointB.x;
-
-                        circle.y = _center.y + _pointB.y;
+                    return false;
                 }
-
-            ////    DRAW    ////////////////////////////////
-
-                function _drawFrame ( )
-                {
-                    window.requestAnimationFrame ( _drawFrame, _canvas );
-
-                    ////    LOOP DATA    ///////////////////
-
-                        _timeCurrent = LAB.getFps ( _timeCurrent );
-
-                    ////    CLEAR SCREEN    ////////////////
-
-                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
-
-                    ////    TRANSITIONS    /////////////////
-
-                        let _angleFinal = _angle * 0.0005;
-
-
-                        _cos = Math.cos ( _angleFinal );
-
-                        _sin = Math.sin ( _angleFinal );
-
-
-                        _group.circles.forEach ( _move );
-
-                    ////    DRAW    ////////////////////////
-
-                        _group.circles.draw ( );
-                }
-
-
-                _drawFrame ( );
-        },
-        draggingAndEasingDemo3: ( ) =>
-        {
-            ////    CONTEXT    /////////////////////////////
-
-                let _canvas  = document.getElementById ( 'canvas' );
-
-                let _context = _canvas.getContext ( '2d' );
-
-                let _center  = canvaslab.center;
-
-            ////    LOOP DATA    ///////////////////////////
-
-                let _timeCurrent = new Date ( );
-
-            ////    INPUT    ///////////////////////////////
-
-                let _mouse = utils.captureMouse ( _canvas );
-
-
-                window.addEventListener ( 'keydown', function ( event )
-                {
-                    switch ( event.keyCode )
-                    {
-                        case KEYCODE.D:         _easing   += 0.0005;        break;
-                        case KEYCODE.A:         _easing   -= 0.0005;        break;
-                        case KEYCODE.W:         _isInward  = false;         break;
-                        case KEYCODE.S:         _isInward  = true;          break;
-                        case KEYCODE.Q:         _easing    = 0;             break;
-                        case KEYCODE.RIGHT:     _angle    += 1;             break;
-                        case KEYCODE.LEFT:      _angle    -= 1;             break;
-                    }
-                } );
-
-            ////    OBJECTS    /////////////////////////////
-
-                let _circle = new Circle;
-
-
-                let _group  = new Group;
-
-                    _group.template = new SacredCircles ( _center, 75, 10, new Rgb ( 0, 0, 0, 0.5 ), new Rgb ( 0, 0, 0, 0 ) );
-
-            ////    SET DEFAULTS    ////////////////////////
-
-                let _easing = 0;
-
-                let _angle  = 0;
-
-
-                let _isMouseDown = false;
-
-                let _isInward    = true;
-
-
-                let _target      = _center;
-
-                let _velocity    = new Point;
-
-
-                let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
-
-
-                let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
-
-                let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
-
-            ////    FUNCTIONS    ///////////////////////////
-
-                function _move ( circle )
-                {
-                    if ( _lastCircle.y > _center.y - 1 )
-
-                        _isInward = false;
-
-                    ////    INWARD & OUTWORD    ////////
-
-                        _velocity.x = ( _target.x - circle.x ) * _easing;
-
-                        _velocity.y = ( _target.y - circle.y ) * _easing;
-
-
-                        if ( _isInward )
-                        {
-                            circle.x += _velocity.x;
-
-                            circle.y += _velocity.y;
-                        }
-                        else
-                        {
-                            circle.x -= _velocity.x;
-
-                            circle.y -= _velocity.y;
-                        }
-
-                    ////    ROTATION    ////////////////
-
-                        let _pointA = new Point ( circle.x - _center.x, circle.y - _center.y );
-
-                        let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
-
-
-                        circle.x = _center.x + _pointB.x;
-
-                        circle.y = _center.y + _pointB.y;
-                }
-
-            ////    DRAW    ////////////////////////////////
-
-                function _drawFrame ( )
-                {
-                    window.requestAnimationFrame ( _drawFrame, _canvas );
-
-                    ////    LOOP DATA    ///////////////////
-
-                        _timeCurrent = LAB.getFps ( _timeCurrent );
-
-                    ////    CLEAR SCREEN    ////////////////
-
-                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
-
-                    ////    TRANSITIONS    /////////////////
-
-                        let _angleFinal = _angle * 0.0005;
-
-
-                        _cos = Math.cos ( _angleFinal );
-
-                        _sin = Math.sin ( _angleFinal );
-
-
-                        _group.circles.forEach ( _move );
-
-                    ////    DRAW    ////////////////////////
-
-                        _group.circles.draw ( );
-                }
-
-
-                _drawFrame ( );
-        },
-        draggingAndEasingDemo4: ( ) =>
-        {
-            ////    CONTEXT    /////////////////////////////
-
-                let _canvas  = document.getElementById ( 'canvas' );
-
-                let _context = _canvas.getContext ( '2d' );
-
-                let _center  = canvaslab.center;
-
-            ////    LOOP DATA    ///////////////////////////
-
-                let _timeCurrent = new Date ( );
-
-            ////    INPUT    ///////////////////////////////
-
-                let _mouse = utils.captureMouse ( _canvas );
-
-
-                window.addEventListener ( 'keydown', function ( event )
-                {
-                    switch ( event.keyCode )
-                    {
-                        case KEYCODE.D:         _easing   += 0.0005;        break;
-                        case KEYCODE.A:         _easing   -= 0.0005;        break;
-                        case KEYCODE.W:         _isInward  = false;         break;
-                        case KEYCODE.S:         _isInward  = true;          break;
-                        case KEYCODE.Q:         _easing    = 0;             break;
-                        case KEYCODE.RIGHT:     _angle    += 1;             break;
-                        case KEYCODE.LEFT:      _angle    -= 1;             break;
-                    }
-                } );
-
-            ////    OBJECTS    /////////////////////////////
-
-                let _circle = new Circle;
-
-
-                let _group  = new Group;
-
-                    _group.template = new SacredCircles ( _center, 75, 5, new Rgb ( 0, 0, 0, 0.5 ), new Rgb ( 0, 0, 0, 0 ) );
-
-            ////    SET DEFAULTS    ////////////////////////
-
-                let _easing = 0;
-
-                let _angle  = 0;
-
-
-                let _isMouseDown = false;
-
-                let _isInward    = true;
-
-
-                let _target      = _center;
-
-                let _velocity    = new Point;
-
-
-                let _lastCircle  = _group.circles [ _group.circles.length - 1 ];
-
-
-                let _cos = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
-
-                let _sin = undefined;   // ACCESSIBLE BY MOVE AND DRAWFRAME
-
-
-                let _lines = new Lines;
-
-            ////    FUNCTIONS    ///////////////////////////
-
-                function _setLines ( collection )
-                {
-                    for ( let _i = 0; _i < collection.length; _i++ )
-
-                        for ( let _j = 0; _j < collection.length; _j++ )
-                        {
-                            if ( true )
-                            {
-                                if ( _i === _j ) continue;
-
-                                if (  _i > _j  ) continue;
-                            }
-
-
-                            let _line = new Line;
-
-                                _line.start  = collection [ _i ].point;
-
-                                _line.end    = collection [ _j ].point;
-
-                                _line.stroke.color = new Rgb ( 255, 255, 255, 0.15 );
-
-
-                            _lines.push ( _line );
-                        }
-                }
-
-                _setLines ( _group.circles );
-
-                function _move ( circle )
-                {
-                    if ( _lastCircle.y > _center.y - 1 )
-
-                        _isInward = false;
-
-                    ////    INWARD & OUTWORD    ////////
-
-                        _velocity.x = ( _target.x - circle.x ) * _easing;
-
-                        _velocity.y = ( _target.y - circle.y ) * _easing;
-
-
-                        if ( _isInward )
-                        {
-                            circle.x += _velocity.x;
-
-                            circle.y += _velocity.y;
-                        }
-                        else
-                        {
-                            circle.x -= _velocity.x;
-
-                            circle.y -= _velocity.y;
-                        }
-
-                    ////    ROTATION    ////////////////
-
-                        let _pointA = new Point ( circle.x - _center.x, circle.y - _center.y );
-
-                        let _pointB = new Point ( _cos * _pointA.x - _sin * _pointA.y, _cos * _pointA.y + _sin * _pointA.x );
-
-
-                        circle.x = _center.x + _pointB.x;
-
-                        circle.y = _center.y + _pointB.y;
-                }
-
-            ////    DRAW    ////////////////////////////////
-
-                function _drawFrame ( )
-                {
-                    window.requestAnimationFrame ( _drawFrame, _canvas );
-
-                    ////    LOOP DATA    ///////////////////
-
-                        _timeCurrent = LAB.getFps ( _timeCurrent );
-
-                    ////    CLEAR SCREEN    ////////////////
-
-                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
-
-                    ////    TRANSITIONS    /////////////////
-
-                        let _angleFinal = _angle * 0.0005;
-
-
-                        _cos = Math.cos ( _angleFinal );
-
-                        _sin = Math.sin ( _angleFinal );
-
-
-                        _group.circles.forEach ( _move );
-
-                    ////    DRAW    ////////////////////////
-
-                        _group.circles.draw ( );
-
-                        _lines.draw ( );
-                }
-
-
-                _drawFrame ( );
-        },
-        draggingAndEasingDemo5: ( ) =>
-        {
-            ////    CONTEXT    /////////////////////////////
-
-                let _canvas  = document.getElementById ( 'canvas' );
-
-                let _context = _canvas.getContext ( '2d' );
-
-                let _center  = canvaslab.center;
-
-            ////    LOOP DATA    ///////////////////////////
-
-                let _timeCurrent = new Date ( );
-
-            ////    INPUT    ///////////////////////////////
-
-                let _mouse = utils.captureMouse ( _canvas );
-
-
-                window.addEventListener ( 'keydown', function ( event )
-                {
-                    switch ( event.keyCode )
-                    {
-                        case KEYCODE.D:         _easing   += 0.0005;        break;
-                        case KEYCODE.A:         _easing   -= 0.0005;        break;
-                        case KEYCODE.W:         _isInward  = false;         break;
-                        case KEYCODE.S:         _isInward  = true;          break;
-                        case KEYCODE.Q:         _easing    = 0;             break;
-                        case KEYCODE.RIGHT:     _angle    += 1;             break;
-                        case KEYCODE.LEFT:      _angle    -= 1;             break;
-                    }
-                } );
 
             ////    OBJECTS    /////////////////////////////
 
                 let _iterations = 5;
 
-                let _radius     = 180;
+                let _radius     = 75;
 
                 let _group      = new Group;
 
-                    _group.template = new SacredCircles ( _center, _radius, _iterations, new Rgb ( 255, 255, 255, 0.5 ), new Rgb ( 255, 255, 255, 0 ) );
+                    _group.template = new SacredCircles ( _center, _radius, _iterations, new Rgb ( 255, 255, 255, 0 ), new Rgb ( 255, 255, 255, 0 ) );
 
                     _group.circles.forEach ( _setShadows );
 
             ////    SET DEFAULTS    ////////////////////////
 
-                let _minDistance = _radius;
+                let _minDistance = _radius * 2;
 
 
                 let _easing = 0;
@@ -21636,29 +23460,71 @@ class Ui
                 {
                     circle.options.shadow = true;
 
-                    circle.shadow.color = new Rgb ( 255, 255, 255 );
+                    circle.shadow.color   = new Rgb ( 255, 255, 255 );
 
-                    circle.shadow.blur = 3;
+                    circle.shadow.blur    = 3;
                 }
 
-                function _drawLine ( objectA, objectB )
+                function _strokeObjectBetween ( objectA, objectB, minDistance )
                 {
-                    let _distance     = new Point;
-
-                    let _acceleration = new Point;
+                    let _distance = new Point;
 
 
-                        _distance.x = objectB.x - objectA.x;
+                        _distance.x = objectA.x - objectB.x;
 
-                        _distance.y = objectB.y - objectA.y;
+                        _distance.y = objectA.y - objectB.y;
 
 
                         _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
 
 
-                    if ( _distance.total < _minDistance )
+                    if ( _distance.total < minDistance )
                     {
-                        let _alpha = 1 - _distance.total / _minDistance;
+                        let _alpha = 1 - _distance.total / minDistance;
+
+
+                        objectA.stroke.color = new Rgb ( 255, 255, 255, _alpha / 3 );
+                    }
+                }
+
+                function _fillObjectBetween ( objectA, objectB, minDistance )
+                {
+                    let _distance = new Point;
+
+
+                        _distance.x = objectA.x - objectB.x;
+
+                        _distance.y = objectA.y - objectB.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    if ( _distance.total < minDistance )
+                    {
+                        let _alpha = 1 - _distance.total / minDistance;
+
+
+                        objectA.fill.color = new Rgb ( 255, 255, 255, _alpha / 6 );
+                    }
+                }
+
+                function _drawLineBetween ( objectA, objectB, minDistance )
+                {
+                    let _distance = new Point;
+
+
+                        _distance.x = objectA.x - objectB.x;
+
+                        _distance.y = objectA.y - objectB.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    if ( _distance.total < minDistance )
+                    {
+                        let _alpha = 1 - _distance.total / minDistance;
 
 
                         _context.strokeStyle = utils.colorToRGB ( "#FFFFFF", _alpha );
@@ -21672,22 +23538,64 @@ class Ui
 
 
                         _context.stroke ( );
-
-
-                        _acceleration.x = _distance.x * _easing;
-
-                        _acceleration.y = _distance.y * _easing;
-
-
-                        objectA.velocity.x += _acceleration.x / objectA.mass;
-
-                        objectA.velocity.y += _acceleration.y / objectA.mass;
-
-
-                        objectB.velocity.x -= _acceleration.x / objectB.mass;
-
-                        objectB.velocity.y -= _acceleration.y / objectB.mass;
                     }
+                }
+
+                function _drawLineBetweenThings ( objectA, objectB, objectC, minDistance )
+                {
+                    let _distance = new Point;
+
+
+                        _distance.x = objectA.x - objectC.x;
+
+                        _distance.y = objectA.y - objectC.y;
+
+
+                        _distance.total = Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+
+
+                    if ( _distance.total < minDistance )
+                    {
+                        let _alpha = 1 - _distance.total / minDistance;
+
+
+                        _context.strokeStyle = utils.colorToRGB ( "#FFFFFF", _alpha );
+
+                        _context.beginPath ( );
+
+
+                        _context.moveTo ( objectA.x, objectA.y );
+
+                        _context.lineTo ( objectB.x, objectB.y );
+
+
+                        _context.stroke ( );
+                    }
+                }
+
+                function _getDistance ( objectA, input )
+                {
+                    let _distance = new Point;
+
+
+                        _distance.x = input.x - objectA.x;
+
+                        _distance.y = input.y - objectA.y;
+
+
+                    return Math.sqrt ( _distance.x * _distance.x + _distance.y * _distance.y );
+                }
+
+                function _movePips ( )
+                {
+                    _pipLeft.style.left  = ( _gamepad.stick.left.x + 1 ) / 2 * 100 + '%';
+
+                    _pipLeft.style.top   = ( _gamepad.stick.left.y + 1 ) / 2 * 100 + '%';
+
+
+                    _pipRight.style.left = ( _gamepad.stick.right.x + 1 ) / 2 * 100 + '%';
+
+                    _pipRight.style.top  = ( _gamepad.stick.right.y + 1 ) / 2 * 100 + '%';
                 }
 
                 function _move ( objectA, iter )
@@ -21727,7 +23635,26 @@ class Ui
 
                             _objectB = _group.circles [ _j ];
 
-                            _drawLine ( objectA, _objectB );
+
+                            _movePips ( );
+
+
+                            [ _stick.left.x,  _stick.left.y  ] = [ _pipLeft.offsetLeft,  _pipLeft.offsetTop  ];
+
+                            [ _stick.right.x, _stick.right.y ] = [ _pipRight.offsetLeft, _pipRight.offsetTop ];
+
+
+                            // _drawLineBetween ( objectA, _objectB, _radius * 3 );
+
+                            _strokeObjectBetween ( _objectB, _mouse, _radius * 6 );
+
+                            // _drawLineBetweenThings ( objectA, _objectB, _mouse, _radius * 3 );
+
+                            _fillObjectBetween ( _objectB, _stick.left, _radius * 6 );
+
+                            _drawLineBetween ( _objectB, _stick.right, _radius * 6 );
+
+                            // _drawLineBetween ( _objectB, _mouse, _radius * 6 );
                         }
                 }
 
@@ -21744,6 +23671,16 @@ class Ui
                     ////    CLEAR SCREEN    ////////////////
 
                         _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                    ////    INPUTS    //////////////////////
+
+                        _gamepad = utils.captureGamepad ( );
+
+                    ////    OUTPUTS    /////////////////////
+
+                        _easingOutput.innerHTML = _easing;
+
+                        _angleOutput.innerHTML  = _angle;
 
                     ////    TRANSITIONS    /////////////////
 
@@ -25516,7 +27453,7 @@ class Ui
 
             ////    FUNCTIONS    ///////////////////////////
 
-                function _spring ( objectA, objectB )
+                function _drawLine ( objectA, objectB )
                 {
                     let _distance     = new Point;
 
@@ -25597,8 +27534,13 @@ class Ui
                     {
                         _objectB = _particles [ _j ];
 
-                        _spring ( objectA, _objectB );
+                        _drawLine ( objectA, _objectB );
                     }
+                }
+
+                isPoint ( circle )
+                {
+                    console.log ( 'circle:', circle );
                 }
 
             ////    DRAW    ////////////////////////////////
@@ -27582,6 +29524,117 @@ class Ui
 
 
                 _drawFrame ( );
+        },
+        // Extra - Web-Workers
+        EXTRA_WebWorkers: ( ) =>
+        {
+            /**
+             * test browser support for Web Workers
+             */
+            if ( typeof Worker !== 'function' )
+            {
+                let _error = new ReferenceError ( "Sorry, Web Workers are not supported in your browser." );
+
+                let _aside = document.getElementsByTagName ( 'aside' ) [ 0 ];
+
+                    _aside.innerHTML = "<p><em>" + _error.message + " Check the <a href='http://caniuse.com/webworkers'>browser compatibility table</a>.</em></p>" + _aside.innerHTML;
+
+
+                throw _error;
+            }
+
+            window.onload = function ( )
+            {
+                let _canvas      = document.getElementById('canvas');
+
+                let _context     = canvas.getContext('2d');
+
+                let _worker      = new Worker ( './workers/collision-worker.js' );
+
+                let _balls       = new Array;
+
+                let _numBalls    = 15;
+
+                let _renderFrame = true;
+
+
+                // INITIALIZE THE BALL POSITIONS AS IN PRIOR EXAMPLE
+                for ( let _radius, _ball, _i = 0; _i < _numBalls; _i++ )
+                {
+                    _radius = Math.random ( ) * 20 + 15;
+
+
+                    _ball = new Circle;
+
+
+                    _ball.radius       = _radius;
+
+                    _ball.stroke.color = Math.random ( ) * 0xffffff;
+
+                    _ball.mass         = _radius;
+
+
+                    _ball.x = Math.random ( ) * _canvas.width;
+
+                    _ball.y = Math.random ( ) * _canvas.height;
+
+
+                    _ball.velocity.x = Math.random ( ) * 10 - 5;
+
+                    _ball.velocity.y = Math.random ( ) * 10 - 5;
+
+
+                    _balls.push ( _ball );
+                }
+
+                // WORKERS CANNOT ACCESS THE DOM SO WE NEED TO INITIALIZE THE BOUNDARIES
+                _worker.postMessage ( { width: _canvas.width, height: _canvas.height } );
+
+                // SENDS A COPY OF THE BALLS ARRAY TO THE WORKER, COLLISION DETECTION WILL OPERATE ON THAT ARRAY COPY
+                _worker.postMessage ( _balls );
+
+                /**
+                 * After the _worker has finished calculating a frame of collision detection, it sends a message
+                 * containing a copy of THAT _balls array with the updated positions. The _worker loop is running
+                 * at 30 fps, while the render loop is running at 60 fps.
+                 * Update THIS _balls array in the main script using THOSE positions. THESE _balls are rendered in drawFrame.
+                 */
+                _worker.addEventListener ( 'message', function ( event )
+                {
+                    for ( let _i = 0, _balls_copy = event.data, _len = _balls_copy.length; _i < _len; _i++ )
+                    {
+                        _balls [ _i ].x = _balls_copy [ _i ].x;
+
+                        _balls [ _i ].y = _balls_copy [ _i ].y;
+                    }
+
+                    _renderFrame = true; // USED TO AVOID EXCESSIVE REPAINTS
+                } );
+
+
+                function _draw ( ball )
+                {
+                    ball.draw ( );
+                }
+
+
+                function _drawFrame ( )
+                {
+                    window.requestAnimationFrame ( _drawFrame, _canvas );
+
+
+                    if ( _renderFrame )
+                    {
+                        _context.clearRect ( 0, 0, _canvas.width, _canvas.height );
+
+                        _balls.forEach ( _draw );
+
+                        _renderFrame = false;
+                    }
+                };
+
+                _drawFrame ( );
+            };
         }
     }
 
@@ -27725,7 +29778,7 @@ class Ui
             {
                 UI.init  ( );
 
-                LAB.init ( _scripts.draggingAndEasingDemo5 );
+                LAB.init ( _scripts.draggingAndEasingDemo11 );
 
 
                 if ( true )
